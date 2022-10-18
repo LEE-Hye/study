@@ -11,35 +11,21 @@
 
         ```bash
         $ git config --global user.email
-
-        leebin9295@naver.com
         ```
         ```bash
         $ git config --global user.name
-
-        LEE-Hye
         ```
 
 - 2\. Github repository를 해당 디렉토리에 `clone`으로 복사
 
     ```bash
     git clone https://github.com/LEE-Hye/study.git
-
-    Cloning into 'study'...
-    remote: Enumerating objects: 373, done.
-    remote: Counting objects: 100% (140/140), done.
-    remote: Compressing objects: 100% (106/106), done.
-    remote: Total 373 (delta 66), reused 79 (delta 30), pack-reused 233
-    Receiving objects: 100% (373/373), 526.73 KiB | 18.81 MiB/s, done.
-    Resolving deltas: 100% (130/130), done.
     ```
 
 - 3\. 소스 코드를 Git으로 관리하기 전에 `git init`으로 저장소 초기화(clone할 땐 자동으로 생성)
 
     ```bash
     $ git init
-
-    Initialized empty Git repository in C:/Users/USER/study/Quest00/sandbox/.git/
     ```
 
 - 4\. `remote`를 이용해 로컬 폴더와 연결 할 repository 생성
@@ -106,7 +92,7 @@
 
 <br><br>
 
-> # 2. 파일 수정, 삭제
+> # 4. 파일 수정, 삭제
 
 - 원격 저장소에 있던 파일 삭제하기
 
@@ -145,7 +131,7 @@
 
 <br><br>
 
-> # 4. branch
+> # 5. branch
 
 - 진행중이던 것과 다른 작업을 진행하기 위해 작업 영역을 새롭게 만듦(main에서 작업하면 원본에 문제가 생길 수 있기 때문에)
 
@@ -217,7 +203,7 @@
 
 <br><br>
 
-> # 5. stash
+> # 6. stash
 
 - 아직 마무리 하지 않은 작업을 스택에 잠시 저장
 
