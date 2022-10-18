@@ -59,7 +59,7 @@
 - 2\. 새로운 변경 사항이라고 알려주기 위해 인덱스에 파일 보냄
 
     ```bash
-    $ git add mission.txt
+    $ git add add.txt
     ```
 
 -  특정 파일 말고 전체 파일/폴더 보내는 방법도 있음
@@ -74,11 +74,8 @@
 - 최종 수정본을 로컬 저장소에 보냄
 
     ```bash
-    $ git commit -m "modi"
+    $ git commit -m "add/commit/push to add.txt"
     # -m을 이용해 "여기 안에 들어갈 메시지"를 작성해줘야 한다.
-    
-    [main 3158827] modi
-    1 file changed, 1 insertion(+), 1 deletion(-)
     ```
 
 >> ## 3. push
@@ -87,42 +84,64 @@
 
     ```bash
     $ git push -u origin main
-
-    Enumerating objects: 5, done.
-    Counting objects: 100% (5/5), done.
-    Delta compression using up to 12 threads
-    Compressing objects: 100% (2/2), done.
-    Writing objects: 100% (3/3), 276 bytes | 276.00 KiB/s, done.
-    Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
-    remote: Resolving deltas: 100% (1/1), completed with 1 local object.
-    To https://github.com/LEE-Hye/study.git
-    8820bf3..3158827  main -> main
-    branch 'main' set up to track 'origin/main'.
     ```
 
 <br><br>
 
 > # 3. pull
-- 원격 저장소에 변경된 버전을 내 로컬에 저장할 때
-    ```bash
-    $ git pull origin main
 
-    remote: Enumerating objects: 4, done.
-    remote: Counting objects: 100% (4/4), done.
-    remote: Compressing objects: 100% (3/3), done.
-    remote: Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
-    Unpacking objects: 100% (3/3), 772 bytes | 96.00 KiB/s, done.
-    From https://github.com/LEE-Hye/study
-    * branch            main       -> FETCH_HEAD
-    3158827..6d02549  main       -> origin/main
-    Updating 3158827..6d02549
-    Fast-forward
-    pull.txt | 2 ++
-    1 file changed, 2 insertions(+)
-    create mode 100644 pull.txt
+- 원격 저장소에 변경된 버전을 내 로컬에 저장할 때
+    
+    - 1\. 원격 저장소에 파일 하나 생성
+
+        - pull.txt 생성
+    
+    <br>
+
+    - 2\. 원격 저장소에 있는 파일 로컬 저장소에 보냄   
+
+        ```bash
+        $ git pull
+        ```
+
+<br><br>
+
+> # 2. 파일 수정, 삭제
+
+- 원격 저장소에 있던 파일 삭제하기
+
+    - 1\. 원격 저장소에서 파일 삭제 후 GitBash
+
+        ```bash
+        $ git rm pull.txt
+        ```
+
+    - 2\. 삭제한 파일 commit 하기
+
+        ```bash
+        $ git commit -m "remove pull.txt"
+        ```
+
+- 파일 이름 수정
+
+    - 1\. 현재 머물고 있는 디렉토리에 있는 파일 리스트 확인
+    
+    ```bash
+    $ ls -al
     ```
 
+    - 2\. 파일 이름 바꾸기
 
+    ```bash
+    $ git mv rename.txt rename2.txt
+    ```
+
+    - 3\. 바뀐 내용 커밋 & 푸쉬 하기
+
+    ```bash
+    $ git commit -m "rename rename2.txt"
+    $ git push
+    ```
 
 <br><br>
 
@@ -144,10 +163,9 @@
         ```
 
 - 2\. `switch`를 이용해 만든 브랜치로 전환
+
     ```bash
     $ git switch hey
-
-    Switched to branch 'hey'
     ```
     - 등록 확인
         ```bash
@@ -169,37 +187,19 @@
     - add
 
     ```bash
-    $ git add changebranch.txt
+    $ git add branch.txt
     ```
 
     - commit
 
     ```bash
-    $ git commit -m "changebranch.txt commit"
-    
-    [hey f4ea89e] changebranch.txt commit
-    1 file changed, 1 insertion(+)
-    create mode 100644 changebranch.txt
+    $ git commit -m "branch branch.txt"
     ```
 
     - push
     
     ```bash
     $ git push origin hey
-
-    Enumerating objects: 8, done.
-    Counting objects: 100% (8/8), done.
-    Delta compression using up to 12 threads
-    Compressing objects: 100% (5/5), done.
-    Writing objects: 100% (6/6), 559 bytes | 559.00 KiB/s, done.
-    Total 6 (delta 3), reused 0 (delta 0), pack-reused 0
-    remote: Resolving deltas: 100% (3/3), completed with 2 local objects.
-    remote:
-    remote: Create a pull request for 'hey' on GitHub by visiting:
-    remote:      https://github.com/LEE-Hye/study/pull/new/hey
-    remote:
-    To https://github.com/LEE-Hye/study.git
-    * [new branch]      hey -> hey
     ```
 
 - 5\. 새로 만든 브런치 삭제하기(로컬에서)
