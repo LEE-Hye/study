@@ -10,7 +10,7 @@
 	<body>
 
 		<header>
-	
+
 			<nav>
 				<i class="fas fa-bars"></i>
 				<ul class="ico_ul">
@@ -21,7 +21,7 @@
 			</nav>
 	
 			<div class="logo">
-				<img class="img_logo" src="Naver.png" alt="네이버 로고">
+				<img class="img_logo" src="img/Naver.png" alt="네이버 로고">
 			</div>
 	
 			<div class="search">
@@ -39,25 +39,235 @@
 			<div class="menu">
 				<div class="menu_box">
 					<ul class="ico_ul menu_ul">
-						<li><i class="far fa-newspaper"></i><span class="menu_span">뉴스판</span></li>
-						<li><i class="fas fa-chart-bar"></i><span class="menu_span">경제지표판</span></li>
-						<li><i class="fas fa-star"></i><span class="menu_span">연예판</span></li>
-						<li><i class="fas fa-heart"></i><span class="menu_span">트렌드판</span></li>
-						<li><i class="fas fa-envelope"><span class="menu_span">메일</span></i></li>
-						<li><i class="fas fa-coffee"></i><span class="menu_span">카페</span></li>
-						<li><i class="fab fa-blogger"></i><span class="menu_span">블로그</span></li>
-						<li><i class="fab fa-rocketchat"></i></li>
+						<li><a href="#">
+								<div class="menu_back">
+									<button class="menu_backcol"><i class="far fa-newspaper"></i></button><span
+										class="menu_span">뉴스판</span>
+								</div>
+							</a></li>
+						<li><a href="#">
+								<div class="menu_back">
+									<button class="menu_backcol"><i class="fas fa-chart-bar"></i></button><span
+										class="menu_span">경제지표판</span>
+								</div>
+							</a></li>
+						<li><a href="#">
+								<div class="menu_back">
+									<button class="menu_backcol"><i class="fas fa-star"></i></button><span
+										class="menu_span">연예판</span>
+								</div>
+							</a></li>
+						<li><a href="#">
+								<div class="menu_back">
+									<button class="menu_backcol"><i class="fas fa-heart"></i></button><span
+										class="menu_span">트렌드판</span>
+								</div>
+							</a></li>
+						<li><a href="#">
+								<div class="menu_back">
+									<button class="menu_backcol"><i class="fas fa-envelope"></i></button><span
+										class="menu_span">메일</span>
+								</div>
+							</a></li>
+						<li><a href="#">
+								<div class="menu_back">
+									<button class="menu_backcol"><i class="fas fa-coffee"></i></button><span
+										class="menu_span">카페</span>
+								</div>
+							</a></li>
+						<li><a href="#">
+								<div class="menu_back">
+									<button class="menu_backcol"><i class="fab fa-blogger"></i></button><span
+										class="menu_span">블로그</span>
+								</div>
+							</a></li>
+						<li><a href="#">
+								<div class="menu_back">
+									<button class="menu_backcol"><i class="fab fa-rocketchat"></i></button>
+								</div>
+							</a></li>
 					</ul>
 				</div>
 			</div>
 		</header>
 	
 		<section class="main">
+			<div class="contain">
+				<div class="contain_box today">
+					<div class="todaywt">
+						<i class="fa-solid fa-moon"></i>
+						<div class="todaywtdetail">
+							<strong><span>10° 맑음</span></strong>
+							<span>어제보다 2° 높아요</span>
+						</div>
+					</div>
+					<span class="sign">|</span>
+					<div class="todayad">
+						<div class="todayaddetail">
+							<img class="nowimg" src="img/now.png">
+							<strong><span class="nowtext">지금 방송중</span></strong>
+						</div>
+						<ul class="mainul">
+							<li><a href="#"><img src="img/방송1.png"></a></li>
+							<li><a href="#"><img src="img/방송2.png"></a></li>
+							<li><a href="#"><img src="img/방송3.png"></a></li>
+						</ul>
+					</div>
+				</div>
+	
+				<div class="contain_box weather">
+					<div class="weatherhead">
+						<div>
+							<strong><span>날씨</span></strong>
+							<span>서울시 잠실동</span>
+							<i class="fa-solid fa-location-crosshairs"></i>
+						</div>
+						<i class="fa-solid fa-chevron-up"></i>
+					</div>
+					<div>
+						<ul class="mainul">
+							<li><button class="weatherbtn">시간대별 날씨</button></li>
+							<li><button class="weatherbtn">시간대별 미세먼지</button></li>
+							<li><button class="weatherbtn">주간 날씨</button></li>
+							<li><button class="weatherbtn">주간 미세먼지</button></li>
+						</ul>
+					</div>
+					<div>
+						<ul class="mainul weatherul">
+							<li>
+								<ul>
+									<li>18°</li>
+									<li>|</li>
+									<li>6°</li>
+									<li><i class="fa-solid fa-sun"></i></li>
+									<li class="weatherweek">어제</li>
+								</ul>
+							</li>
+							<li>
+								<ul>
+									<li>18°</li>
+									<li>|</li>
+									<li>6°</li>
+									<li><i class="fa-solid fa-sun"></i></li>
+									<li class="weatherweek">오늘</li>
+								</ul>
+							</li>
+							<li>
+								<ul>
+									<li>18°</li>
+									<li>|</li>
+									<li>6°</li>
+									<li><i class="fa-solid fa-sun"></i></li>
+									<li class="weatherweek">월</li>
+								</ul>
+							</li>
+							<li>
+								<ul>
+									<li>18°</li>
+									<li>|</li>
+									<li>6°</li>
+									<li><i class="fa-solid fa-cloud-showers-heavy"></i></li>
+									<li class="weatherweek">화</li>
+								</ul>
+							</li>
+							<li>
+								<ul>
+									<li>18°</li>
+									<li>|</li>
+									<li>6°</li>
+									<li><i class="fa-solid fa-cloud-showers-heavy"></i></li>
+									<li class="weatherweek">수</li>
+								</ul>
+							</li>
+							<li>
+								<ul>
+									<li>18°</li>
+									<li>|</li>
+									<li>6°</li>
+									<li><i class="fa-solid fa-sun"></i></li>
+									<li class="weatherweek">목</li>
+								</ul>
+							</li>
+							<li>
+								<ul>
+									<li>18°</li>
+									<li>|</li>
+									<li>6°</li>
+									<li><i class="fa-solid fa-sun"></i></li>
+									<li class="weatherweek">금</li>
+								</ul>
+							</li>
+							<li>
+								<ul>
+									<li>18°</li>
+									<li>|</li>
+									<li>6°</li>
+									<li><i class="fa-solid fa-sun"></i></li>
+									<li class="weatherweek">토</li>
+								</ul>
+							</li>
+							<li>
+								<div class="weatherlist">
+									<ul>
+										<li>18°</li>
+										<li>|</li>
+										<li>6°</li>
+										<li><i class="fa-solid fa-sun"></i></li>
+										<li class="weatherweek">일</li>
+									</ul>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+	
+				<div class="contain_box covid">
+	
+				</div>
+	
+				<div class="contain_box day">
+	
+				</div>
+	
+				<div class="contain_box app">
+	
+				</div>
+	
+				<div class="contain_box webtoon">
+	
+				</div>
+	
+				<div class="contain_box board">
+	
+				</div>
+	
+				<div class="contain_box notice">
+					<a href="#">
+	
+					</a>
+				</div>
+	
+			</div>
+	
 	
 		</section>
 	
-		<footer>
-	
+		<footer class="main">
+			<div class="contain">
+				<div class="footercontain">
+					<ul class="mainul">
+						<li><a href="#">로그인</a><span>|</span></li>
+						<li><a href="#">전체서비스</a><span>|</span></li>
+						<li><a href="#">PC버전</a></li>
+					</ul>
+					<ul class="mainul">
+						<li><a href="#">이용약관</a><span>|</span></li>
+						<li><a href="#"><strong>개인정보처리방침</strong></a><span>|</span></li>
+						<li><a href="#">고객센터</a></li>
+					</ul>
+					<div class="footerend">NAVER</div>
+				</div>
+			</div>
 		</footer>
 	</body>
 </html>
