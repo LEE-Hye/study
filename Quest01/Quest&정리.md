@@ -7,6 +7,8 @@
 
 ## HTML5 레이아웃
 
+![레이아웃](https://user-images.githubusercontent.com/91482127/197447531-91719a06-346b-4e69-ab6d-c4c2c9254a90.png)
+
 - `<header>` : 머리글을 뜻함 / `<nav>`를 담는 용도
 
 - `<nav>` : 메뉴 / 다른 페이지로 이동
