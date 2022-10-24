@@ -4,22 +4,32 @@
 -->
 <html>
 <!--페이지 전체를 감싼다.-->
-
+	
 <head>
     <!--
 		콘텐츠가 있는 <body>를 처리하기 전에 처리되어야 하는 부분
 		스크립트, CSS, 페이지 설명 등이 온다.
 	-->
 
+	<!-- 메타 데이터는 html 문서에 대한 데이터를 위한 데이터 / 페이지에는 표시되지 않지만 기계에 의해 분석 -->
+
     <meta charset="UTF-8">
-    <!--문서가 사용해야 할 문자 집합을 UTF-8로 설정-->
+    <!--문서가 사용해야 할 문자 집합을 UTF-8로 설정(웹 페이지에서 어떤 문자라도 취급 가능)-->
 
     <!-- TODO: 또 무엇이 필요할까요? -->
 
     <title>네이버</title>
     <!--페이지의 제목을 설정 하여 로드되는 브라우저의 탭에 이 제목이 표시 됨/ 북마크나 즐겨찾기에서 페이지 설명하는 것으로 사용됨-->
 
+	<meta name="author" content="hyebin">
+	<!-- 문서를 작성한 사람에 대한 정보를 추가 -->
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- 모바일 기기에서도 보기 위해 추가 -->
+	<!-- 화면 영역을 디바이스 너비에 맞추고 초기 화면 배율을 1로 지정 -->
+	
     <script src="https://kit.fontawesome.com/5963137a15.js" crossorigin="anonymous"></script>
+	<!-- 아이콘을 쓰기 위해 kit 스크립트 입력  -->
 
 </head>
 
@@ -27,6 +37,8 @@
     <!--콘텐츠가 담기는 곳 / 입력한 내용이 웹 브라우저에 표시-->
 
     <header>
+	<!-- 도입부의 콘텐츠나 <nav> 포함 -->
+
         <!-- TODO: 어디까지를 header로 보는 것이 좋을까요? -->
         <div class="header_menu">
             <i class="fas fa-bars"></i>
@@ -123,8 +135,11 @@
     </header>
 
     <section class="main">
+	<!-- 특정 탭이 가리키는 영역 등 유사 내용을 담음 -->
+
         <!-- TODO: main은 어떤 식으로 나눌 수 있을까요? -->
         <div class="container">
+			
             <!-- 첫 번째 -->
             <div class="etc">
                 <div>
@@ -142,6 +157,7 @@
                     </ul>
                 </div>
             </div>
+
             <!-- 두 번째 -->
             <div class="weather">
                 <div>
@@ -244,6 +260,7 @@
                     </ul>
                 </div>
             </div>
+
             <!-- 세 번째 -->
             <div class="covid">
                 <div>
@@ -262,17 +279,20 @@
                     </a>
                 </div>
             </div>
+
             <!-- 네 번째 -->
             <div class="day">
                 <i class="fa-solid fa-building"></i>
                 <span>제 102주년 <strong>대한민국 임시정부 수립일</strong></span>
             </div>
+
             <!-- 다섯 번째 -->
             <div class="app">
                 <img src="img/Naverm.jpg">
                 <span>앱으로 <strong>새로운 네이버</strong>를 더 쾌적하게 사용해 보세요.</span>
                 <button>앱 사용하기</button>
             </div>
+
             <!-- 여섯 번째 -->
             <div class="webtoon">
                 <div>
@@ -280,6 +300,7 @@
                     <i class="fa-solid fa-chevron-down"></i>
                 </div>
             </div>
+
             <!-- 일곱 번째 -->
             <div class="pop_board">
                 <div>
@@ -293,6 +314,7 @@
                     <li><i class="fa-solid fa-chart-line"></i><span>경제M판</span><i class="fa-solid fa-chevron-right"></i></li>
                 </ul>
             </div>
+
             <!-- 여덟 번째 -->
             <div class="update">
                 <a href="#">
@@ -305,6 +327,8 @@
     </section>
 
     <footer>
+	<!-- 작성자, copyright, 문서 링크 정보 등 -->
+
         <!-- TODO: 하단의 여러 가지 링크들은 어떻게 처리하면 좋을까요? -->
         <div class="container">
             <div>
