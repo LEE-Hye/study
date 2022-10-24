@@ -1,6 +1,6 @@
 # 📃 Quest 02. CSS의 기초와 응용
 
-<details><summary>📃 Quest 02. 목차</summary>
+<details><summary>💌 Quest 02. 목차</summary>
 
 [1. CSS를 HTML에 적용하는 세 가지 방법](#1-css를-html에-적용하는-세-가지-방법은-무엇일까요)  
 [2. CSS 규칙의 우선순위](#2-css-규칙의-우선순위는-어떻게-결정될까요)     
