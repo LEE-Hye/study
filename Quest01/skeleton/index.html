@@ -57,7 +57,7 @@
 	<!--콘텐츠가 담기는 곳 / 입력한 내용이 웹 브라우저에 표시-->
 
 	<header>
-		<!-- 도입부의 콘텐츠나 <nav> 포함 -->
+		<!-- header : 홈페이지 상단 로고나 메인 메뉴 -->
 
 		<!-- TODO: 어디까지를 header로 보는 것이 좋을까요? -->
 		<div class="header_menu">
@@ -65,7 +65,7 @@
 			<ul>
 				<li><a href="#">QR 체크인</a></li>
 				<li><a href="#"><i class="fab fa-cc-apple-pay"></i></a></li>
-				<li><a><i class="fas fa-print"></i></a></li>
+				<li><a href="#"><i class="fas fa-print"></i></a></li>
 			</ul>
 		</div>
 
@@ -74,7 +74,7 @@
 		</div>
 
 		<form action="#">
-			<div class="search">
+			<section class="search">
 				<div>
 					<input type="text" name="search_input" placeholder="검색어를 입력해주세요.">
 					<ul>
@@ -83,7 +83,7 @@
 						<li><button><i class="fas fa-map-marker-alt"></i></button></li>
 					</ul>
 				</div>
-			</div>
+			</section>
 		</form>
 		<nav class="menu">
 			<ul>
@@ -154,7 +154,7 @@
 		</nav>
 	</header>
 
-	<section class="main">
+	<main>
 		<!-- 특정 탭이 가리키는 영역 등 유사 내용을 담음 -->
 
 		<!-- TODO: main은 어떤 식으로 나눌 수 있을까요? -->
@@ -179,10 +179,10 @@
 			</div>
 
 			<!-- 두 번째 -->
-			<div class="weather">
+			<section class="weather">
 				<div>
 					<div>
-						<strong>날씨</strong>
+						<h3>날씨</h3>
 						<a href="#"><span>서울시 잠실동</span>
 							<i class="fa-solid fa-location-crosshairs"></i>
 					</div>
@@ -279,10 +279,10 @@
 						</li>
 					</ul>
 				</div>
-			</div>
+			</section>
 
 			<!-- 세 번째 -->
-			<div class="covid">
+			<section class="covid">
 				<div>
 					<a href="#">
 						<i class="fa-solid fa-virus-covid-slash"></i>
@@ -298,31 +298,31 @@
 						<span>백신 정보 팩트는?</span>
 					</a>
 				</div>
-			</div>
+			</section>
 
 			<!-- 네 번째 -->
-			<div class="day">
+			<section class="day">
 				<i class="fa-solid fa-building"></i>
 				<span>제 102주년 <strong>대한민국 임시정부 수립일</strong></span>
-			</div>
+			</section>
 
 			<!-- 다섯 번째 -->
-			<div class="app">
+			<section class="app">
 				<img src="img/Naverm.jpg">
 				<span>앱으로 <strong>새로운 네이버</strong>를 더 쾌적하게 사용해 보세요.</span>
 				<a href="#">앱 사용하기</a>
-			</div>
+			</section>
 
 			<!-- 여섯 번째 -->
-			<div class="webtoon">
+			<section class="webtoon">
 				<a href="#">
 					<strong>웹툰</strong>
 					<i class="fa-solid fa-chevron-down"></i>
 				</a>
-			</div>
+			</section>
 
 			<!-- 일곱 번째 -->
-			<div class="pop_board">
+			<section class="pop_board">
 				<div>
 					<strong>인기 주제 판을 확인해 보세요!</strong>
 					<a href="#"><span>핀관리</span></a>
@@ -337,20 +337,20 @@
 					<li><a href="#"><i class="fa-solid fa-chart-line"></i><span>경제M판</span><i
 								class="fa-solid fa-chevron-right"></i></a></li>
 				</ul>
-			</div>
+			</section>
 
 			<!-- 여덟 번째 -->
-			<div class="update">
+			<section class="update">
 				<span>알립니다</span>
 				<a href="#"><span>네이버앱 업데이트 사전 안내</span>
 					<i class="fa-solid fa-chevron-right"></i></a>
 				</a>
-			</div>
+			</section>
 		</div>
-	</section>
+	</main>
 
 	<footer>
-		<!-- 작성자, copyright, 문서 링크 정보 등 -->
+		<!-- footer : 작성자, 연락처, 문서 링크 정보 등 문서 바닥글 -->
 
 		<!-- TODO: 하단의 여러 가지 링크들은 어떻게 처리하면 좋을까요? -->
 		<div class="container">
