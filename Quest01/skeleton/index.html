@@ -1,35 +1,55 @@
 <!DOCTYPE html>
-<!-- 표준 모드로 렌더링할 때 사용 
-	HTML의 문서 형식 선언으로 HTML 및 마크업 언어의 DTO또는 버전 명시
+<!--DOCTYPE은 html 파일의 최상단에 위치
+	웹 문서가 어떤 버전의 html 언어로 작성되었는지 선언
+	선언 목적 : 문서간의 호환성을 높이기 위해
 -->
 <html>
-<!--페이지 전체를 감싼다.-->
+<!-- html5 문서의 시작을 알림 -->
 
 <head>
-	<!--
-		콘텐츠가 있는 <body>를 처리하기 전에 처리되어야 하는 부분
-		스크립트, CSS, 페이지 설명 등이 온다.
-	-->
+<!--
+	콘텐츠가 있는 <body>를 처리하기 전에 처리되어야 하는 부분
+	스크립트, CSS, 페이지 설명 등이 온다.
+-->
 
-	<!-- 메타 데이터는 html 문서에 대한 데이터를 위한 데이터 / 페이지에는 표시되지 않지만 기계에 의해 분석 -->
+	<!-- meta타입은 메타 데이터로 html 문서에 대한 정보 설정 -->
 
 	<meta charset="UTF-8">
-	<!--문서가 사용해야 할 문자 집합을 UTF-8로 설정(웹 페이지에서 어떤 문자라도 취급 가능)-->
+	<!--문서가 사용해야 할 문자를 UTF-8로 설정-->
 
 	<!-- TODO: 또 무엇이 필요할까요? -->
-
-	<title>네이버</title>
-	<!--페이지의 제목을 설정 하여 로드되는 브라우저의 탭에 이 제목이 표시 됨/ 북마크나 즐겨찾기에서 페이지 설명하는 것으로 사용됨-->
-
-	<meta name="author" content="hyebin">
-	<!-- 문서를 작성한 사람에 대한 정보를 추가 -->
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- 모바일 기기에서도 보기 위해 추가 -->
 	<!-- 화면 영역을 디바이스 너비에 맞추고 초기 화면 배율을 1로 지정 -->
 
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!-- 인터넷 익스플로러의 경우 최신 버전에 맞게 적용 -->
+
+	<meta name="description" content="네이버 페이지의 구조를 따라 만들어봅니다.">
+	<!-- 현재 페이지에 대한 설명 / 검색엔진이 체크 -->
+
+	<meta name="author" content="hyebin">
+	<!-- 현재 페이지의 작성자 / 검색엔진이 체크 -->
+
+	<meta name="keywords" content="네이버, 네이버 따라만들기, 네이버 구조">
+	<!-- 검색어 / 검색엔진이 체크 -->
+
+
+	<title>네이버</title>
+	<!-- 페이지의 제목을 설정 / 검색엔진이 체크 -->
+
 	<script src="https://kit.fontawesome.com/5963137a15.js" crossorigin="anonymous"></script>
 	<!-- 아이콘을 쓰기 위해 kit 스크립트 입력  -->
+
+	<link rel="stylesheet" href="#">
+	<!-- 현재 페이지에 적용되는 외부 css파일 -->
+
+	<script src="#"></script>
+	<!-- 현재 페이지에 적용되는 자바스크립트 파일 
+		자바스크립트 : html 페이지에서 사용하는 프로그래밍 언어 
+		body태그 안에도 선언 가능
+	-->
 
 </head>
 
@@ -44,8 +64,8 @@
 			<i class="fas fa-bars"></i>
 			<ul>
 				<li><a href="#">QR 체크인</a></li>
-				<li><button href="#"><i class="fab fa-cc-apple-pay"></i></button></li>
-				<li><button><i class="fas fa-print"></i></button></li>
+				<li><a href="#"><i class="fab fa-cc-apple-pay"></i></a></li>
+				<li><a><i class="fas fa-print"></i></a></li>
 			</ul>
 		</div>
 
@@ -290,7 +310,7 @@
 			<div class="app">
 				<img src="img/Naverm.jpg">
 				<span>앱으로 <strong>새로운 네이버</strong>를 더 쾌적하게 사용해 보세요.</span>
-				<button>앱 사용하기</button>
+				<a href="#">앱 사용하기</a>
 			</div>
 
 			<!-- 여섯 번째 -->
