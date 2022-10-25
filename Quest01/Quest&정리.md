@@ -90,7 +90,8 @@
 
 ## HTML5 레이아웃
 
-![레이아웃](https://user-images.githubusercontent.com/91482127/197447531-91719a06-346b-4e69-ab6d-c4c2c9254a90.png)
+![레이아웃](https://user-images.githubusercontent.com/91482127/197688974-77cab613-7be0-4c41-9cc0-043f49288d6f.png)
+
 
 - `<header>` : 머리글을 뜻함 / 도입부에 해당하는 콘텐츠나 네비게이션 링크 집합
 
