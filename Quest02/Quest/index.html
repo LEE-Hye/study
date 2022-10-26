@@ -1,67 +1,37 @@
 <!DOCTYPE html>
-<!--DOCTYPE은 html 파일의 최상단에 위치
-	웹 문서가 어떤 버전의 html 언어로 작성되었는지 선언
-	선언 목적 : 문서간의 호환성을 높이기 위해
--->
+
 <html>
-<!-- html 문서의 시작을 알림 -->
+
 
 <head>
-<!--
-	콘텐츠가 있는 <body>를 처리하기 전에 처리되어야 하는 부분
-	스크립트, CSS, 페이지 설명 등이 온다.
--->
-
-	<!-- meta타입은 메타 데이터로 html 문서에 대한 정보 설정 -->
 
 	<meta charset="UTF-8">
-	<!--문서가 사용해야 할 문자를 UTF-8로 설정-->
-
-	<!-- TODO: 또 무엇이 필요할까요? -->
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<!-- 모바일 기기에서도 보기 위해 추가 -->
-	<!-- 화면 영역을 디바이스 너비에 맞추고 초기 화면 배율을 1로 지정 -->
-
+	
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<!-- 인터넷 익스플로러의 경우 최신 버전에 맞게 적용 -->
 
 	<meta name="description" content="네이버 페이지의 구조를 따라 만들어봅니다.">
-	<!-- 현재 페이지에 대한 설명 / 검색엔진이 체크 -->
 
 	<meta name="author" content="hyebin">
-	<!-- 현재 페이지의 작성자 / 검색엔진이 체크 -->
 
 	<meta name="keywords" content="네이버, 네이버 따라만들기, 네이버 구조">
-	<!-- 검색어 / 검색엔진이 체크 -->
-
 
 	<title>네이버</title>
-	<!-- 페이지의 제목을 설정 / 검색엔진이 체크 -->
 
 	<script src="https://kit.fontawesome.com/5963137a15.js" crossorigin="anonymous"></script>
-	<!-- 아이콘을 쓰기 위해 kit 스크립트 입력  -->
 
 	<link rel="stylesheet" href="#">
-	<!-- 현재 페이지에 적용되는 외부 css파일 -->
 
 	<script src="#"></script>
-	<!-- 현재 페이지에 적용되는 자바스크립트 파일 
-		자바스크립트 : html 페이지에서 사용하는 프로그래밍 언어 
-		body태그 안에도 선언 가능
-	-->
 
 </head>
 
 <body>
-	<!--콘텐츠가 담기는 곳 / 입력한 내용이 웹 브라우저에 표시-->
 
 	<header>
-		<!-- header : 홈페이지 상단 로고나 메인 메뉴 -->
-
-		<!-- TODO: 어디까지를 header로 보는 것이 좋을까요? -->
-		<!-- 주요 컨텐츠 단락이 나오기 직전까지 -->
-		<div class="header_menu">
+		
+		<div class="menu">
 			<i class="fas fa-bars"></i>
 			<ul>
 				<li><a href="#">QR 체크인</a></li>
@@ -75,7 +45,6 @@
 		</div>
 
 		<form action="#">
-			<!-- 검색이라는 연관된 주제 -->
 			<section class="search">
 				<div>
 					<input type="text" name="search_input" placeholder="검색어를 입력해주세요.">
@@ -87,12 +56,13 @@
 				</div>
 			</section>
 		</form>
-		<nav class="menu">
+
+		<nav>
 			<ul>
 				<li>
 					<a href="main.html">
 						<div>
-							<i class="far fa-newspaper"></i>
+							<img src="https://s.pstatic.net/static/www/mobile/edit/20220303_0/upload_1646297330983vHTOQ.png" alt="뉴스판">
 							<span>뉴스판</span>
 						</div>
 					</a>
@@ -100,7 +70,7 @@
 				<li>
 					<a href="main.html">
 						<div>
-							<i class="fas fa-chart-bar"></i>
+							<img src="https://s.pstatic.net/static/www/mobile/edit/2021/0426/upload_16194098613516y6da.png" alt="경제지표판">
 							<span>경제지표판</span>
 						</div>
 					</a>
@@ -108,7 +78,7 @@
 				<li>
 					<a href="main.html">
 						<div>
-							<i class="fas fa-star"></i>
+							<img src="https://s.pstatic.net/static/www/mobile/edit/2021/0426/upload_1619409873291ZKgsb.png" alt="연예판">
 							<span>연예판</span>
 						</div>
 					</a>
@@ -116,7 +86,7 @@
 				<li>
 					<a href="main.html">
 						<div>
-							<i class="fas fa-heart"></i>
+							<img src="img/트렌드판.png" alt="트렌드판">
 							<span>트렌드판</span>
 						</div>
 					</a>
@@ -124,7 +94,7 @@
 				<li>
 					<a href="main.html">
 						<div>
-							<i class="fas fa-envelope"></i>
+							<img src="https://s.pstatic.net/static/www/mobile/edit/2020/0319/mobile_19411917574.png" alt="메일">
 							<span>메일</span>
 						</div>
 					</a>
@@ -132,7 +102,7 @@
 				<li>
 					<a href="main.html">
 						<div>
-							<i class="fas fa-coffee"></i>
+							<img src="https://s.pstatic.net/static/www/mobile/edit/2020/0319/mobile_191015178706.png" alt="카페">
 							<span>카페</span>
 						</div>
 					</a>
@@ -140,7 +110,7 @@
 				<li>
 					<a href="main.html">
 						<div>
-							<i class="fab fa-blogger"></i>
+							<img src="https://s.pstatic.net/static/www/mobile/edit/2020/0319/mobile_181505455420.png" alt="블로그">
 							<span>블로그</span>
 						</div>
 					</a>
@@ -148,7 +118,7 @@
 				<li>
 					<a href="main.html">
 						<div>
-							<i class="fab fa-rocketchat"></i>
+							<img src="https://s.pstatic.net/static/www/mobile/edit/2021/0427/upload_1619497854375Q53rw.png" alt="기타">
 						</div>
 					</a>
 				</li>
@@ -157,11 +127,6 @@
 	</header>
 
 	<main>
-	<!-- main : body안에 주요 컨텐츠 영역 -->
-
-		<!-- TODO: main은 어떤 식으로 나눌 수 있을까요? -->
-		<div class="container">
-		<!-- div : 의미가 없고 다른 요소들을 묶어 꾸미기 쉽게 하거나 구역 구분 -->
 
 			<!-- 첫 번째 -->
 			<div class="now">
@@ -182,16 +147,14 @@
 			</div>
 
 			<!-- 두 번째 -->
-			<!-- 날씨라는 연관된 주제 -->
 			<section class="weather">
-			<!-- section : 공통된 주제를 하나의 그룹으로 묶음 / 제목 태그 포함시키는 걸 권장 -->
 				<div>
+					<h3>날씨</h3>
 					<div>
-						<h3>날씨</h3>
-						<a href="#"><span>서울시 잠실동</span>
-							<i class="fa-solid fa-location-crosshairs"></i>
+						<span>서울시 잠실동</span>
+						<i class="fa-solid fa-location-crosshairs"></i>
+						<i class="fa-solid fa-chevron-up"></i></a>
 					</div>
-					<i class="fa-solid fa-chevron-up"></i></a>
 				</div>
 				<div>
 					<ul>
@@ -289,19 +252,15 @@
 			<!-- 세 번째 -->
 			<div class="covid">
 				<div>
-					<a href="#">
-						<i class="fa-solid fa-virus-covid-slash"></i>
-						<strong>코로나19</strong>
-						<span>국내외 확진 현황</span>
-					</a>
+					<i class="fa-solid fa-virus-covid-slash"></i>
+					<strong>코로나19</strong>
+					<span>국내외 확진 현황</span>
 				</div>
 				<span>|</span>
 				<div>
-					<a href="#">
-						<i class="fa-regular fa-circle-xmark"></i>
-						<strong>코로나19 팩트체크</strong>
-						<span>백신 정보 팩트는?</span>
-					</a>
+					<i class="fa-regular fa-circle-xmark"></i>
+					<strong>코로나19 팩트체크</strong>
+					<span>백신 정보 팩트는?</span>
 				</div>
 			</div>
 
@@ -352,14 +311,9 @@
 					<i class="fa-solid fa-chevron-right"></i></a>
 				</a>
 			</div>
-		</div>
 	</main>
 
 	<footer>
-		<!-- footer : 작성자, 연락처, 문서 링크 정보 등 문서 바닥글 -->
-
-		<!-- TODO: 하단의 여러 가지 링크들은 어떻게 처리하면 좋을까요? -->
-		<div class="container">
 			<div>
 				<ul>
 					<li><a href="#">로그인</a><span>|</span></li>
@@ -373,7 +327,6 @@
 				</ul>
 				<span>NAVER</span>
 			</div>
-		</div>
 	</footer>
 </body>
 

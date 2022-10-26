@@ -1,4 +1,4 @@
-# 📃 Quest 02. CSS의 기초와 응용
+# 📃 Checklist 02. CSS의 기초와 응용
 
 <details><summary>💌 Quest 02. 목차</summary>
 
