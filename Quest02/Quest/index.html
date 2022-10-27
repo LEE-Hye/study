@@ -25,6 +25,116 @@
 
 	<script src="#"></script>
 
+	<style>
+
+		li{
+			list-style: none;
+		}
+
+		a{
+			text-decoration: none;
+		}
+
+		/* header 메뉴 */
+		.menu{
+			display: flex;
+			justify-content: space-between;
+	    	align-items: center;
+		}
+
+		.menu > ul{
+			width: 150px;  /* 여기 왜 안 늘리면 안되지? 언제 크기 고정이 됐을까? 알아보자*/
+			display: flex;
+    		justify-content: space-around;
+		}
+
+		/* header 로고 */
+		.logo{
+			text-align: center; /* 가운데 정렬 차이점들좀 알아보자 일단 다 만들어 보고*/
+			padding-top: 100px;
+		}
+
+		.logo > img{
+			width: 300px;
+		}
+
+		/* header 검색 */
+		.search{
+			display: flex;
+			justify-content: center;
+			margin-top: 25px;
+		}
+
+		.search_content{
+			display: flex;
+    		justify-content: space-between;
+    		align-items: center;
+			border: solid 1px green;
+			width: 800px;
+    		height: 70px;
+		}
+
+		.search_content > ul{
+			display: flex;
+			width: 130px;
+    		padding: 0;
+    		justify-content: space-evenly;
+		}
+
+			.search_content input{
+			width: 600px;
+			height: 40px;
+			margin-left: 20px;
+			font-size: 20px;
+			border: none;
+		}
+
+		.search_content input::placeholder{
+			color: lightgray;
+		}
+		.search_content input:focus{
+			outline: none;
+		}
+
+		/* nav */
+		nav{
+			display: flex;
+    		justify-content: center;
+			margin-top: 20px;
+		}
+
+		nav > ul{
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+    		width: 500px;
+			padding: 0;
+		}
+
+		nav img{
+			width: 30px;
+			height: 30px;
+			padding: 13px;
+			border: 1px solid none;
+			background-color: rgba(128, 128, 128, 0.127);
+			border-radius: 18px;
+
+		}
+
+		nav div{
+			display: flex;
+    		flex-direction: column;
+    		align-items: center;
+			width: 100px;
+    		height: 100px;
+			margin: 10px;
+		}
+
+		nav a{
+			color: gray;
+		}
+	</style>
+
 </head>
 
 <body>
@@ -44,18 +154,20 @@
 			<img class="logo_img" src="img/Naver.png" alt="네이버 로고">
 		</div>
 
-		<form action="#">
-			<section class="search">
-				<div>
+		
+		<section class="search">
+			<div class="search_content">
+				<form action="#">
 					<input type="text" name="search_input" placeholder="검색어를 입력해주세요.">
-					<ul>
-						<li><button><i class="fas fa-microphone"></i></button></li>
-						<li><button><i class="fas fa-camera"></i></button></li>
-						<li><button><i class="fas fa-map-marker-alt"></i></button></li>
-					</ul>
-				</div>
-			</section>
-		</form>
+				</form>
+				<ul>
+					<li><button><i class="fas fa-microphone"></i></button></li>
+					<li><button><i class="fas fa-camera"></i></button></li>
+					<li><button><i class="fas fa-map-marker-alt"></i></button></li>
+				</ul>
+			</div>
+		</section>
+		
 
 		<nav>
 			<ul>
