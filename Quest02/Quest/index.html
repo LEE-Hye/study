@@ -32,6 +32,7 @@
 
 		a {
 			text-decoration: none;
+			color: black;
 		}
 
 		header {
@@ -43,17 +44,12 @@
 		}
 
 		body {
-			/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ffffff+0,dbf1ff+39,eaf7ff+56,e2f4ff+77,e2f4ff+100 */
-			background: rgb(255, 255, 255);
-			/* Old browsers */
-			background: -moz-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(219, 241, 255, 1) 39%, rgba(234, 247, 255, 1) 56%, rgba(226, 244, 255, 1) 77%, rgba(226, 244, 255, 1) 100%);
-			/* FF3.6-15 */
-			background: -webkit-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(219, 241, 255, 1) 39%, rgba(234, 247, 255, 1) 56%, rgba(226, 244, 255, 1) 77%, rgba(226, 244, 255, 1) 100%);
-			/* Chrome10-25,Safari5.1-6 */
-			background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(219, 241, 255, 1) 39%, rgba(234, 247, 255, 1) 56%, rgba(226, 244, 255, 1) 77%, rgba(226, 244, 255, 1) 100%);
-			/* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-			filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#e2f4ff', GradientType=0);
-			/* IE6-9 */
+			/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ffffff+16,eaf1f7+67,ffffff+100 */
+			background: rgb(255,255,255); /* Old browsers */
+			background: -moz-linear-gradient(top,  rgba(255,255,255,1) 16%, rgba(234,241,247,1) 67%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
+			background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 16%,rgba(234,241,247,1) 67%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
+			background: linear-gradient(to bottom,  rgba(255,255,255,1) 16%,rgba(234,241,247,1) 67%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
 		}
 
 		main,
@@ -168,7 +164,8 @@
 		.container {
 			width: 700px;
 			background-color: white;
-			margin-top: 20px;
+			margin-top: 10px;
+			margin-bottom: 10px;
 			border-radius: 3px;
 			padding: 15px 20px 15px 20px;
 		}
@@ -247,8 +244,8 @@
 			display: flex;
 			justify-content: space-between;
 		}
-		.a{
-			border-left: 1px solid gray;
+		.covid div:nth-child(2){
+			border-left: 1px solid lightgray;
 			padding-left: 10px;
 		}
 
@@ -287,6 +284,48 @@
    		 	border: 1px solid black;
  		  	padding: 15px 20px 15px 20px;
 			margin: 5px;
+			background-color: #f5f7f6;
+		}
+
+		.fa-chevron-right{
+			text-align: right;
+		}
+		
+		.board li > a{
+			display: flex;
+			align-items: center;
+    		justify-content: space-between;
+		}
+
+		.update>a{
+			display: flex;
+			justify-content: space-between;
+		}
+
+		/* footer */
+		.service{
+			display: flex;
+			align-items: center;
+    		justify-content: center;
+			flex-direction: column;
+		}
+		.service>ul{
+			display: flex;
+		}
+		.service li:nth-child(2){
+			border-right: 1px solid lightgray;
+			border-left: 1px solid lightgray;
+			padding-left: 5px;
+			padding-right: 5px;
+		}
+		.service li{
+			padding-left: 5px;
+			padding-right: 5px;
+		}
+		.service_naver{
+			font-size: 25px;
+   	 		font-weight: bold;
+    		color: #bcb6b6;
 		}
 	</style>
 
@@ -539,7 +578,7 @@
 				<strong>코로나19</strong>
 				<span>국내외 확진 현황</span>
 			</div>
-			<div class="a">
+			<div>
 				<i class="fa-regular fa-circle-xmark"></i>
 				<strong>코로나19 팩트체크</strong>
 				<span>백신 정보 팩트는?</span>
@@ -577,39 +616,44 @@
 				<a href="#"><span>핀관리</span></a>
 			</div>
 			<ul>
-				<li><a href="#"><i class="fa-solid fa-video"></i><span>영화판</span><i
+				<li><a href="#">
+					<span><i class="fa-solid fa-video"></i>영화판</span>
+					<i class="fa-solid fa-chevron-right"></i></a>
+				</li>
+				<li><a href="#"><span><i class="fa-solid fa-book"></i>뿜판</span><i
 							class="fa-solid fa-chevron-right"></i></a></li>
-				<li><a href="#"><i class="fa-solid fa-book"></i><span>뿜판</span><i
+				<li><a href="#"><span><i class="fa-solid fa-book-bookmark"></i>웹툰판</span><i
 							class="fa-solid fa-chevron-right"></i></a></li>
-				<li><a href="#"><i class="fa-solid fa-book-bookmark"></i><span>웹툰판</span><i
-							class="fa-solid fa-chevron-right"></i></a></li>
-				<li><a href="#"><i class="fa-solid fa-chart-line"></i><span>경제M판</span><i
+				<li><a href="#"><span><i class="fa-solid fa-chart-line"></i>경제M판</span><i
 							class="fa-solid fa-chevron-right"></i></a></li>
 			</ul>
 		</section>
 
 		<!-- 여덟 번째 -->
 		<div class="update container">
-			<span>알립니다</span>
-			<a href="#"><span>네이버앱 업데이트 사전 안내</span>
-				<i class="fa-solid fa-chevron-right"></i></a>
+			<a href="#">
+				<span>
+					<span class="update_report">알립니다</span>
+					<span>네이버앱 업데이트 사전 안내</span>
+				</span>
+				<i class="fa-solid fa-chevron-right"></i>
 			</a>
 		</div>
 	</main>
 
 	<footer>
-		<div class="service container">
+		<div class="service">
 			<ul>
-				<li><a href="#">로그인</a><span>|</span></li>
-				<li><a href="#">전체서비스</a><span>|</span></li>
+				<li><a href="#">로그인</a></li>
+				<li><a href="#">전체서비스</a></li>
 				<li><a href="#">PC버전</a></li>
 			</ul>
 			<ul>
-				<li><a href="#">이용약관</a><span>|</span></li>
-				<li><a href="#"><strong>개인정보처리방침</strong></a><span>|</span></li>
+				<li><a href="#">이용약관</a></li>
+				<li><a href="#"><strong>개인정보처리방침</strong></a></li>
 				<li><a href="#">고객센터</a></li>
 			</ul>
-			<span>NAVER</span>
+			<span class="service_naver">NAVER</span>
 		</div>
 	</footer>
 </body>
