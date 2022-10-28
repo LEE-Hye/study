@@ -45,7 +45,7 @@
         <p>내부 스타일 시트 방법입니다.</p>
     </body>
     ```
-    ><p style="background-color: skyblue;">내부 스타일 시트 방법입니다.</p>
+    ><span style="background-color: skyblue;">내부 스타일 시트 방법입니다.</span>
 
 <br>
 
