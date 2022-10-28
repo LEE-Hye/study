@@ -21,10 +21,10 @@
     `<index.html>`
     ```html
     <body>
-        <p style="color:skyblue;">인라인 태그입니다.<p>
+        <p style="font-size: 14px;">인라인 태그입니다.<p>
     </body>
     ```
-    ><p style="color:skyblue;">인라인 태그입니다.<p>
+    >#### 인라인 태그입니다.
 
 <br>
 
@@ -36,7 +36,7 @@
     <head>
         <style>
             p{
-                background-color: skyblue;
+                font-size: 20px;
             }
         </style>
     </head>
@@ -45,7 +45,7 @@
         <p>내부 스타일 시트 방법입니다.</p>
     </body>
     ```
-    ><span style="background-color: skyblue;">내부 스타일 시트 방법입니다.</span>
+    >## 내부 스타일 시트 방법입니다.
 
 <br>
 
@@ -66,10 +66,11 @@
     `<index.css>`
     ```css
     p{
-        font-size: 20px;
+        font-size: 30px;
     }
     ```
-    ><p style="font-size: 20px;">외부 스타일 시트 방법입니다.</p>
+    ># 외부 스타일 방법 시트 방법입니다.
+
 <br><br>
 ---
 ## 2. CSS 규칙의 우선순위는 어떻게 결정될까요?
