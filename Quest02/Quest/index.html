@@ -32,7 +32,7 @@
 
 		a {
 			text-decoration: none;
-			color: black;
+			color: gray;
 		}
 
 		header {
@@ -58,6 +58,11 @@
 			flex-direction: column;
 			align-items: center;
 			padding-top: 80px;
+		}
+
+		span {
+ 	   		display: flex;
+    		align-items: center;
 		}
 
 		/* header menu */
@@ -185,6 +190,9 @@
 			display: flex;
 			flex-direction: column;
 		}
+		.now_weather img{
+			width: 45px;
+		}
 
 		.now_broad {
 			display: flex;
@@ -244,9 +252,13 @@
 			display: flex;
 			justify-content: space-between;
 		}
-		.covid div:nth-child(2){
+		.covid>div:nth-child(2){
 			border-left: 1px solid lightgray;
 			padding-left: 10px;
+		}
+		.covid>div>div{
+			display: flex;
+    		align-items: center;
 		}
 
 		/* main day */
@@ -260,6 +272,12 @@
 		.app{
 			display: flex;
 			justify-content: space-between;
+		}
+
+		.app a{
+			border: #70ade5 1px solid;
+			padding: 7px;
+			color: #70ade5;
 		}
 
 		/* main webtoon */
@@ -285,17 +303,19 @@
  		  	padding: 15px 20px 15px 20px;
 			margin: 5px;
 			background-color: #f5f7f6;
+			border: none;
 		}
-
-		.fa-chevron-right{
-			text-align: right;
-		}
-		
 		.board li > a{
 			display: flex;
 			align-items: center;
     		justify-content: space-between;
 		}
+		.board img{
+			width: 30px;
+			padding-right: 10px;
+		}
+
+		/* update */
 
 		.update>a{
 			display: flex;
@@ -311,6 +331,7 @@
 		}
 		.service>ul{
 			display: flex;
+			margin: 5px;
 		}
 		.service li:nth-child(2){
 			border-right: 1px solid lightgray;
@@ -322,11 +343,15 @@
 			padding-left: 5px;
 			padding-right: 5px;
 		}
+		.service>ul:nth-child(2){
+			margin-bottom: 20px;
+		}
 		.service_naver{
-			font-size: 25px;
+			font-size: 30px;
    	 		font-weight: bold;
     		color: #bcb6b6;
 		}
+
 	</style>
 
 </head>
@@ -574,12 +599,14 @@
 		<!-- 세 번째 -->
 		<div class="covid container">
 			<div>
-				<i class="fa-solid fa-virus-covid-slash"></i>
-				<strong>코로나19</strong>
+				<div>
+					<img src="img/코로나1.png" alt="코로나19현황">
+					<strong>코로나19</strong>
+				</div>
 				<span>국내외 확진 현황</span>
 			</div>
 			<div>
-				<i class="fa-regular fa-circle-xmark"></i>
+				<img src="img/코로나2.png" alt="코로나19팩트">
 				<strong>코로나19 팩트체크</strong>
 				<span>백신 정보 팩트는?</span>
 			</div>
@@ -617,14 +644,14 @@
 			</div>
 			<ul>
 				<li><a href="#">
-					<span><i class="fa-solid fa-video"></i>영화판</span>
+					<span><img src="https://s.pstatic.net/static/www/mobile/edit/2021/0818/mobile_165213477741.png" alt="영화판">영화판</span>
 					<i class="fa-solid fa-chevron-right"></i></a>
 				</li>
-				<li><a href="#"><span><i class="fa-solid fa-book"></i>뿜판</span><i
+				<li><a href="#"><span><img src="https://s.pstatic.net/static/www/mobile/edit/2020/0319/mobile_193621924331.png" alt="뿜판">뿜판</span><i
 							class="fa-solid fa-chevron-right"></i></a></li>
-				<li><a href="#"><span><i class="fa-solid fa-book-bookmark"></i>웹툰판</span><i
+				<li><a href="#"><span><img src="https://s.pstatic.net/static/www/mobile/edit/2020/0319/mobile_192115600814.png" alt="웹툰">웹툰판</span><i
 							class="fa-solid fa-chevron-right"></i></a></li>
-				<li><a href="#"><span><i class="fa-solid fa-chart-line"></i>경제M판</span><i
+				<li><a href="#"><span><img src="https://s.pstatic.net/static/www/mobile/edit/2020/0319/mobile_193854889669.png" alt="경제M판">경제M판</span><i
 							class="fa-solid fa-chevron-right"></i></a></li>
 			</ul>
 		</section>
