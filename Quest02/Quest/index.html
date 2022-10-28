@@ -21,345 +21,16 @@
 
 	<script src="https://kit.fontawesome.com/5963137a15.js" crossorigin="anonymous"></script>
 
-	<link rel="stylesheet" href="#">
+	<link rel="stylesheet" href="index.css">
 
 	<script src="#"></script>
 
-	<style>
-		li {
-			list-style: none;
-		}
-
-		a {
-			text-decoration: none;
-			color: gray;
-		}
-
-		header {
-			margin-bottom: 80px;
-		}
-
-		ul{
-			padding: 0;
-		}
-
-		body {
-			/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ffffff+16,eaf1f7+67,ffffff+100 */
-			background: rgb(255,255,255); /* Old browsers */
-			background: -moz-linear-gradient(top,  rgba(255,255,255,1) 16%, rgba(234,241,247,1) 67%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
-			background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 16%,rgba(234,241,247,1) 67%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
-			background: linear-gradient(to bottom,  rgba(255,255,255,1) 16%,rgba(234,241,247,1) 67%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
-		}
-
-		main,
-		footer {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			padding-top: 80px;
-		}
-
-		span {
- 	   		display: flex;
-    		align-items: center;
-		}
-
-		/* header menu */
-		.menu {
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-		}
-
-		.menu>ul {
-			width: 150px;
-			/* 여기 왜 안 늘리면 안되지? 언제 크기 고정이 됐을까? 알아보자*/
-			display: flex;
-			justify-content: space-around;
-		}
-
-		/* header logo */
-		.logo {
-			text-align: center;
-			/* 가운데 정렬 차이점들좀 알아보자 일단 다 만들어 보고*/
-			padding-top: 100px;
-		}
-
-		.logo>img {
-			width: 300px;
-		}
-
-		/* header search */
-		.search {
-			display: flex;
-			justify-content: center;
-			margin-top: 25px;
-		}
-
-		.search_content {
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			border: solid 1px green;
-			width: 800px;
-			height: 70px;
-		}
-
-		.search_content>ul {
-			display: flex;
-			width: 130px;
-			justify-content: space-evenly;
-		}
-
-		.search_content input {
-			width: 600px;
-			height: 40px;
-			margin-left: 20px;
-			font-size: 20px;
-			border: none;
-		}
-
-		.search_content input::placeholder {
-			color: lightgray;
-		}
-
-		.search_content input:focus {
-			outline: none;
-		}
-
-		/* nav */
-		nav {
-			display: flex;
-			justify-content: center;
-			margin-top: 20px;
-		}
-
-		nav>ul {
-			display: flex;
-			flex-wrap: wrap;
-			justify-content: space-between;
-			width: 500px;
-		}
-
-		nav img {
-			width: 30px;
-			height: 30px;
-			padding: 13px;
-			border: 1px solid none;
-			background-color: rgba(128, 128, 128, 0.127);
-			border-radius: 18px;
-
-		}
-
-		nav div {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			width: 100px;
-			height: 100px;
-			margin: 10px;
-		}
-
-		nav a {
-			color: gray;
-		}
-
-		/* main container */
-		.container {
-			width: 700px;
-			background-color: white;
-			margin-top: 10px;
-			margin-bottom: 10px;
-			border-radius: 3px;
-			padding: 15px 20px 15px 20px;
-		}
-
-		/* main now */
-		.now {
-			display: flex;
-			align-items: center;
-			justify-content: space-between;
-		}
-
-		.now_weather {
-			display: flex;
-		}
-
-		.now_weather_write {
-			display: flex;
-			flex-direction: column;
-		}
-		.now_weather img{
-			width: 45px;
-		}
-
-		.now_broad {
-			display: flex;
-			align-items: center;
-		}
-
-		.now_broad_write {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			border-left: 1px solid gray;
-			padding-left: 5px;
-		}
-
-		.now ul {
-			display: flex;
-			width: 70px;
-			justify-content: space-between;
-		}
-
-		/* main weather */
-		.weather_head {
-			display: flex;
-			align-items: center;
-			justify-content: space-between;
-		}
-
-		.weather_head2 {
-			display: flex;
-			align-items: center;
-		}
-
-		.weather_list > ul{
-			display: flex;
-		}
-
-		.weather_list li{
-			margin-right: 5px;
-		}
-
-		.weather_month > ul{
-			display: flex;
-			justify-content: space-around;
-		}
-		.weather_month > ul > li > ul{
-			display: flex;
-			flex-direction: column;
-    		align-items: center;
-		}
-		.weather_month img{
-			height: 40px;
-			width: 40px;
-		}
-
-		/* main covid */
-		.covid{
-			display: flex;
-			justify-content: space-between;
-		}
-		.covid>div:nth-child(2){
-			border-left: 1px solid lightgray;
-			padding-left: 10px;
-		}
-		.covid>div>div{
-			display: flex;
-    		align-items: center;
-		}
-
-		/* main day */
-		.day{
-			display: flex;
-			align-items: center;
-			justify-content: center;
-		}
-
-		/* main app */
-		.app{
-			display: flex;
-			justify-content: space-between;
-		}
-
-		.app a{
-			border: #70ade5 1px solid;
-			padding: 7px;
-			color: #70ade5;
-		}
-
-		/* main webtoon */
-		.webtoon > a{
-			display: flex;
-			justify-content: space-between;
-		}
-		
-		/* main board */
-		.board > div{
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-		}
-		.board > ul {
-			display: flex;
-			width: 700px;
-    		flex-wrap: wrap;
-		}
-		.board>ul>li {
- 			width: 290px;
-   		 	border: 1px solid black;
- 		  	padding: 15px 20px 15px 20px;
-			margin: 5px;
-			background-color: #f5f7f6;
-			border: none;
-		}
-		.board li > a{
-			display: flex;
-			align-items: center;
-    		justify-content: space-between;
-		}
-		.board img{
-			width: 30px;
-			padding-right: 10px;
-		}
-
-		/* update */
-
-		.update>a{
-			display: flex;
-			justify-content: space-between;
-		}
-
-		/* footer */
-		.service{
-			display: flex;
-			align-items: center;
-    		justify-content: center;
-			flex-direction: column;
-		}
-		.service>ul{
-			display: flex;
-			margin: 5px;
-		}
-		.service li:nth-child(2){
-			border-right: 1px solid lightgray;
-			border-left: 1px solid lightgray;
-			padding-left: 5px;
-			padding-right: 5px;
-		}
-		.service li{
-			padding-left: 5px;
-			padding-right: 5px;
-		}
-		.service>ul:nth-child(2){
-			margin-bottom: 20px;
-		}
-		.service_naver{
-			font-size: 30px;
-   	 		font-weight: bold;
-    		color: #bcb6b6;
-		}
-
-	</style>
 
 </head>
 
 <body>
 
 	<header>
-
 		<div class="menu">
 			<i class="fas fa-bars"></i>
 			<ul>
@@ -368,12 +39,9 @@
 				<li><a href="#"><i class="fas fa-print"></i></a></li>
 			</ul>
 		</div>
-
 		<div class="logo">
 			<img class="logo_img" src="img/Naver.png" alt="네이버 로고">
 		</div>
-
-
 		<section class="search">
 			<div class="search_content">
 				<form action="#">
@@ -386,7 +54,6 @@
 				</ul>
 			</div>
 		</section>
-
 
 		<nav>
 			<ul>
@@ -465,7 +132,6 @@
 	</header>
 
 	<main>
-
 		<!-- 첫 번째 : 현재 날씨 & 방송 start-->
 		<div class="now container">
 			<div class="now_weather">
@@ -477,13 +143,12 @@
 			</div>
 			<div class="now_broad">
 				<div class="now_broad_write">
-					<img src="img/now.png">
+					<img src="img/now.png" alt="지금방송중">
 					<strong>지금 방송중</strong>
 				</div>
 				<ul>
-					<li><a href="#"><img src="img/방송1.png"></a></li>
-					<li><a href="#"><img src="img/방송2.png"></a></li>
-					<li><a href="#"><img src="img/방송3.png"></a></li>
+					<li><a href="#"><img src="img/방송1.jfif" alt="방송1"></a></li>
+					<li><a href="#"><img src="img/방송2.jfif" alt="방송2"></a></li>
 				</ul>
 			</div>
 		</div>
@@ -501,9 +166,9 @@
 			</div>
 			<div class="weather_list">
 				<ul>
+					<li><button>시간대별 날씨</button></li>
 					<li><button>시간대별 미세먼지</button></li>
 					<li><button>주간 날씨</button></li>
-					<li><button>시간대별 날씨</button></li>
 					<li><button>주간 미세먼지</button></li>
 				</ul>
 			</div>
@@ -524,7 +189,7 @@
 							<li>|</li>
 							<li>7°</li>
 							<li><img src="img/해.png" alt="해"></li>
-							<li>오늘</li>
+							<li class="today">오늘</li>
 						</ul>
 					</li>
 					<li>
@@ -598,31 +263,33 @@
 		
 		<!-- 세 번째 -->
 		<div class="covid container">
-			<div>
+			<div class="covid_now">
 				<div>
 					<img src="img/코로나1.png" alt="코로나19현황">
 					<strong>코로나19</strong>
 				</div>
 				<span>국내외 확진 현황</span>
 			</div>
-			<div>
-				<img src="img/코로나2.png" alt="코로나19팩트">
-				<strong>코로나19 팩트체크</strong>
+			<div class="covid_fact">
+				<div>
+					<img src="img/코로나2.png" alt="코로나19팩트">
+					<strong>코로나19 팩트체크</strong>
+				</div>
 				<span>백신 정보 팩트는?</span>
 			</div>
 		</div>
 
 		<!-- 네 번째 -->
 		<div class="day container">
-			<i class="fa-solid fa-building"></i>
-			<span>제 102주년 <strong>대한민국 임시정부 수립일</strong></span>
+			<img src="img/임시정부.png" alt="임시정부">
+			<span>제 102주년&nbsp<strong>대한민국 임시정부 수립일</strong></span>
 		</div>
 
 		<!-- 다섯 번째 -->
 		<div class="app container">
 			<span>
 				<img src="img/Naverm.jpg">
-				<span>앱으로 <strong>새로운 네이버</strong>를 더 쾌적하게 사용해 보세요.</span>
+				<span>앱으로&nbsp<strong>새로운 네이버</strong>를 더 쾌적하게 사용해 보세요.</span>
 			</span>
 			<a href="#">앱 사용하기</a>
 		</div>
@@ -660,7 +327,7 @@
 		<div class="update container">
 			<a href="#">
 				<span>
-					<span class="update_report">알립니다</span>
+					<strong class="update_report">알립니다</strong>
 					<span>네이버앱 업데이트 사전 안내</span>
 				</span>
 				<i class="fa-solid fa-chevron-right"></i>
