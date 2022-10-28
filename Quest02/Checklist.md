@@ -14,16 +14,75 @@
 ---
 
 ## 1. CSS를 HTML에 적용하는 세 가지 방법은 무엇일까요?
->### 세 가지 방법 각각의 장단점은 무엇일까요?
----
+### 세 가지 방법 각각의 장단점은 무엇일까요?
+1. 인라인(inline) 방식  
+    해당 태그에 `style` 속성 기입
+    
+    `<index.html>`
+    ```html
+    <body>
+        <p style="color:skyblue;">인라인 태그입니다.<p>
+    </body>
+    ```
+    ><p style="color:skyblue;">인라인 태그입니다.<p>
 
+<br>
+
+2. 내부 스타일 시트  
+    `<head>` 태그 안에 `<style>` 태그 기입
+
+    `<index.html>`
+    ```html
+    <head>
+        <style>
+            p{
+                background-color: skyblue;
+            }
+        </style>
+    </head>
+
+    <body>
+        <p>내부 스타일 시트 방법입니다.</p>
+    </body>
+    ```
+    ><p style="background-color: skyblue;">내부 스타일 시트 방법입니다.</p>
+
+<br>
+
+3. 외부 스타일 시트  
+`<link>` 태그를 활용해서 별도의 css파일을 만들어서 연결해줌
+
+    `<index.html>`
+    ```html
+    <head>
+        <link rel="stylesheet" href="index.css">
+    </head>
+
+    <body>
+        <p>외부 스타일 시트 방법입니다.<p>
+    </body>
+    ```
+
+    `<index.css>`
+    ```css
+    p{
+        font-size: 20px;
+    }
+    ```
+    ><p style="font-size: 20px;">외부 스타일 시트 방법입니다.</p>
+<br><br>
+---
 ## 2. CSS 규칙의 우선순위는 어떻게 결정될까요?
+
 ---
 ## 3. CSS의 박스모델은 무엇일까요? 
 > ### 박스가 화면에서 차지하는 크기는 어떻게 결정될까요?
+
 ---
 ## 4. float 속성은 왜 좋지 않을까요?
+
 ---
 ## 5. Flexbox(Flexible box)와 CSS Grid의 차이와 장단점은 무엇일까요?
+
 ---
 ## 6. CSS의 비슷한 요소들을 어떤 식으로 정리할 수 있을까요?
