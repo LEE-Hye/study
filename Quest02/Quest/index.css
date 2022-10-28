@@ -191,7 +191,7 @@ nav img {
 
 }
 
-nav div {
+nav a {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -200,7 +200,7 @@ nav div {
     margin: 10px;
 }
 
-nav a {
+nav div {
     color: gray;
 }
 
