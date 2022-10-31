@@ -291,6 +291,9 @@ box크기 = content + padding + border + margin
 	</style>
 ```
 
+![float미사용시](https://user-images.githubusercontent.com/91482127/198948307-f6005868-d418-4a2b-9e69-634f77ab2493.png)
+
+
 `<예시 : css / float 사용시>`
 ```css
 <style>
@@ -304,6 +307,9 @@ box크기 = content + padding + border + margin
 	}
 	</style>
 ```
+
+![float사용시](https://user-images.githubusercontent.com/91482127/198948331-c8769398-ce58-4ddd-8706-fe5dfa86ae32.png)
+
 
 <br><br><br>
 
