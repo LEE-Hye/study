@@ -298,12 +298,12 @@ box크기 = content + padding + border + margin
 ```css
 <style>
     .parent{
-            background-color: gold;
-			border: 1px solid;
+        background-color: gold;
+		border: 1px solid;
 	}
 	.child{
-            float:left;
-			border: 1px solid;
+        float:left;
+		border: 1px solid;
 	}
 	</style>
 ```
@@ -321,24 +321,43 @@ box크기 = content + padding + border + margin
 <details>
 <summary>🟢문제점 해결 방법🟢</summary>
 
+<br>
 
 >`.container`가 `aside`와 `main content`의 부모  
 >`aside`에 `float:left;` 적용  
 >`main content`에 `float:right;` 적용
 
-1. float 요소 부모(.container)에 `overflow:hidden` 적용  
+1. float 요소 부모(.container)에 `overflow:hidden` 적용
+```css
+.container::after {
+    overflow:hidden;
+}
+```
+
 - 자식 요소가 nomal flow가 아니어도 인식 가능
     ##### nomal flow : html코드 순서의(왼쪽에서 오른쪽, 위에서 아래) 흐름으로 배치한 레이아웃 기법
     - 단점 : container를 벗어나는 요소를 숨김
 
     <br>
 
-2. float 다음 요소(footer)에 `clear:both` 적용  
+2. float 다음 요소(footer)에 `clear:both` 적용
+```css
+.footer {
+  clear: both;
+}
+```
+
 - 레이아웃이 다시 nomal flow 인식 가능 > float 해제(clear)라고 함
 
     <br>
 
 3. float 다음 요소에 형제 `div.null` 이라는 요소를 만들고 `clear:both` 적용
+```css
+.null {
+  clear: both;
+}
+```
+
 - 2의 문제가 footer 앞에 새로운 형제 요소가 생겨버리면 그때마다   `clear:both`를 다시 입력해줘야 함  
 => float가 적용된 요소와 그 부모 요소 내에서 float를 해제 해줘야 더 좋음
 
@@ -352,6 +371,7 @@ box크기 = content + padding + border + margin
   content: '';
 }
 ```
+
 - 3의 문제가 불필요한 요소를 만들어 가독성을 떨어뜨림  
 => float 대상 부모 요소에 css로 가상 요소를 만들어 속성 주기
 
