@@ -321,7 +321,9 @@ box크기 = content + padding + border + margin
 <details>
 <summary>🟢문제점 해결 방법🟢</summary>
 
+![레이아웃](https://user-images.githubusercontent.com/91482127/198955729-4ffb7a3a-7f93-4364-ac18-da1ed5a97e3b.png)
 
+	
 >`.container`가 `aside`와 `main content`의 부모  
 >`aside`에 `float:left;` 적용  
 >`main content`에 `float:right;` 적용
