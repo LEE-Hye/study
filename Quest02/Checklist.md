@@ -323,9 +323,19 @@ box크기 = content + padding + border + margin
 
 <br>
 
+![레이아웃](https://user-images.githubusercontent.com/91482127/198955729-4ffb7a3a-7f93-4364-ac18-da1ed5a97e3b.png)
+
+
+	
 >`.container`가 `aside`와 `main content`의 부모  
 >`aside`에 `float:left;` 적용  
 >`main content`에 `float:right;` 적용
+
+<br>
+
+---
+
+<br>
 
 1. float 요소 부모(.container)에 `overflow:hidden` 적용
 ```css
@@ -340,6 +350,8 @@ box크기 = content + padding + border + margin
 
     <br>
 
+---    
+
 2. float 다음 요소(footer)에 `clear:both` 적용
 ```css
 .footer {
@@ -350,6 +362,8 @@ box크기 = content + padding + border + margin
 - 레이아웃이 다시 nomal flow 인식 가능 > float 해제(clear)라고 함
 
     <br>
+
+---    
 
 3. float 다음 요소에 형제 `div.null` 이라는 요소를 만들고 `clear:both` 적용
 ```css
@@ -362,6 +376,8 @@ box크기 = content + padding + border + margin
 => float가 적용된 요소와 그 부모 요소 내에서 float를 해제 해줘야 더 좋음
 
     <br>
+
+---
 
 4. **가상 요소**에 `clear:both` 주기
 ```css
