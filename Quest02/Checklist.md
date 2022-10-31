@@ -224,9 +224,34 @@ p,.class2,li:hover{color:red} /*1 + 10 +10 = 21*/
 ## 💛3. CSS의 박스모델은 무엇일까요? 
 > ### 박스가 화면에서 차지하는 크기는 어떻게 결정될까요?
 - 박스모델이란❓
-    - 모든 html 요소는 박스 모양으로 구성되는데 이걸 박스 모델이라고 한다.
+    - 모든 html 요소는 박스 모양으로 구성되는 것
 
 ![박스모델](https://user-images.githubusercontent.com/91482127/198918082-57d1c655-8b86-4925-925a-3fb242e4c004.jpg)
+
+<br>
+
+- `margin`,` border`,` padding`,` content`로 구분
+
+|구분|설명|
+|:---:|:---:|
+|margin(마진)|**테두리의 바깥쪽** 간격|
+|border(테두리)|**내용과 패딩을 감싸**는 테두리|
+|padding(패딩)|**내용과 테두리 사이** 간격|
+|content(내용)|**텍스트나 이미지**가 들어가있는 **홈페이지에 나타나는** 부분|
+
+---
+
+<br>
+
+```css
+p{
+    width : 50px;
+    height : 50px
+    padding : 10px;
+    border : 1px solid black;
+    margin : 10px;
+}
+```
 
 
 <br><br><br>
