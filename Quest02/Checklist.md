@@ -226,6 +226,7 @@ p,.class2,li:hover{color:red} /*1 + 10 +10 = 21*/
 - 박스모델이란❓
     - 모든 html 요소는 박스 모양으로 구성되는데 이걸 박스 모델이라고 한다.
 
+![박스모델](https://user-images.githubusercontent.com/91482127/198918082-57d1c655-8b86-4925-925a-3fb242e4c004.jpg)
 
 
 <br><br><br>
