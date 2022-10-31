@@ -224,7 +224,7 @@ p,.class2,li:hover{color:red} /*1 + 10 +10 = 21*/
 ## 💛3. CSS의 박스모델은 무엇일까요? 
 > ### 박스가 화면에서 차지하는 크기는 어떻게 결정될까요?
 - 박스모델이란❓
-    - 모든 html 요소는 박스 모양으로 구성되는 것
+    - 모든 html 요소가 박스 모양으로 구성되는 것
 
 ![박스모델](https://user-images.githubusercontent.com/91482127/198943008-8fe6eaa1-ce0e-4cc6-b8d6-3311037a41fa.jpg)
 
@@ -244,18 +244,21 @@ p,.class2,li:hover{color:red} /*1 + 10 +10 = 21*/
 
 <br>
 
+`<예시>`
 ```css
-p{
+div{
     width : 50px;
-    height : 50px
+    height : 50px;
     padding : 10px;
-    border : 1px solid black;
+    border : 1px solid orange;
     margin : 10px;
 }
 ```
 
 ![박스모델크기](https://user-images.githubusercontent.com/91482127/198942998-5957bb6e-b795-49c1-9cec-23c051cea49b.jpg)
 
+- 위 예시와 같이   
+box크기 = content + padding + border + margin
 
 <br><br><br>
 
@@ -263,8 +266,43 @@ p{
 ---
 ## 💛4. float 속성은 왜 좋지 않을까요?
 
+- 기본적으로 자식 content가 늘어나면 부모의 height가 자동으로 늘어나는데   float를 사용하면 자식 요소의 크기를 인식할 수 없게 된다.
 
-
+`<예시 : html>`
+```html
+<div class="parent">
+	여기는 부모
+	<div class="child">
+		여기는 자식<br>
+		자식 둘째줄
+	</div>
+</div>
+```
+`<예시 : css / float 미사용시>`
+```css
+	<style>
+		.parent{
+			background-color: gold;
+			border: 1px solid;
+		}
+		.child{
+			border: 1px solid;
+		}
+	</style>
+```
+`<예시 : css / float 사용시>`
+```css
+	<style>
+		.parent{
+			background-color: gold;
+			border: 1px solid;
+		}
+		.child{
+            float:left;
+			border: 1px solid;
+		}
+	</style>
+```
 
 <br><br><br>
 
