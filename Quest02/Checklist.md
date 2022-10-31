@@ -226,7 +226,8 @@ p,.class2,li:hover{color:red} /*1 + 10 +10 = 21*/
 - 박스모델이란❓
     - 모든 html 요소는 박스 모양으로 구성되는 것
 
-![박스모델](https://user-images.githubusercontent.com/91482127/198918082-57d1c655-8b86-4925-925a-3fb242e4c004.jpg)
+![박스모델](https://user-images.githubusercontent.com/91482127/198943008-8fe6eaa1-ce0e-4cc6-b8d6-3311037a41fa.jpg)
+
 
 <br>
 
@@ -252,6 +253,8 @@ p{
     margin : 10px;
 }
 ```
+
+![박스모델크기](https://user-images.githubusercontent.com/91482127/198942998-5957bb6e-b795-49c1-9cec-23c051cea49b.jpg)
 
 
 <br><br><br>
