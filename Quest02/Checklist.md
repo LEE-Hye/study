@@ -278,7 +278,7 @@ box크기 = content + padding + border + margin
 	</div>
 </div>
 ```
-`<예시 : css / float 미사용시>`
+`<예시 : float 미사용시>`
 ```css
 	<style>
 	.parent{
@@ -291,10 +291,10 @@ box크기 = content + padding + border + margin
 	</style>
 ```
 
-![float미사용시](https://user-images.githubusercontent.com/91482127/198948307-f6005868-d418-4a2b-9e69-634f77ab2493.png)
+>![float미사용시](https://user-images.githubusercontent.com/91482127/198948307-f6005868-d418-4a2b-9e69-634f77ab2493.png)
 
 
-`<예시 : css / float 사용시>`
+`<예시 : float 사용시>`
 ```css
 <style>
     .parent{
@@ -308,8 +308,54 @@ box크기 = content + padding + border + margin
 	</style>
 ```
 
-![float사용시](https://user-images.githubusercontent.com/91482127/198948331-c8769398-ce58-4ddd-8706-fe5dfa86ae32.png)
+>![float사용시](https://user-images.githubusercontent.com/91482127/198948331-c8769398-ce58-4ddd-8706-fe5dfa86ae32.png)
 
+<br>
+
+>> ① float가 적용되면 nomal flow에서 제외  
+>> ② 자식 요소의 크기를 인식할 수 없음
+
+<br>
+
+---
+<details>
+<summary>🟢문제점 해결 방법🟢</summary>
+
+
+>`.container`가 `aside`와 `main content`의 부모  
+>`aside`에 `float:left;` 적용  
+>`main content`에 `float:right;` 적용
+
+1. float 요소 부모(.container)에 `overflow:hidden` 적용  
+- 자식 요소가 nomal flow가 아니어도 인식 가능
+    ##### nomal flow : html코드 순서의(왼쪽에서 오른쪽, 위에서 아래) 흐름으로 배치한 레이아웃 기법
+    - 단점 : container를 벗어나는 요소를 숨김
+
+    <br>
+
+2. float 다음 요소(footer)에 `clear:both` 적용  
+- 레이아웃이 다시 nomal flow 인식 가능 > float 해제(clear)라고 함
+
+    <br>
+
+3. float 다음 요소에 형제 `div.null` 이라는 요소를 만들고 `clear:both` 적용
+- 2의 문제가 footer 앞에 새로운 형제 요소가 생겨버리면 그때마다   `clear:both`를 다시 입력해줘야 함  
+=> float가 적용된 요소와 그 부모 요소 내에서 float를 해제 해줘야 더 좋음
+
+    <br>
+
+4. **가상 요소**에 `clear:both` 주기
+```css
+.container::after {
+  display: block;
+  clear: both;
+  content: '';
+}
+```
+- 3의 문제가 불필요한 요소를 만들어 가독성을 떨어뜨림  
+=> float 대상 부모 요소에 css로 가상 요소를 만들어 속성 주기
+
+</details>
 
 <br><br><br>
 
