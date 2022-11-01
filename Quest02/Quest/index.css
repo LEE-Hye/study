@@ -64,7 +64,6 @@ span {
 
 .menu>ul {
     width: 200px;
-    /* 왜 ul안 늘리면 flex가 안되는거지? 찾아보자 */
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -80,8 +79,9 @@ span {
     font-weight: bold;
 }
 
-.menu li:nth-child(1) {
-    border-bottom: lightgray 1px solid;
+.menu li:nth-child(1) > a {
+    text-decoration: underline;
+    text-decoration-color: lightgray;
 }
 
 .menu li:nth-child(2) {
