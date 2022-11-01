@@ -419,6 +419,8 @@ p, .class, #id{
 }
 ```
 
+---
+
 2. 선택자로 같은 스타일 줄 태그 지정   
 ex) 태그, class, 자식, 자손 선택자 등  
 
@@ -440,6 +442,8 @@ ex) 태그, class, 자식, 자손 선택자 등
 
 >> ![태그선택자](https://user-images.githubusercontent.com/91482127/199134952-363cc17e-74a7-4bf6-9c1e-f961f194f9a5.PNG)
 
+---
+
 >2. class 선택자
 ```html
 <p>클래스를 아래</p>
@@ -455,7 +459,7 @@ ex) 태그, class, 자식, 자손 선택자 등
 
 >>![클래스선택자](https://user-images.githubusercontent.com/91482127/199134976-fc25e2c1-6ecc-412e-a4d1-6ea5120e5e19.PNG)
 
-
+---
 
 >3. 자식 선택자
 ```html
@@ -476,6 +480,7 @@ ex) 태그, class, 자식, 자손 선택자 등
 
 >>![자식 선택자](https://user-images.githubusercontent.com/91482127/199134984-a063ea3f-7e28-4b23-bed8-29fcfba7afeb.PNG)
 
+---
 
 >4. 자손 선택자
 ```html
