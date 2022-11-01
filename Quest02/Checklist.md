@@ -462,16 +462,16 @@ ex) 태그, class, 자식, 자손 선택자 등
 
 >3. 자식 선택자
 ```html
-<ol>
+<ul class="fisrt">
 	<li>first의 자식 한 마리</li>
 	<li>first의 자식 두 마리</li>
 	<ul>
 		<li>first의 자손 한 마리</li>
 	</ul>
-</ol>
+</ul>
 
 <style>
-	ol> li {
+	.fisrt> li {
 		color: green;
 	}
 </style>
@@ -483,16 +483,16 @@ ex) 태그, class, 자식, 자손 선택자 등
 
 >4. 자손 선택자
 ```html
-<ol>
+<ul class="fisrt">
 	<li>first의 자식 한 마리</li>
 	<li>first의 자식 두 마리</li>
 	<ul>
 		<li>first의 자손 한 마리</li>
 	</ul>
-</ol>
+</ul>
 
 <style>
-	ol li {
+	.first li {
 		color: purple;
 	}
 </style>
