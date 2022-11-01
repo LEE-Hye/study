@@ -20,11 +20,11 @@
     `<index.html>`
     ```html
     <body>
-        <p style="background-color: aquamarine;">결과 : 인라인 스타일입니다.</p>
+        <p style="background-color: lightblue;">결과 : 인라인 스타일입니다.</p>
     </body>
     ```
 
-    >> 인라인 사진
+    >> ![인라인](https://user-images.githubusercontent.com/91482127/199136402-980036c0-a8bb-4756-a87a-e0d8a9d8a8ef.PNG)
 
     <br>
 
@@ -52,7 +52,7 @@
     <head>
         <style>
             p{
-                font-size: 20px;
+                background-color: lightgreen;
             }
         </style>
     </head>
@@ -62,7 +62,7 @@
     </body>
     ```
 
-    >> 내부사진
+    >> ![내부](https://user-images.githubusercontent.com/91482127/199136420-7c1596a6-6a08-4b48-b9c3-4aa67ee231c1.PNG)
 
     <br>
 
@@ -98,11 +98,12 @@
     `<index.css>`
     ```css
     p{
-        font-size: 30px;
+        background-color: lightsalmon;
     }
     ```
 
-    >> 외부스타일사진
+    >> ![외부](https://user-images.githubusercontent.com/91482127/199136437-10137cbb-4685-492d-88ed-7344e564d1a9.PNG)
+
     
     <br>
 
