@@ -339,7 +339,7 @@ box크기 = content + padding + border + margin
 
 1. float 요소 부모(.container)에 `overflow:hidden` 적용
 ```css
-.container::after {
+.container {
     overflow:hidden;
 }
 ```
@@ -412,7 +412,7 @@ box크기 = content + padding + border + margin
 ---
 ## 💛6. CSS의 비슷한 요소들을 어떤 식으로 정리할 수 있을까요?
     
-1. `쉽표(,)`사용으로 여러 선택자 결합 가능
+1. `쉼표(,)`사용으로 여러 선택자 결합 가능
 ```css
 p, .class, #id{
     color:blue;
@@ -420,4 +420,75 @@ p, .class, #id{
 ```
 
 2. 선택자로 같은 스타일 줄 태그 지정   
+ex) 태그, class, 자식, 자손 선택자 등  
 
+>1. 태그 선택자
+```html
+<body>
+    <p>p태그에 스타일을 줬기 때문에</p>
+    <div>div는 포함 안해</div>
+    <p>두 번째 p태그도 빨간색</p>
+</body>
+
+<style>
+    p{
+        color:red;
+    }
+</style>
+
+```
+
+>> 
+
+>2. class 선택자
+```html
+<p>클래스를 아래</p>
+<div class="lass">div 한 개와</div>
+<p class="lass">두 번째 p태그에만 줬어</p>
+
+<style>
+    .lass{
+        color:blue;
+    }
+</style>
+```
+
+>>
+
+>3. 자식 선택자
+```html
+<ol>
+	<li>first의 자식 한 마리</li>
+	<li>first의 자식 두 마리</li>
+	<ul>
+		<li>first의 자손 한 마리</li>
+	</ul>
+</ol>
+
+<style>
+	ol> li {
+		color: green;
+	}
+</style>
+```
+
+>>
+
+>4. 자손 선택자
+```html
+<ol>
+	<li>first의 자식 한 마리</li>
+	<li>first의 자식 두 마리</li>
+	<ul>
+		<li>first의 자손 한 마리</li>
+	</ul>
+</ol>
+
+<style>
+	ol li {
+		color: purple;
+	}
+</style>
+```
+
+>>
