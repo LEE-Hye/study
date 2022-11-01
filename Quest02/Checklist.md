@@ -438,7 +438,7 @@ ex) 태그, class, 자식, 자손 선택자 등
 
 ```
 
->> 
+>> ![태그선택자](https://user-images.githubusercontent.com/91482127/199134952-363cc17e-74a7-4bf6-9c1e-f961f194f9a5.PNG)
 
 >2. class 선택자
 ```html
@@ -453,7 +453,9 @@ ex) 태그, class, 자식, 자손 선택자 등
 </style>
 ```
 
->>
+>>![클래스선택자](https://user-images.githubusercontent.com/91482127/199134976-fc25e2c1-6ecc-412e-a4d1-6ea5120e5e19.PNG)
+
+
 
 >3. 자식 선택자
 ```html
@@ -472,7 +474,8 @@ ex) 태그, class, 자식, 자손 선택자 등
 </style>
 ```
 
->>
+>>![자식 선택자](https://user-images.githubusercontent.com/91482127/199134984-a063ea3f-7e28-4b23-bed8-29fcfba7afeb.PNG)
+
 
 >4. 자손 선택자
 ```html
@@ -491,4 +494,4 @@ ex) 태그, class, 자식, 자손 선택자 등
 </style>
 ```
 
->>
+>>![자손선택자](https://user-images.githubusercontent.com/91482127/199134995-af768d7e-9a99-4937-930e-4ecc70f2cd6b.PNG)
