@@ -20,7 +20,7 @@
     `<index.html>`
     ```html
     <body>
-        <p style="background-color: lightblue;">결과 : 인라인 스타일입니다.</p>
+        <p style="background-color: lightblue;">결과 : 인라인 스타일 시트입니다.</p>
     </body>
     ```
 
