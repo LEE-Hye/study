@@ -1,0 +1,438 @@
+/* -----------------------------공통으로 바꿀 기타 S------------------------------- */
+@font-face {
+    font-family: 'NanumSquareRound';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Black+Han+Sans:400');
+
+body {
+    font-family: 'NanumSquareRound';
+}
+li {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+    color: gray;
+}
+ul {
+    padding: 0;
+}
+span {
+    display: flex;
+    align-items: center;
+}
+
+/* -----------------------------공통으로 바꿀 기타 E------------------------------- */
+
+/* -------------------------grid로 전체 레이아웃 잡기 S-------------------------- */
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    gap: 50px;
+    grid-template-areas:
+        " header header header"
+        "   .     top     .   "
+        "   .     nav     .   "
+        "   .    main     .   "
+        "   .      .      .   "
+        "   .    footer   .   "
+    ;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 16%, rgba(234, 241, 247, 1) 67%, rgba(255, 255, 255, 1) 100%);
+}
+header {
+    grid-area: header;
+    display: flex;
+    align-items: center; /* 세로축 방향 가운데 정렬*/
+    justify-content: space-between;
+}
+.top {
+    grid-area: top;
+    text-align: center; /* block요소 안에 있는 inline 요소 가운데 정렬*/
+}
+nav {
+    grid-area: nav;
+    display: flex;
+    justify-content: center; /* 가로축 방향 가운데 정렬 */
+}
+main {
+    grid-area: main;
+    margin-left: 40px;
+}
+footer {
+    grid-area: footer;
+}
+/* -------------------------grid로 전체 레이아웃 잡기 E-------------------------- */
+
+/* -----------------------------------header S----------------------------------- */
+header>ul {
+    width: 170px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+header a {
+    color: black;
+    font-weight: bold;
+}
+header li:nth-child(1) > a {
+    text-decoration: underline;
+    text-decoration-color: lightgray;
+}
+header li:nth-child(2) {
+    border: 1px solid #e4e5e7;
+    padding: 5px 10px 5px 10px;
+    border-radius: 17px;
+    background-color: #f4f6f8;
+}
+header li:nth-child(3) {
+    border: 1px solid #e4e5e7;
+    border-radius: 50%;
+    padding: 7px;
+    background-color: #f4f6f8;
+}
+.fa-bars {
+    font-size: 25px;
+    color: gray;
+}
+.fa-print {
+    font-size: 20px;
+}
+.fa-cc-apple-pay {
+    font-size: 20px;
+}
+/* -----------------------------------header E----------------------------------- */
+
+/* --------------------------------로고와 검색창 S------------------------------- */
+/* top logo */
+.logo {
+    padding-top: 50px;
+}
+.logo > img {
+    width: 300px;
+}
+
+/* top search */
+.search {
+    margin-top: 25px;
+}
+.search_content {
+    display: flex;
+    align-items: center;
+    border: solid 1px #62d8a9;
+    width: 800px;
+    height: 70px;
+}
+.search_content>ul {
+    display: flex;
+    width: 140px;
+    justify-content: space-evenly;
+    padding-left: 40px;
+}
+.search_content input {
+    width: 600px;
+    height: 40px;
+    margin-left: 20px;
+    font-size: 20px;
+    border: none;
+}
+.search_content input::placeholder {
+    color: lightgray;
+}
+.search_content input:focus {
+    outline: none;
+}
+.search button {
+    border: none;
+    background-color: white;
+}
+.search i {
+    font-size: 25px;
+    background: linear-gradient(to bottom, #07ea64, #d5eddf);
+    -webkit-background-clip: text; /* -webkit은 크롬에 적용(표준화되지 않은 새로운 기능일 때) */
+    /* 백그라운드 내부의 어디에 색을 채우는지 확인 */
+    color: transparent;
+    /* 원래의 색상 투명화 */
+}
+/* --------------------------------로고와 검색창 E------------------------------- */
+
+/* -------------------------------------nav S------------------------------------ */
+nav>ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 500px;
+}
+nav img {
+    width: 30px;
+    height: 30px;
+    padding: 13px;
+    border: 1px solid none;
+    background-color: rgba(128, 128, 128, 0.127);
+    border-radius: 18px;
+}
+nav a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+}
+nav span {
+    font-size: 13px;
+    margin-top: 10px;
+}
+/* -------------------------------------nav E------------------------------------ */
+
+/* ------------------------------------main S------------------------------------ */
+.container2{
+    width: 700px;
+    background-color: white;
+    margin-top: 10px;
+    border-radius: 3px;
+    padding: 15px 20px 15px 20px;
+}
+/* main now */
+.now {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.now_weather {
+    display: flex;
+}
+.now_weather_write {
+    display: flex;
+    flex-direction: column;
+}
+.now_weather img {
+    width: 45px;
+}
+.now_broad {
+    display: flex;
+    align-items: center;
+    margin-right: 50px;
+}
+.now_broad_write {
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid rgb(218, 213, 213);
+    padding-left: 10px;
+}
+.now_broad img {
+    width: 60px;
+    margin-left: 5px;
+}
+.now_broad strong {
+    font-size: 12px;
+}
+.now_broad>ul img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+.now ul {
+    display: flex;
+    width: 80px;
+}
+
+/* main weather */
+.weather_head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.weather_head2 {
+    display: flex;
+    align-items: center;
+}
+.weather_list>ul {
+    display: flex;
+}
+.weather_list li {
+    margin-right: 5px;
+}
+.weather_list>ul>li:nth-child(3)>button {
+    background-color: #7493cd;
+    color: white;
+}
+.weather_month>ul {
+    display: flex;
+    justify-content: space-around;
+}
+.weather_month>ul>li>ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.weather_month>ul>li>ul>li:nth-child(2) {
+    color: lightgray;
+}
+
+.today {
+    padding: 3px 7px;
+    border-radius: 15px;
+    background-color: #787b83;
+    color: #fff;
+}
+
+.weather_month>ul>li>ul>li:nth-last-child(1) {
+    padding-top: 3px;
+}
+.weather_month img {
+    height: 40px;
+    width: 40px;
+}
+.weather button {
+    padding: 8px;
+    border: none;
+    background-color: #f3f6fc;
+    color: black;
+}
+.weather h2 {
+    margin: 0 10px 0 0;
+}
+.weather span {
+    color: gray;
+}
+.fa-solid.fa-location-crosshairs {
+    color: #5fa3e2;
+}
+
+/* main covid */
+.covid {
+    display: flex;
+    justify-content: space-between;
+}
+.covid_fact {
+    border-left: 1px solid lightgray;
+    padding-left: 10px;
+    margin-right: 150px;
+}
+.covid_now>div {
+    display: flex;
+    align-items: center;
+}
+.covid_fact>div {
+    display: flex;
+    align-items: center;
+}
+.covid img {
+    width: 35px;
+}
+
+/* main day */
+.day {
+    display: flex;
+    justify-content: center;
+}
+
+/* main app */
+.app {
+    display: flex;
+    justify-content: space-between;
+}
+.app a {
+    border: #70ade5 1px solid;
+    padding: 7px;
+    color: #70ade5;
+}
+.app img {
+    width: 40px;
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+/* main webtoon */
+.webtoon>a {
+    display: flex;
+    justify-content: space-between;
+    color: black;
+}
+
+/* main board */
+.board{
+    padding-top: 0;
+}
+.board>div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.board>ul {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 20px;
+}
+.board>ul>li {
+    width: 290px;
+    border: 1px solid black;
+    padding: 15px 20px 15px 20px;
+    margin: 5px;
+    background-color: #f5f7f6;
+    border: none;
+}
+.board li>a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.board img {
+    width: 30px;
+    padding-right: 10px;
+}
+
+/* update */
+.update>a {
+    display: flex;
+    justify-content: space-between;
+}
+.update_report {
+    border: 1px solid #1bd365;
+    border-radius: 20px;
+    padding: 1px 7px 1px 7px;
+    margin-right: 15px;
+    font-size: 14px;
+    color: #1bd365;
+}
+.update a {
+    color: black;
+}
+/* ------------------------------------main E------------------------------------ */
+
+/* -----------------------------------footer S----------------------------------- */
+.service {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.service>ul {
+    display: flex;
+    margin: 5px;
+}
+.service li:nth-child(2) {
+    border-right: 1px solid lightgray;
+    border-left: 1px solid lightgray;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.service li {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.service>ul:nth-child(2) {
+    margin-bottom: 20px;
+}
+.service_naver {
+    font-size: 30px;
+    font-weight: bold;
+    color: #bcb6b6;
+    font-family: 'Black+Han+Sans:400';
+}
+/* -----------------------------------footer E----------------------------------- */
