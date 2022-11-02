@@ -25,7 +25,6 @@ span {
     display: flex;
     align-items: center;
 }
-
 /* -----------------------------공통으로 바꿀 기타 E------------------------------- */
 
 /* -------------------------grid로 전체 레이아웃 잡기 S-------------------------- */
@@ -254,9 +253,6 @@ nav span {
 .weather_list>ul {
     display: flex;
 }
-.weather_list li {
-    margin-right: 5px;
-}
 .weather_list>ul>li:nth-child(3)>button {
     background-color: #7493cd;
     color: white;
@@ -273,16 +269,11 @@ nav span {
 .weather_month>ul>li>ul>li:nth-child(2) {
     color: lightgray;
 }
-
 .today {
     padding: 3px 7px;
     border-radius: 15px;
     background-color: #787b83;
     color: #fff;
-}
-
-.weather_month>ul>li>ul>li:nth-last-child(1) {
-    padding-top: 3px;
 }
 .weather_month img {
     height: 40px;
@@ -293,6 +284,7 @@ nav span {
     border: none;
     background-color: #f3f6fc;
     color: black;
+    margin: 3px;
 }
 .weather h2 {
     margin: 0 10px 0 0;
@@ -409,7 +401,6 @@ nav span {
 .service {
     display: flex;
     align-items: center;
-    justify-content: center;
     flex-direction: column;
 }
 .service>ul {
