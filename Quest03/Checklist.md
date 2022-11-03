@@ -3,7 +3,7 @@
 💌 Quest 03. 목차
 
 [1. 자바스크립트는 버전별로 어떻게 변화하고 발전해 왔을까요?](#1-자바스크립트는-버전별로-어떻게-변화하고-발전해-왔을까요)  
-[2. 자바스크립트의 문법은 다른 언어들과 비교해 어떤 특징이 있을까요?](#2-자바스크립트의-문법은-다른-언어들과-비교해-어떤-특징이-있을까요)     
+[2. 자바스크립트의 문법은 다른 언어들과 비교해 어떤 특징이 있을까요?](#2-자바스크립트의-문법은-다른-언어들과-비교해-어떤-특징이-있을까요)  
 [3. 자바스크립트를 통해 DOM 객체에 CSS Class를 주거나 없애려면 어떻게 해야 하나요?](#3-자바스크립트를-통해-dom-객체에-css-class를-주거나-없애려면-어떻게-해야-하나요)  
 [4. 자바스크립트의 변수가 유효한 범위는 어떻게 결정되나요?](#4-자바스크립트의-변수가-유효한-범위는-어떻게-결정되나요)  
 [5. 자바스크립트의 익명 함수는 무엇인가요?](#5-자바스크립트의-익명-함수는-무엇인가요)  
@@ -113,71 +113,93 @@
 
 - `for`문, `for/in`문, `for/of`문, `while`문, `do-while`문
 
+---
+
 1. `for`문
 
 ```javascript
 <script>
+    for(초기문; 조건문; 증감문){
+        // code
+    }
+
     for(var i = 0; i < 3; i++){
         document.write(i);
     }
-
-    // 조건식이 참인 동안 반복 실행
 </script>
 ```
+---
 
 2. `for/in`문
-- 해당 객체의 열거할 수 있는 모든 프로퍼티를 돌 수 있도록
+- 배열에서 사용 가능
+- Object에서도 사용가능
+- Object의 키 값의 개수만큼 실행
 
 ```javascript
 <script>
-    var arr = [0, 1, 2]
-    for(var i in arr){
-        document.write(i);
+    for(const key in ojbect){
+        // code
     }
-
-    // 프로퍼티 개수만큼 반복 실행
+    
+    let profile = {name : "hyebin", age : 24, hobby : "game"};
+    for(const key in profile){
+        console.log(profile[key]);
+    }
 </srctip>
 ```
+
+---
 
 3. `for/of`문
-- 반복할 수 있는 객체를 돌 수 있도록
+- 배열에서 사용 가능
+- Array, String등 반복할 수 있는 객체에서 사용 가능
 
 ```javascript
 <script>
-    var arr = [0, 1, 2]
-    for(var value of arr){
-        document.write(i);
+    for (const element of iterable) {
+        //code
     }
 
-    // 프로퍼티 개수만큼 반복 실행
+    let color = ["red", "orange", "blue", "green"];
+    for (const col of color) {
+    console.log(col);
+}
 </srctip>
 ```
 
+---
+
 4. `while`문
-- 반복할 수 있는 객체를 돌 수 있도록
+- 조건 판별 후 실행
 
 ```javascript
 <script>
-    var arr = [0, 1, 2]
-    for(var value of arr){
-        document.write(i);
+    while (조건문) {
+        //code
     }
 
-    // 프로퍼티 개수만큼 반복 실행
+    let i = 0;
+    while (i < 3) {
+    console.log(i);
+    i++;
+    }
 </srctip>
 ```
 
 5. `do-while`문
-- 반복할 수 있는 객체를 돌 수 있도록
+- 일단 실행 후 조건 판별
 
 ```javascript
 <script>
-    var arr = [0, 1, 2]
-    for(var value of arr){
-        document.write(i);
-    }
+    do{
+        // code
+    } while(조건문)
 
-    // 프로퍼티 개수만큼 반복 실행
+    let i = 0;
+    do {
+        console.log(i);
+        i++;
+    } while (i < 3);
 </srctip>
 ```
 
