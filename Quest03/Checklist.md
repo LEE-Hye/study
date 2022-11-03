@@ -116,7 +116,6 @@
 ---
 
 >>1. `for`문
-
 >>```javascript
 >><script>
 >>    for(초기문; 조건문; 증감문){
@@ -131,23 +130,22 @@
 
 
 
-2. `for/in`문
-- 배열에서 사용 가능
-- Object에서도 사용가능
-- Object의 키 값의 개수만큼 실행
-
-```javascript
-<script>
-    for(const key in ojbect){
-        // code
-    }
-    
-    let profile = {name : "hyebin", age : 24, hobby : "game"};
-    for(const key in profile){
-        console.log(profile[key]);
-    }
-</srctip>
-```
+>>2. `for/in`문
+>>- 배열에서 사용 가능
+>>- Object에서도 사용가능
+>>- Object의 키 값의 개수만큼 실행
+>>```javascript
+>><script>
+>>    for(const key in ojbect){
+>>        // code
+>>    }
+>>    
+>>    let profile = {name : "hyebin", age : 24, hobby : "game"};
+>>    for(const key in profile){
+>>        console.log(profile[key]);
+>>    }
+>></srctip>
+>>```
 
 ---
 
