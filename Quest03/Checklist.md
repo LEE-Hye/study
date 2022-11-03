@@ -115,20 +115,21 @@
 
 ---
 
-1. `for`문
+>>1. `for`문
 
-```javascript
-<script>
-    for(초기문; 조건문; 증감문){
-        // code
-    }
+>>```javascript
+>><script>
+>>    for(초기문; 조건문; 증감문){
+>>        // code
+>>    }
+>>    
+>>    for(var i = 0; i < 3; i++){
+>>        document.write(i);
+>>    }
+>></script>
+>>```
 
-    for(var i = 0; i < 3; i++){
-        document.write(i);
-    }
-</script>
-```
----
+
 
 2. `for/in`문
 - 배열에서 사용 가능
