@@ -337,7 +337,7 @@ heybin();
 
 `<결과>`
 
-![hamsu](https://user-images.githubusercontent.com/91482127/199868798-a7d38fba-2b97-423b-9efa-8c29abebb8d3.PNG)
+![hamsu](https://user-images.githubusercontent.com/91482127/199870766-a5e5d2e8-87eb-4ed3-a5b3-2b973817e201.PNG)
 
 ---
 >### 🤍 자바스크립트의 Arrow function은 무엇일까요?
