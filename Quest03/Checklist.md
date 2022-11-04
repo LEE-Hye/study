@@ -90,7 +90,7 @@
 
 <br>
 
-2. 프로토타입 기반 객체 지향 언어 🧡💛💚영상 찾아서 제대로 이해해보자💙💜🤎
+2. 프로토타입 기반 객체 지향 언어
     - 프로토타입을 기반으로 상속을 구현해 불필요한 중복 제거
 
 <br>
@@ -101,7 +101,7 @@
 
 <br>
 
-4. 싱글 스레드 기반 비동기 처리 🧡💛💚영상 찾아서 제대로 이해해보자💙💜🤎
+4. 싱글 스레드 기반 비동기 처리
     - 호출 스택(Call Stack)이 1개인 단일 스레드
     - 순서대로 코드가 실행되는 걸 보장할 수 없다.
     - 메인 스레드에서 호출되는 함수들이 호출 스택에 쌓여 LIFO 방식으로 실행
@@ -223,10 +223,10 @@
     </div>
     <script>
         const many = document.querySelector('div'); // 추가하고자 하는 요소 선택
-        many.classList.add("hi", "bye"); // 여러 개 추가
+        many.classList.add("hi", "bye"); // 추가할 클래스 네임
         console.log(many.outerHTML)
 
-        many.classList.remove("hi", "bye"); // 여러 개 삭제
+        many.classList.remove("hi", "bye"); // 삭제할 클래스 네임
         console.log(many.outerHTML); 
     </script>
 </body>
@@ -266,7 +266,40 @@
 
 > ### 🤍 IE9나 그 이전의 옛날 브라우저들에서는 어떻게 해야 하나요?
 
+<br>
 
+>>- `Element.classList`를 지원하지 않음
+
+>>
+>>1. `className` 사용
+>>
+>>`<예제>`
+>>```javascript
+>><body>
+>>    <div id='hello'></div>
+>>    <script>
+>>        var hello = document.getElementById('hello');
+>>        console.log(hello.outerHTML);
+>>        hello.className += 'hi';
+>>        console.log(hello.outerHTML);
+>>    </script>
+>><body>
+>>```
+>>
+>>`<결과>`
+>>
+>>
+>>
+>><br>
+
+>>
+>><br>
+>>
+>>2. 호환성 스크립트 추가  
+>>    (https://github.com/eligrey/classList.js)
+>>    에 나와있는 스크립트를 페이지에 포함하고 IE작동
+>>
+>> <br>
 
 <br><br>
 
@@ -302,6 +335,9 @@ function local_variable() {
 
 ![local](https://user-images.githubusercontent.com/91482127/199888651-24503760-f422-4254-b95a-9000255f9abc.PNG)
 
+- `typeof` 연산자는 선언되지 않은 변수를 `undefined`로 반환
+- 지역 변수는 반드시 `var`로 선언 => `var`로 안 하면 전역 변수로 선언됨
+
 ---
 
 <br>
@@ -323,11 +359,37 @@ var num = 10;
 
 
 
+
     
 <br>
 
 ---
 >### 🤍 var과 let으로 변수를 정의하는 방법들은 어떻게 다르게 동작하나요?
+
+||var|let|const|
+|:---:|:---:|:---:|:---:|
+|재선언|가능|불가능|불가능|
+|값변경|가능|가능|불가능|
+|스코프|함수 스코프|블록 스코프|블록 스코프|
+|호이스팅|가능|불가능|불가능|
+
+- 스코프❓  
+    : 변수의 접근 범위
+
+- 호이스팅❓  
+    : 함수 안에 있는 선언들을 다 끌어올려서 유효 범위의 최상단에 선언  
+    : 변수/함수 선언만 위로 올려지고, 할당은 안 올려짐
+
+---
+
+
+|스코프|특징|
+|:---:|---|
+|함수 스코프|1. 새로운 함수가 생성되면 새로운 스코프 발생<br>2. JS는 함수 스코프를 따름<br>3. 함수 스코프 = 지역 스코프<br>4. 같은 함수이기만 하면 if나 for문에서 선언된 변수도 사용 가능|
+|블록 스코프|1. 새로운 블록이 생성되면 새로은 스코프 발생<br>2. let과 const로 블록 스코프도 가능<br>3. 같은 함수여도 if나 for문에서 선언된 변수는 if나 for문 밖에서 사용 불가능|
+
+
+
 
 
 
@@ -361,6 +423,7 @@ heybin();
 >>- `function` 대신 화살표(=>)를 사용해 간략한 방법으로 선언
 >>- ES6 문법
 >>- 항상 익명 함수 사용
+>>- 일반적인 함수 표현식보다 직관적이고, 간결
 >>
 >>`<예제>`
 >>```javascript

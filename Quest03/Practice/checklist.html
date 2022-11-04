@@ -9,15 +9,13 @@
 </head>
 
 <body>
-
+    <div id='hello'></div>
+   
     <script>
-var num = 10;
-    function global_variable() {
-        document.write("함수 내부 전역 변수타입은 " + typeof num +"<br>");
-        num; 
-    }
-    global_variable(); 
-    document.write("함수 외부 전역 변수타입은 " + typeof num );
+        var hello = document.getElementById('hello');
+        console.log(hello.outerHTML);
+        hello.className += 'hi';
+        console.log(hello.outerHTML);
     </script>
 
 </body>
