@@ -356,7 +356,7 @@ heybin();
 >>```
 >> <br>
 >>
->> `<결과>`
+>> `<결과>`  
 >> ![5-2](https://user-images.githubusercontent.com/91482127/199868833-c6a4e361-95e0-4394-b51f-7453803d4171.PNG)
 
 
