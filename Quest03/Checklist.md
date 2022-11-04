@@ -233,7 +233,7 @@
 ```
 `<결과>`
 
-![class_pluss_minuss](https://user-images.githubusercontent.com/91482127/199868783-eca764bf-0b8c-4a7d-a14d-7cd701c788bd.PNG)
+>![class_pluss_minuss](https://user-images.githubusercontent.com/91482127/199868783-eca764bf-0b8c-4a7d-a14d-7cd701c788bd.PNG)
 
 <br>
 
@@ -258,7 +258,7 @@
 ```
 `<결과>`
 
-![class](https://user-images.githubusercontent.com/91482127/199883113-d9e0e316-b5e2-479a-998c-17b0b0023cfb.PNG)
+>![class](https://user-images.githubusercontent.com/91482127/199883113-d9e0e316-b5e2-479a-998c-17b0b0023cfb.PNG)
 
 <br>
 
@@ -288,7 +288,7 @@
 >>
 >>`<결과>`
 >>
->>![class+](https://user-images.githubusercontent.com/91482127/199906402-03d1c298-0a3e-4a76-8de2-d6bf31fa1b34.PNG)
+>>>![class+](https://user-images.githubusercontent.com/91482127/199906402-03d1c298-0a3e-4a76-8de2-d6bf31fa1b34.PNG)
 >>
 >><br>
 
@@ -331,7 +331,7 @@ function local_variable() {
 
 `<지역 변수 예제 결과>`
 
-![local](https://user-images.githubusercontent.com/91482127/199888651-24503760-f422-4254-b95a-9000255f9abc.PNG)
+>![local](https://user-images.githubusercontent.com/91482127/199888651-24503760-f422-4254-b95a-9000255f9abc.PNG)
 
 - `typeof` 연산자는 선언되지 않은 변수를 `undefined`로 반환
 - 지역 변수는 반드시 `var`로 선언 => `var`로 안 하면 전역 변수로 선언됨
@@ -353,7 +353,7 @@ var num = 10;
 
 `<전역 변수 예제 결과>`
     
-![global](https://user-images.githubusercontent.com/91482127/199888632-8deaf6d3-5fd7-408a-9952-b3b63a6e63c1.PNG)
+>![global](https://user-images.githubusercontent.com/91482127/199888632-8deaf6d3-5fd7-408a-9952-b3b63a6e63c1.PNG)
 
 
 
@@ -413,7 +413,7 @@ heybin();
 
 `<결과>`
 
-![hamsu](https://user-images.githubusercontent.com/91482127/199870766-a5e5d2e8-87eb-4ed3-a5b3-2b973817e201.PNG)
+>![hamsu](https://user-images.githubusercontent.com/91482127/199870766-a5e5d2e8-87eb-4ed3-a5b3-2b973817e201.PNG)
 
 ---
 >### 🤍 자바스크립트의 Arrow function은 무엇일까요?
@@ -437,7 +437,7 @@ heybin();
 >> <br>
 >>
 >> `<결과>`  
->> ![5-2](https://user-images.githubusercontent.com/91482127/199868833-c6a4e361-95e0-4394-b51f-7453803d4171.PNG)
+>>> ![5-2](https://user-images.githubusercontent.com/91482127/199868833-c6a4e361-95e0-4394-b51f-7453803d4171.PNG)
 
 >>- 간편하지만 몇 가지 제한점이 있고 모든 상황에서 사용할 순 없음
 >>   1. this나 super에 대한 바인딩이 없음
