@@ -127,8 +127,7 @@
 >>    }
 >></script>
 >>```
-
-
+>><br>
 
 >>2. `for/in`문
 >>- 배열에서 사용 가능
@@ -146,61 +145,61 @@
 >>    }
 >></srctip>
 >>```
+>><br>    
 
----
+>>3. `for/of`문
+>>- 배열에서 사용 가능
+>>- Array, String등 반복할 수 있는 객체에서 사용 가능
+>>
+>>```javascript
+>><script>
+>>    for (const element of iterable) {
+>>        //code
+>>    }
+>>
+>>    let color = ["red", "orange", "blue", "green"];
+>>    for (const col of color) {
+>>    console.log(col);
+>>}
+>></srctip>
+>>```
+>> <br>
 
-3. `for/of`문
-- 배열에서 사용 가능
-- Array, String등 반복할 수 있는 객체에서 사용 가능
-
-```javascript
-<script>
-    for (const element of iterable) {
-        //code
-    }
-
-    let color = ["red", "orange", "blue", "green"];
-    for (const col of color) {
-    console.log(col);
-}
-</srctip>
-```
-
----
-
-4. `while`문
-- 조건 판별 후 실행
-
-```javascript
-<script>
-    while (조건문) {
-        //code
-    }
-
-    let i = 0;
-    while (i < 3) {
-    console.log(i);
-    i++;
-    }
-</srctip>
-```
-
-5. `do-while`문
-- 일단 실행 후 조건 판별
-
-```javascript
-<script>
-    do{
-        // code
-    } while(조건문)
-
-    let i = 0;
-    do {
-        console.log(i);
-        i++;
-    } while (i < 3);
-</srctip>
-```
+>>4. `while`문
+>>- 조건 판별 후 실행
+>>
+>>```javascript
+>><script>
+>>    while (조건문) {
+>>        //code
+>>    }
+>>
+>>    let i = 0;
+>>    while (i < 3) {
+>>    console.log(i);
+>>    i++;
+>>    }
+>></srctip>
+>>```
+>><br>
+    
+>>5. `do-while`문
+>>- 일단 실행 후 조건 판별
+>>
+>>```javascript
+>><script>
+>>    do{
+>>        // code
+>>    } while(조건문)
+>>
+>>    let i = 0;
+>>    do {
+>>        console.log(i);
+>>        i++;
+>>    } while (i < 3);
+>></srctip>
+>>```
+>><br>   
 
 
 <br><br>
@@ -231,7 +230,8 @@
 </body>
 ```
 `<결과>`
-🧡💛💚💙💜class_plus_minus 자리
+    
+![class_plus_minus](https://user-images.githubusercontent.com/91482127/199868762-7cb7967c-d01c-4fb2-af33-055218f3ff84.PNG)
 
 <br>
 
@@ -257,7 +257,8 @@
 </body>
 ```
 `<결과>`
-🧡💛💚💙💜class_pluss_minuss 자리
+
+![class_pluss_minuss](https://user-images.githubusercontent.com/91482127/199868783-eca764bf-0b8c-4a7d-a14d-7cd701c788bd.PNG)
 
 <br>
 
@@ -334,7 +335,8 @@ heybin();
 ```
 
 `<결과>`
-❤🧡💛💚💙hamsu.png
+
+![hamsu](https://user-images.githubusercontent.com/91482127/199868798-a7d38fba-2b97-423b-9efa-8c29abebb8d3.PNG)
 
 ---
 >### 🤍 자바스크립트의 Arrow function은 무엇일까요?
@@ -353,6 +355,9 @@ heybin();
 >>console.log(mul(1, 15));
 >>```
 >> <br>
+>>
+>> `<결과>`
+>> ![5-2](https://user-images.githubusercontent.com/91482127/199868833-c6a4e361-95e0-4394-b51f-7453803d4171.PNG)
 
 
 
