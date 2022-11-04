@@ -269,7 +269,7 @@
 <br>
 
 >>- `Element.classList`를 지원하지 않음
-
+>><br>
 >>
 >>1. `className` 사용
 >>
@@ -288,12 +288,10 @@
 >>
 >>`<결과>`
 >>
->>
+>>![class+](https://user-images.githubusercontent.com/91482127/199906402-03d1c298-0a3e-4a76-8de2-d6bf31fa1b34.PNG)
 >>
 >><br>
 
->>
->><br>
 >>
 >>2. 호환성 스크립트 추가  
 >>    (https://github.com/eligrey/classList.js)
