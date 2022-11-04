@@ -323,12 +323,13 @@
 ## 💙5. 자바스크립트의 익명 함수는 무엇인가요?
 - 함수명 대신 변수명에 함수 코드를 저장
 - 익명 함수 호출 시 변수명을 함수명처럼 사용
+- 한 번만 호출해 사용하는 함수라 쓰는 순간 외에 메모리를 차지하지 않아 메모리를 아낄 수 있음
 
 `<예시>`
 ```javascript
 var heybin = function()
 {
-    document.write("Hello hyebin");
+    document.write("hey hyebin");
 };
 
 heybin();
@@ -342,12 +343,14 @@ heybin();
 >### 🤍 자바스크립트의 Arrow function은 무엇일까요?
 
 >>- `function` 대신 화살표(=>)를 사용해 간략한 방법으로 선언
+>>- ES6 문법
+>>- 항상 익명 함수 사용
 >>
 >>`<예시>`
 >>```javascript
->>// const mul = function(x, y) { 
->>// return x * y; 
->>// } 
+>>const mul = function(x, y) { 
+>>return x * y; 
+>>} 
 >>
 >>// 위의 함수를 아래처럼 나타낼 수 있음
 >>const mul = (x, y) => x * y;
@@ -358,6 +361,12 @@ heybin();
 >>
 >> `<결과>`  
 >> ![5-2](https://user-images.githubusercontent.com/91482127/199868833-c6a4e361-95e0-4394-b51f-7453803d4171.PNG)
+
+>>- 간편하지만 몇 가지 제한점이 있고 모든 상황에서 사용할 순 없음
+>>   1. this나 super에 대한 바인딩이 없음
+>>   2. methods로 사용 불가
+>>   3. 생성자 사용 불가
+
 
 
 
