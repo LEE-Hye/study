@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quest3-1. 별 찍기 프로그램</title>
+</head>
+<body>
+    <script>
+
+        // 자 한 번에 생각하는 게 안되니까 차근 차근 생각해보자
+
+        //   *      첫 번짼 공백 2개 + 별 1개
+        //  ***     두 번짼 공백 1개 + 별 3개
+        // *****    세 번짼 공백 0개 + 별 5개
+        
+        // 만약 3줄을 만들고 싶다!! 
+        // 하면 큰 for문은 아마 3번을 반복하겠지?
+        // 그 다음 한 줄에 공백과 별이 들어가야 하니깐
+        // 큰 for문 안에 공백을 출력해줄 for문 한 개, 별을 출력해줄 for문 한 개가 필요할거야
+        // 공백 for문은 줄 수 보다 -1 해주고 -1씩 하면 될 거 같아
+        // 별 for문은 1 3 5 => 이게 1 / 1+2 / 3+2 씩 되고 있는 거 같은데 +2만 해준다면 첫 별 개수가 2개가 나와버리니까 이렇게 생각하면 안되나..? 
+        // 여차여차 나오긴 했는데 뭔가 생각 안 하고 한 거라.. 생각좀 해보자.. i와 k가 1이면 좀 더 나으려나
+        // k < 여기 식이 뭔가 도출이 잘 안돼ㅠㅠ 바본가
+
+        var a = '';
+
+        for(var i = 0; i < 3; i++){
+            for(var j = 2; j >i; j--){
+                a += " ";
+            }
+            for(var k = 0; k < i*2+1; k++){
+                a += "*";
+            }
+            a += "\n";
+        }
+        console.log(a);
+
+
+    </script>
+</body>
+</html>
