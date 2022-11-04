@@ -215,7 +215,7 @@
 - 추가 : `Element.classList.add("className","className",...)`
 - 삭제 : `Element.classList.remove("className","className",...)`
 
-`<예시>`
+`<예제>`
 ```javascript
 <body>
     <div>
@@ -242,7 +242,7 @@
 - CSS Class 모든 클래스 변경 
 - `element.className`
 
-`<예시>`
+`<예제>`
 ```javascript
 <body>
     <div>
@@ -274,6 +274,50 @@
 ---
 
 ## 💙4. 자바스크립트의 변수가 유효한 범위는 어떻게 결정되나요?
+- 변수의 유효 범위(Scope)란❓
+    - 해당 변수가 접근할 수 있는 변수, 객체, 함수의 집합
+    
+    <br>
+
+- 유효 범위는 `지역 변수(local variable)`와 `전역 변수(global variable)`로 구분된다.
+
+|변수|정의|특징|
+|:---:|---|---|
+|지역 변수|함수 내부에서 선언된 변수|1. 선언된 함수 내에서만 유효<br>2. 함수가 종료되면 메모리에서 사라짐|
+|전역 변수|함수 외부에서 선언된 변수|1. 어느 영역에서나 접근 가능<br>2. 웹 페이지가 닫혀야 메모리에서 사라짐|
+
+`<지역 변수 예제>`
+```javascript
+function local_variable() {
+    var name = 'hyebin';
+    document.write("함수 내부 지역 변수타입은 " + typeof name + "<br>");
+    }
+    local_variable();
+    document.write("함수 외부 지역 변수타입은 " + typeof num);
+```
+
+`<지역 변수 예제 결과>`
+❤🧡💛💚💙
+
+<br>
+
+`<전역 변수 예제>`
+```javascript
+var num = 10;
+    function global_variable() {
+        document.write("함수 내부 전역 변수타입은 " + typeof num +"<br>");
+        num; 
+    }
+    global_variable(); 
+    document.write("함수 외부 전역 변수타입은 " + typeof num );
+```
+
+`<지역 변수 예제 결과>`
+❤🧡💛💚💙
+
+
+    
+<br>
 
 ---
 >### 🤍 var과 let으로 변수를 정의하는 방법들은 어떻게 다르게 동작하나요?
@@ -290,7 +334,7 @@
 - 익명 함수 호출 시 변수명을 함수명처럼 사용
 - 한 번만 호출해 사용하는 함수라 쓰는 순간 외에 메모리를 차지하지 않아 메모리를 아낄 수 있음
 
-`<예시>`
+`<예제>`
 ```javascript
 var heybin = function()
 {
@@ -311,7 +355,7 @@ heybin();
 >>- ES6 문법
 >>- 항상 익명 함수 사용
 >>
->>`<예시>`
+>>`<예제>`
 >>```javascript
 >>const mul = function(x, y) { 
 >>return x * y; 
@@ -331,11 +375,9 @@ heybin();
 >>   1. this나 super에 대한 바인딩이 없음
 >>   2. methods로 사용 불가
 >>   3. 생성자 사용 불가
+>>
+>> <br>
 
-
-
-
-<br><br>
 
 ---
 ---

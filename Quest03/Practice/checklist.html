@@ -10,81 +10,16 @@
 
 <body>
 
-    <div class="hi hello"></div>
     <script>
-        // var hello = document.querySelector('.hi hello')
-        
-        const all = document.querySelector('div');
-        console.log(all.outerHTML);
-        all.className = 'bye';
-        console.log(all.outerHTML);
-    </script>
-    <!--
-        3 
-        <script>
-        const div = document.querySelector('div'); // div 태그 만들고 div 변수에 참조 시키기
-        div.className = 'hi'; // hi 클래스명 저장
-
-        console.log(div.outerHTML); // <div class="hi"></div>
-
-        div.classList.remove("hi"); // .remove() 메소드로 .hi 삭제하기
-        console.log(div.outerHTML); // <div class="anotherclass"></div>
-
-        div.classList.add("hi", "bye"); // 여러개의 클래스명 한번에 추가
-        console.log(div.outerHTML); // <div class="anotherclass"></div>
-
-        div.classList.remove("hi", "bye");
-        console.log(div.outerHTML); 
-    </script> -->
-
-    <!-- 3
-    <script>
-        var div, name, arr; // 변수 선언
-        div = document.createElement('div'); // div 태그 만들고 div 변수에 참조 시키기
-        div.className = 'foo'; // foo 클래스명 추가
-
-        if (div.classList) { // div 요소에 classList가 있는지 확인
-            div.classList.add("mystyle"); // mystyle 클래스명 추가
-        } else {
-            name = "mystyle";
-            arr = div.className.split(" "); // 공백으로 분리
-            if (arr.indexOf(name) == -1) { // 추가할 클래스명이 있는지 확인, 없을 경우 if문 실행
-                div.className += " " + name;
-            }
-        }
-    </script> -->
-
-    <!-- <script>
-        3-1
-        var div, name, arr; // 변수 선언
-        div = document.createElement('div'); // div 태그 만들고 div 변수에 참조 시키기
-        div.className = 'foo'; // foo 클래스명 추가
-
-        if (div.classList) { // div 요소에 classList가 있는지 확인
-            div.classList.add("mystyle"); // mystyle 클래스명 추가
-        } else {
-            name = "mystyle";
-            arr = div.className.split(" "); // 공백으로 분리
-            if (arr.indexOf(name) == -1) { // 추가할 클래스명이 있는지 확인, 없을 경우 if문 실행
-                div.className += " " + name;
-            }
-        }
-    </script> -->
-
-    <script>
-        var heybin = function () {
-            document.write("hey hyebin");
-        };
-
-        heybin();
-
-        
+var num = 10;
+    function global_variable() {
+        document.write("함수 내부 전역 변수타입은 " + typeof num +"<br>");
+        num; 
+    }
+    global_variable(); 
+    document.write("함수 외부 전역 변수타입은 " + typeof num );
     </script>
 
-    <!-- <script>
-        const mul = (x, y) => x * y;
-        console.log(mul(1, 15));
-    </script> -->
 </body>
 
 </html>
