@@ -257,8 +257,8 @@
 </body>
 ```
 `<결과>`
-    
-![class_plus_minus](https://user-images.githubusercontent.com/91482127/199868762-7cb7967c-d01c-4fb2-af33-055218f3ff84.PNG)
+
+![class](https://user-images.githubusercontent.com/91482127/199883113-d9e0e316-b5e2-479a-998c-17b0b0023cfb.PNG)
 
 <br>
 
