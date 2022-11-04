@@ -211,8 +211,96 @@
 ## 💙3. 자바스크립트를 통해 DOM 객체에 CSS Class를 주거나 없애려면 어떻게 해야 하나요?
 
 ---
+
+- CSS Class 한 개 추가 & 삭제
+
+`<예시>`
+```javascript
+<body>
+    <div>
+        클래스를 한 개 추가&삭제 해봅시다.
+    </div>
+    <script>
+        const one = document.querySelector('div');
+        one.className = 'hi'; // 한 개 추가
+        console.log(one.outerHTML);
+
+        one.classList.remove("hi"); // 한 개 삭제
+        console.log(one.outerHTML); 
+    </script>
+</body>
+```
+`<결과>`
+🧡💛💚💙💜class_plus_minus 자리
+
+<br>
+
+
+---
+
+- CSS Class 여러 개 추가 & 삭제
+
+`<예시>`
+```javascript
+<body>
+    <div>
+        클래스를 여러 개 추가&삭제 해봅시다.
+    </div>
+    <script>
+        const many = document.querySelector('div');
+        many.classList.add("hi", "bye"); // 여러 개 추가
+        console.log(many.outerHTML)
+
+        many.classList.remove("hi", "bye"); // 여러 개 삭제
+        console.log(many.outerHTML); 
+    </script>
+</body>
+```
+`<결과>`
+🧡💛💚💙💜class_pluss_minuss 자리
+
+<br>
+
+---
+
 > ### 🤍 IE9나 그 이전의 옛날 브라우저들에서는 어떻게 해야 하나요?
 
+🧡💛💚여기 내가 이해할 수 있도록 다시 찾아보자💙💜🤎🖤
+
+<br>
+
+>> <br>
+>>- CSS Class 추가
+>>
+>>`<예제>`
+>>```javascript
+>>    var old, name, arr; // 변수 선언
+>>    old = document.createElement('div'); // div만들고 div변수 참조
+>>    old.className = 'hi'; // hi 클래스명 추가
+>>
+>>    if (old.classList) { // div 요소에 classList가 있는지 확인
+>>        old.classList.add("new"); // new 클래스명 추가
+>>    } else {
+>>        name = "new";
+>>        arr = old.className.split(" "); // 공백으로 분리
+>>        if (arr.indexOf(name) == -1) { // 추가할 클래스명이 있는지 확인, 없을 경우 if문 실행
+>>            old.className += " " + name; 
+>>            }
+>>    }
+>>```
+
+>> <br>
+>>- CSS Class 제거
+>>
+>>`<예제>`
+>>```javascript
+>>    if (old.classList) { // div 요소에 classList가 있는지 확인
+>>        old.classList.remove("new"); // new 클래스명 삭제
+>>    } else { // div 요소에 classList가 없을 경우
+>>        console.log(/\bmystyle\b/g.test(div.className)); // mystyle 클래스명이 있을 경우 true, 없을 경우 false
+>>        
+>>    }
+>>```
 
 <br><br>
 
@@ -232,9 +320,40 @@
 ---
 
 ## 💙5. 자바스크립트의 익명 함수는 무엇인가요?
+- 함수명 대신 변수명에 함수 코드를 저장
+- 익명 함수 호출 시 변수명을 함수명처럼 사용
+
+`<예시>`
+```javascript
+var heybin = function()
+{
+    document.write("Hello hyebin");
+};
+
+heybin();
+```
+
+`<결과>`
+❤🧡💛💚💙hamsu.png
 
 ---
 >### 🤍 자바스크립트의 Arrow function은 무엇일까요?
+
+>>- `function` 대신 화살표(=>)를 사용해 간략한 방법으로 선언
+>>
+>>`<예시>`
+>>```javascript
+>>// const mul = function(x, y) { 
+>>// return x * y; 
+>>// } 
+>>
+>>// 위의 함수를 아래처럼 나타낼 수 있음
+>>const mul = (x, y) => x * y;
+>>
+>>console.log(mul(1, 15));
+>>```
+>> <br>
+
 
 
 <br><br>
