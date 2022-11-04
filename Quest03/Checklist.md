@@ -297,7 +297,9 @@ function local_variable() {
 ```
 
 `<지역 변수 예제 결과>`
-❤🧡💛💚💙
+
+![local](https://user-images.githubusercontent.com/91482127/199888651-24503760-f422-4254-b95a-9000255f9abc.PNG)
+
 
 <br>
 
@@ -312,8 +314,10 @@ var num = 10;
     document.write("함수 외부 전역 변수타입은 " + typeof num );
 ```
 
-`<지역 변수 예제 결과>`
-❤🧡💛💚💙
+`<전역 변수 예제 결과>`
+    
+![global](https://user-images.githubusercontent.com/91482127/199888632-8deaf6d3-5fd7-408a-9952-b3b63a6e63c1.PNG)
+
 
 
     
