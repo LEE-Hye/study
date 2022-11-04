@@ -286,6 +286,8 @@
 |지역 변수|함수 내부에서 선언된 변수|1. 선언된 함수 내에서만 유효<br>2. 함수가 종료되면 메모리에서 사라짐|
 |전역 변수|함수 외부에서 선언된 변수|1. 어느 영역에서나 접근 가능<br>2. 웹 페이지가 닫혀야 메모리에서 사라짐|
 
+---
+
 `<지역 변수 예제>`
 ```javascript
 function local_variable() {
@@ -300,6 +302,7 @@ function local_variable() {
 
 ![local](https://user-images.githubusercontent.com/91482127/199888651-24503760-f422-4254-b95a-9000255f9abc.PNG)
 
+---
 
 <br>
 
