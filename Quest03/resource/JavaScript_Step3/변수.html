@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>날 눌러줘</button>
+    <script>
+        const button = document.querySelector('button');
+
+        button.onclick = function () {
+            let name = prompt('너의 이름은?');
+            alert(name + '아 안녕! 만나서 반가워~!');
+        }
+
+        // 변수 선언
+        // 변수 선언만 하면 undefined값 반환
+        var myName;
+        var myAge;
+        console.log(myName);
+        console.log(myAge);
+        // 변수 초기화
+        myName = 'Chris';
+        myAge = 37;
+        console.log(myName);
+        console.log(myAge);
+        // 선언과 동시에 초기화
+        var myName = 'hello';
+        console.log(myName);
+
+        // 숫자, 문자열, 불리언
+        var myAge = 17;
+        var dolphinGoodbye = 'So long and thanks for all the fish';
+        var iAmAlive = true;
+        var test = 6 < 3;
+
+        // 배열
+        var myNameArray = ['Chris', 'Bob', 'Jim'];
+        var myNumberArray = [10, 15, 40];
+
+        console.log(myNameArray[0]); // should return 'Chris'
+        console.log(myNumberArray[2]); // should return 40
+
+        // 객체
+        var dog = { name: 'hoy', breed: 'dachshund' };
+        console.log(dog.name);
+
+        // 지정되지 않은 타입
+        var myString = 'Hello';
+
+        var myNumber = '500'; // oops, this is still a string
+        console.log(typeof (myNumber));
+        myNumber = 500; // much better — now this is a number
+        console.log(typeof (myNumber));
+    </script>
+</body>
+
+</html>

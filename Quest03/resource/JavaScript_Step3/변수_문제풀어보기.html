@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // myName 이라는 이름의 변수 선언(declare)하기.
+        // 분리된 라인에, myName 을 적절한 값으로 초기화(initialize)하기 (당신은 당신의 실제 이름이나, 혹은 무언가 다른 것을 사용할 수 있습니다).
+        // 같은 줄에, myAge 라는 변수를 선언하고 값을 주어 초기화하기.
+        var myName;
+        myName = 'hyebin'; var myAge = 24;
+
+        // 여기서 당신은 기존의 몇몇 코드를 가지고 있는데, 
+        // 여기에는 현재 두 개의 오류가 있습니다.결과 패널은 Chris 라는 이름과, 20년 후 Chris는 몇 살일지에 대한 문장을 출력해야만 합니다.
+        // 당신은 어떻게 문제를 고치고 출력을 정정하실 건가요 ?
+        // Add your code here
+
+        const myName = 'Chris'; // 선언과 동시에 초기화 하기
+
+        let myAge = 42; // 숫자는 ''또는""를 사용하면 안된다
+        
+        // Don't edit the code below here!
+
+        const section = document.querySelector('section');
+
+        const para1 = document.createElement('p');
+        const para2 = document.createElement('p');
+        para1.textContent = myName;
+        para2.textContent = `In 20 years, I will be ${myAge + 20}`;
+        section.appendChild(para1);
+        section.appendChild(para2);
+
+    </script>
+</body>
+
+</html>

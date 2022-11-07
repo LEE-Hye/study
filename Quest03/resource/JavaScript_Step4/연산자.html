@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연산자</title>
+</head>
+
+<body>
+    <button>Start machine</button>
+    <p>The machine is stopped.</p>
+    <script>
+        var myInt = 5;
+        var myFloat = 6.667;
+        console.log(myInt);
+        console.log(myFloat);
+        console.log(typeof myInt);
+        console.log(typeof myFloat);
+
+        var num1 = 10;
+        var num2 = 50;
+        console.log(9 * num1);
+        console.log(num2 / num1); // 소수점까지 몫
+        console.log(5 + 10 * 3);
+        console.log(num2 % 9 * num1); // % : 나머지
+        console.log(num2 + num1 / 8 + 2);
+
+        // 연산자 문제 풀어보기
+        let x = 50; let y = 50;
+        x = 50;
+        y = 50;
+        // x를 계산하는 줄을 변경하여 상자의 너비는 여전히 50px이지만 50은 숫자 43과 7과 산술 연산자를 사용하여 계산됩니다.
+        x = 43 + 7;
+        y = 50;
+        // 상자의 높이가 75px가 되도록 y를 계산하는 줄을 변경하지만 75는 숫자 25와 3과 산술 연산자를 사용하여 계산됩니다.
+        y = 25 * 3;
+        // x를 계산하는 줄을 변경하여 상자 너비가 250px이지만 250은 두 개의 숫자와 나머지(모듈로) 연산자를 사용하여 계산됩니다.
+        x = 501 % 251;
+        // 상자 높이가 150px이 되도록 y를 계산하는 줄을 변경하지만 150은 세 개의 숫자와 빼기 및 나누기 연산자를 사용하여 계산됩니다.
+        y = 302 / 2 - 1;
+        // x를 계산하는 줄을 변경하여 상자 너비가 200px이지만 200은 숫자 4와 할당 연산자를 사용하여 계산됩니다.
+        x += 150;
+        // 상자 높이가 200px가 되도록 y를 계산하는 줄을 변경하지만 200은 숫자 50과 3, 곱하기 연산자 및 더하기 할당 연산자를 사용하여 계산됩니다.
+        y += 50 * 3;
+
+        var btn = document.querySelector('button');
+        var txt = document.querySelector('p');
+
+        btn.addEventListener('click', updateBtn);
+
+        function updateBtn() {
+            if (btn.textContent === 'Start machine') {
+                btn.textContent = 'Stop machine';
+                txt.textContent = 'The machine has started!';
+            } else {
+                btn.textContent = 'Start machine';
+                txt.textContent = 'The machine is stopped.';
+            }
+        }
+
+    </script>
+</body>
+
+</html>
