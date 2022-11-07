@@ -4,11 +4,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>Apply JavaScript example</title>
-    <script src="ex02.js" defer></script>
-    <script>
+    <title>자바스크립트 작동해보기</title>
+    <script src="script.js" defer></script> <!-- 외부 자바스크립트 -->
+    <!-- defer : 브라우저가 <script> 태그를 마주쳐도 그 이후의 HTML콘텐츠를 계속 불러옴, 오류 예방 / 외부 스크립트에만 사용 가능-->
+    <!-- </body>태그 바로 앞에 배치하면 html을 읽은 후 스크립트를 불러오기 때문에 html dom을 다 불러오기 전에는 스크립트의 로딩과 분석이 완전히 중단 돼서 대형 사이트는 성능 저하기 있을 수 있음 -->
 
-        // JavaScript goes here
+    <!-- 내부 자바스크립트 
+        <script>
         document.addEventListener('DOMContentLoaded', () => {
             function createParagraph() {
                 const para = document.createElement('p');
@@ -22,7 +24,7 @@
                 button.addEventListener('click', createParagraph);
             }
         });
-    </script>
+    </script> -->
 </head>
 
 <body>
