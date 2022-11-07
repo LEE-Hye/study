@@ -20,7 +20,7 @@
 	<body>
 		<section class="row1">
 			<div class="square"></div>
-			<div class="square"></div>
+			<div class="square"></div>.
 			<div class="square"></div>
 			<div class="square"></div>
 		</section>
@@ -33,21 +33,59 @@
 		</section>
 
 		<script>
+			
+			// 선택 할 square 배열에 담기
+			var rowSquares = document.getElementsByClassName('square');
+			console.log(rowSquares)
+
+			var Square = [];
+			for(var i = 0; i < rowSquares.length; i++){
+				Square.push(rowSquares[i]);
+			}
+
+			console.log(Square);
+				
+			// row1의 square 배열
+			var row1_square = Square.slice(0,4);
+			console.log(row1_square);
+
+			// row2의 square 배열
+			var row2_square = Square.slice(4,8);
+			console.log(row2_square);
+
 
 			// 1. 클릭한 박스 색만 바꾸기
-			// resource
+			
+			// row1_square.forEach(function(change,index){
+			// 	change.addEventListener('click',function(){
+			// 		console.log('확인');
+			// 		if(change.style.backgroundColor == 'yellow'){
+			// 			change.style.backgroundColor = 'white';
+			// 		}else{
+			// 			change.style.backgroundColor = 'yellow';
+			// 		}
+					
+			// 	})
+			// })
 
+			for(var i = 0; i < row1_square.length; i++){
+				row1_square[i].addEventListener('click',function(change){
+					console.log(row1_square[i])
+					console.log('확인');
+					
+					
+
+					
+					return change.style.backgroundColor = 'yellow';
+
+
+
+					
+					
+				})	
+			}
 			
 
-			let row1Squares = document.querySelectorAll('.row1 .square');
-			for(let node of row1Squares) {
-				/* TODO: node 변수를 어떻게 조작해야 할까요? */
-			}
-
-			let row2Squares = document.querySelectorAll('.row2 .square');
-			for(let node of row2Squares) {
-				/* TODO: node 변수를 어떻게 조작해야 할까요? */
-			}
 		</script>
 	</body>
 </html>
