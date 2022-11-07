@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문자열 다루기</title>
+</head>
+
+<body>
+    <script>
+        // JavaScript의 모든 것이 객체
+        var string = 'This is my string';
+
+        var browserType = 'mozilla';
+        console.log(browserType.length); // 문자열 길이
+        console.log(browserType[0]); // 특정 문자열 찾기
+        console.log(browserType[browserType.length - 1]); // 마지막 문자열 찾기
+        console.log(browserType.indexOf('zilla')); // 문자열 내부의 하위 문자열 찾기
+        console.log(browserType.indexOf('vanilla')); // 찾을 수 없어 -1을 반환
+        console.log(browserType.slice(0, 3)); // 문자열 추출 0~2번째
+        console.log(browserType.slice(2)); // 두 번째 위치부터 쭉
+        console.log(browserType.replace('moz', 'van')); // 문자열 일부 변경
+
+        var radData = 'My NaMe Is MuD';
+        console.log(radData.toLowerCase()); // 소문자 변경
+        console.log(radData.toUpperCase()); // 대문자 변경
+
+
+    </script>
+</body>
+
+</html>
