@@ -111,9 +111,11 @@
 					console.log('추가했을 때 현재 클래스 네임 : ' + change_class.className);
 				} else {
 					// change_class.classList.remove('enabled');
-					change_class.className = 'square';
+					// change_class.className = 'square'; 모든 클래스가 square로 바뀜
+					change_class.classList.replace('enabled','square');
 					console.log('제거 했을 때 현재 클래스 네임 : ' + change_class.className);
 				}
+				// change_class.classList.toggle('enabled'); 클래스가 존재하면 제거, 없으면 추가
 			})
 		})
 	</script>
