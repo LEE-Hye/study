@@ -46,7 +46,7 @@
             if (line <= 0) {
                 console.log("💥0보다 큰 수를 입력해주세요💥");
             } else {
-                var star = '';
+                var star = ''; // 할당하지 않으면 undefined가 나와서 빈 값 할당
 
                 for (var i = 0; i < line; i++) {
                     for (var j = (line - 1); j > i; j--) {

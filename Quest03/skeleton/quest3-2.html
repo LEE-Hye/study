@@ -1,91 +1,105 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<style>
-			.square {
-				width: 100px;
-				height: 100px;
-				border: 1px dashed black;
-				display: inline-block;
-				margin: 20px;
-			}
 
-			.enabled {
-				background-color: limegreen;
-				border: 1px solid black;
-			}
-		</style>
-	</head>
-	<body>
-		<section class="row1">
-			<div class="square"></div>
-			<div class="square"></div>.
-			<div class="square"></div>
-			<div class="square"></div>
-		</section>
+<head>
+	<meta charset="UTF-8">
+	<style>
+		.square {
+			width: 100px;
+			height: 100px;
+			border: 1px dashed black;
+			display: inline-block;
+			margin: 20px;
+		}
 
-		<section class="row2">
-			<div class="square"></div>
-			<div class="square"></div>
-			<div class="square"></div>
-			<div class="square"></div>
-		</section>
+		.enabled {
+			background-color: limegreen;
+			border: 1px solid black;
+		}
+	</style>
+</head>
 
-		<script>
-			
-			// 선택 할 square 배열에 담기
-			var rowSquares = document.getElementsByClassName('square');
-			console.log(rowSquares)
+<body>
+	<section class="row1">
+		<div class="square"></div>
+		<div class="square"></div>.
+		<div class="square"></div>
+		<div class="square"></div>
+	</section>
 
-			var Square = [];
-			for(var i = 0; i < rowSquares.length; i++){
-				Square.push(rowSquares[i]);
-			}
+	<section class="row2">
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+	</section>
 
-			console.log(Square);
-				
-			// row1의 square 배열
-			var row1_square = Square.slice(0,4);
-			console.log(row1_square);
+	<script>
 
-			// row2의 square 배열
-			var row2_square = Square.slice(4,8);
-			console.log(row2_square);
+		// 선택 할 square 배열에 담기
+		var rowSquares = document.getElementsByClassName('square');
+		console.log(rowSquares)
 
+		var Square = [];
+		for (var i = 0; i < rowSquares.length; i++) {
+			Square.push(rowSquares[i]);
+		}
 
-			// 1. 클릭한 박스 색만 바꾸기
-			
-			// row1_square.forEach(function(change,index){
-			// 	change.addEventListener('click',function(){
-			// 		console.log('확인');
-			// 		if(change.style.backgroundColor == 'yellow'){
-			// 			change.style.backgroundColor = 'white';
-			// 		}else{
-			// 			change.style.backgroundColor = 'yellow';
-			// 		}
-					
-			// 	})
-			// })
+		console.log(Square);
 
-			for(var i = 0; i < row1_square.length; i++){
-				row1_square[i].addEventListener('click',function(change){
-					console.log(row1_square[i])
-					console.log('확인');
-					
-					
+		// row1의 square 배열
+		var row1_square = Square.slice(0, 4);
+		console.log(row1_square);
 
-					
-					return change.style.backgroundColor = 'yellow';
+		// row2의 square 배열
+		var row2_square = Square.slice(4, 8);
+		console.log(row2_square);
 
 
+		// [1]. 클릭한 박스 색만 바꾸기
 
-					
-					
-				})	
-			}
-			
+		// 1. foreach
+		row1_square.forEach(function(change){
+			change.addEventListener('click',function(){
+				console.log('확인');
+				if(change.style.backgroundColor == 'yellow'){
+					change.style.backgroundColor = 'white';
+				}else{
+					change.style.backgroundColor = 'yellow';
+				}
 
-		</script>
-	</body>
+			})
+		})
+
+		// 2. for
+		// var는 함수 스코프로 새로운 함수가 생성되어야 스코프 생성
+		// js엔진에서 for문이 돌고 비동기 콜백 함수 실행(for문이 돈 i값을 계속 유지 시키면서 콜백 해준다)하기 때문에
+		// 반복문이 끝난 시점에서 바로 익명 함수를 실행 시키면 i = 5가 들어가게 되니
+		// IIFE인 즉시 실행 함수를 사용해 반복문이 돌 때 같이 익명 함수도 실행하도록 만든다.
+		// 클로저 : 내부 스코프에 i의 값이 없어 외부에 있는 값을 가져옴(외부 변수에 접근할 수 있는 함수)
+		// 여기서  i값을 클로저 변수라 할 수 있음
+		// 또는 ES6버전의 let을 사용하면 IIFE 사용 안 하고 할 수 있음 왜냐면 let은 for문 실행할 때 마다 계속 새로운 스코프를 생성하기 때문에 i가 달라
+		// for (var i = 0; i < row1_square.length; i++) {
+		// 	(function (i) {
+		// 		row1_square[i].addEventListener('click', function () {
+		// 			console.log(i);
+		// 			console.log(row1_square[i]);
+		// 			if (row1_square[i].style.backgroundColor == 'yellow') {
+		// 				row1_square[i].style.backgroundColor = 'white';
+		// 			} else {
+		// 				row1_square[i].style.backgroundColor = 'yellow';
+		// 			}
+		// 		});
+		// 	})(i);
+		// }
+
+
+		// iife : 즉시 실행 함수 표현 : 정의되자마자 즉시 실행
+		// (function () {
+	    // code
+		// })();
+
+	</script>
+</body>
+
 </html>
