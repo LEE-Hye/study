@@ -56,16 +56,16 @@
 		console.log(row2_square);
 
 
-		// [1]. 클릭한 박스 색만 바꾸기
+		// [1]. 첫째 줄 박스 선택했을 때, 클릭한 박스 색 노란색<->흰색으로 토글
 
 		// 1. foreach
-		row1_square.forEach(function(change){
-			change.addEventListener('click',function(){
-				console.log('확인');
-				if(change.style.backgroundColor == 'yellow'){
-					change.style.backgroundColor = 'white';
-				}else{
-					change.style.backgroundColor = 'yellow';
+		row1_square.forEach(function (change_background) {
+			change_background.addEventListener('click', function () {
+				console.log('클릭 잘 되나 확인');
+				if (change_background.style.backgroundColor == 'yellow') {
+					change_background.style.backgroundColor = 'white';
+				} else {
+					change_background.style.backgroundColor = 'yellow';
 				}
 
 			})
@@ -96,9 +96,26 @@
 
 		// iife : 즉시 실행 함수 표현 : 정의되자마자 즉시 실행
 		// (function () {
-	    // code
+		// code
 		// })();
 
+
+
+		// [2]. 둘째 줄 박스 선택했을 때, 클릭한 박스에 enabled라는 Class가 추가되거나 제거되어야 함
+		row2_square.forEach(function (change_class) {
+			change_class.addEventListener('click', function () {
+				// console.log('클릭 잘 되는지');
+				if (change_class.className == 'square') {
+					// change_class.classList.add('enabled');
+					change_class.className += ' enabled';
+					console.log('추가했을 때 현재 클래스 네임 : ' + change_class.className);
+				} else {
+					// change_class.classList.remove('enabled');
+					change_class.className = 'square';
+					console.log('제거 했을 때 현재 클래스 네임 : ' + change_class.className);
+				}
+			})
+		})
 	</script>
 </body>
 
