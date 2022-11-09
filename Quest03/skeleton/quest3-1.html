@@ -40,12 +40,10 @@
         // console.log(a);
 
 
-   
+
 
         function star_program(line) {
-            if (line <= 0) {
-                console.log("💥0보다 큰 수를 입력해주세요💥");
-            } else {
+            if (line >= 1) {
                 var star = ''; // 할당하지 않으면 undefined가 나와서 빈 값 할당
 
                 for (var i = 0; i < line; i++) {
@@ -58,9 +56,11 @@
                     star += "\n";
                 }
                 console.log(star);
+            } else {
+                console.log("💥0보다 큰 수를 입력해주세요💥");
             }
         }
-        
+
         var line = Number(prompt("1 이상의 줄 수를 입력해주세요", "1"));
         star_program(line);
 
