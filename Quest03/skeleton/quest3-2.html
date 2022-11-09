@@ -36,75 +36,105 @@
 
 	<script>
 
-		// 선택 할 square 배열에 담기
+		/*
+			<문제 1번. 첫번 째 줄 박스를 클릭했을 때, 클릭한 박스 색이 노란색<->하얀색으로 토글>
+			1. 전체의 square를 배열에 담기 (Square)
+			1-2. row1이 가지고 있는 4개의 square만 따로 배열 생성 (row1_square)
+			1-3. 배열 요소를 각각 실행해주기 위해 foreach문(or for문)으로 배열 순회 => 순회하기 위해서 콜백 함수(매개변수 필수)가 필요
+			1-4. 콜백 함수에 대해 클릭 이벤트 함수 추가
+			1-5. 클릭 이벤트 함수에는 조건에 따른 style 변화
+			--------------------------------------------------------------------------------------------------------------------------
+			<문제 2번. 두번 째 줄 박스를 클릭했을 때, 'enabled'라는 Class네임이 추가 되거나 제거되기>
+			1. 전체의 square를 배열에 담기 (Square)
+			2-2. row2가 가지고 있는 4개의 square만 따로 배열 생성 (row2_square)
+			2-3. 배열 요소를 각각 실행해주기 위해 foreach문으로 배열 순회 => 순회하기 위해서 콜백 함수(매개변수 필수)가 필요
+			2-4. 콜백 함수에 대해 클릭 이벤트 함수 추가
+			2-5. 클릭 이벤트 함수에는 조건에 따른 class 네임 변화
+		*/
+
+
+		// 1. 전체의 square를 배열에 담기
 		var rowSquares = document.getElementsByClassName('square');
-		console.log(rowSquares)
+		console.log(rowSquares) // 현재 rowSquares는 HTMLCollection객체 형태
 
 		var Square = [];
 		for (var i = 0; i < rowSquares.length; i++) {
 			Square.push(rowSquares[i]);
 		}
+		console.log(Square); // 배열에 담아주었기 때문에 Array 형태
 
-		console.log(Square);
-
-		// row1의 square 배열
+		// 1-2. row1의 square 배열
 		var row1_square = Square.slice(0, 4);
 		console.log(row1_square);
 
-		// row2의 square 배열
+		// 2-2. row2의 square 배열
 		var row2_square = Square.slice(4, 8);
 		console.log(row2_square);
 
 
-		// [1]. 첫째 줄 박스 선택했을 때, 클릭한 박스 색 노란색<->흰색으로 토글
+		// 문제 1번. 첫째 줄 박스 선택했을 때, 클릭한 박스 색이 노란색<->하얀색으로 토글
 
-		// 1. foreach
-		row1_square.forEach(function (change_background) {
-			change_background.addEventListener('click', function () {
-				console.log('클릭 잘 되나 확인');
-				if (change_background.style.backgroundColor == 'yellow') {
-					change_background.style.backgroundColor = 'white';
-				} else {
-					change_background.style.backgroundColor = 'yellow';
-				}
+		// ①. foreach
+		// 1-3. 각 배열 요소를 실행해주기 위해 forEach로 배열 순회하며 콜백 함수에 전달
+		// row1_square.forEach(function (change_background) { 
+		// 	// 1-4. 전달받은 요소에 대해 클릭 이벤트 설정
+		// 	change_background.addEventListener('click', function () { 
+		// 		console.log('클릭 잘 되나 확인');
+		// 		// 1-5. 조건에 따른 style 변경
+		// 		if (change_background.style.backgroundColor == 'yellow') { 
+		// 			change_background.style.backgroundColor = 'white';
+		// 		} else {
+		// 			change_background.style.backgroundColor = 'yellow';
+		// 		}
 
-			})
-		})
+		// 	})
+		// })
 
-		// 2. for
-		// var는 함수 스코프로 새로운 함수가 생성되어야 스코프 생성
-		// js엔진에서 for문이 돌고 비동기 콜백 함수 실행(for문이 돈 i값을 계속 유지 시키면서 콜백 해준다)하기 때문에
-		// 반복문이 끝난 시점에서 바로 익명 함수를 실행 시키면 i = 5가 들어가게 되니
-		// IIFE인 즉시 실행 함수를 사용해 반복문이 돌 때 같이 익명 함수도 실행하도록 만든다.
-		// 클로저 : 내부 스코프에 i의 값이 없어 외부에 있는 값을 가져옴(외부 변수에 접근할 수 있는 함수)
-		// 여기서  i값을 클로저 변수라 할 수 있음
-		// 또는 ES6버전의 let을 사용하면 IIFE 사용 안 하고 할 수 있음 왜냐면 let은 for문 실행할 때 마다 계속 새로운 스코프를 생성하기 때문에 i가 달라
-		// for (var i = 0; i < row1_square.length; i++) {
-		// 	(function (i) {
-		// 		row1_square[i].addEventListener('click', function () {
-		// 			console.log(i);
-		// 			console.log(row1_square[i]);
-		// 			if (row1_square[i].style.backgroundColor == 'yellow') {
-		// 				row1_square[i].style.backgroundColor = 'white';
-		// 			} else {
-		// 				row1_square[i].style.backgroundColor = 'yellow';
-		// 			}
-		// 		});
-		// 	})(i);
-		// }
+		// ②. for
+		// var는 함수 스코프이며 호스팅되기 때문에 for문이 다 돈 i = 4값이 전역에 설정되어 있다.
+		// 전역에 설정되어 있기 때문에 익명 함수 내에서 i = 4값으로 접근이 가능해진다. (안쪽 스코프에서 바깥쪽 스코프엔 접근 가능하고 반대는 불가능)
+		// 그래서 이런 문제를 해결해주기 위해 for문이 돌 때 각각의 환경을 만들어 주면 되는데
+		// 그 방법이 IIFE로 즉시 실행 함수를 사용하면 된다.
+		// for문이 돌 때 마다 즉시 실행 함수 i값이 파라미터로 전달 되어 j에 저장한다.
+		// 함수의 각 환경이 달라 각자의 값을 기억할 수 있다.
+		// js엔진에서 for문이 돌고 비동기 콜백 함수 실행(for문이 돈 i값이 계속 유지 시키면서 콜백 해준다)하기 때문에
+		for (var i = 0; i < row1_square.length; i++) {
+		(function (j) {
+				row1_square[j].addEventListener('click', function () {
+					console.log('클릭 잘 되는지');
+					console.log('원하는 i값이 잘 들어와지는지 : ' + i);
+					console.log(row1_square[j]);
+					if (row1_square[j].style.backgroundColor == 'yellow') {
+						row1_square[j].style.backgroundColor = 'white';
+					} else {
+						row1_square[j].style.backgroundColor = 'yellow';
+					}
+				});
+			})(i);
+		}
 
+		function a(){
+			for (var i = 0; i < row1_square.length; i++) {
 
-		// iife : 즉시 실행 함수 표현 : 정의되자마자 즉시 실행
+				console.log('뀨' + i);
+			}
+		}
+		a();
+
+		// iife : 즉시 실행 함수 표현 : 정의 되자 마자 즉시 실행
 		// (function () {
 		// code
 		// })();
 
 
 
-		// [2]. 둘째 줄 박스 선택했을 때, 클릭한 박스에 enabled라는 Class가 추가되거나 제거되어야 함
+		// [2]. 두번 째 줄 박스를 클릭했을 때, 'enabled'라는 Class네임이 추가 되거나 제거되기
+		// 1-3. 각 배열 요소를 실행해주기 위해 forEach로 배열 순회하며 콜백 함수에 전달
 		row2_square.forEach(function (change_class) {
+			// 1-4. 전달받은 요소에 대해 클릭 이벤트 설정
 			change_class.addEventListener('click', function () {
-				// console.log('클릭 잘 되는지');
+				// 1-5. 조건에 따른 class 네임 변경
+				console.log('클릭 잘 되는지');
 				if (change_class.className == 'square') {
 					change_class.classList.add('enabled');
 					// change_class.className += ' enabled';
