@@ -31,39 +31,42 @@ console.log('이미지 파일 이름 추가됐는지 확인: ' + img_alt);
 /* 3. Looping through images 이미지 순회 */
 for (i = 0; i < 5; i++) {
     var newImage = document.createElement('img');
-    // 1.에서 만든 src 네임 배열 newImage의 'src'속성에 저장해주기
+    // ①. 에서 만든 src 네임 배열 newImage의 'src'속성에 저장해주기
     newImage.setAttribute('src', img_src[i]);
-    // 2.에서 만든 alt 네임 배열 newImage의 'alt'속성에 저장해주기
+    // ②. 에서 만든 alt 네임 배열 newImage의 'alt'속성에 저장해주기
     newImage.setAttribute('alt', img_alt[i]);
-    // 3. 차곡차곡 thumbBar에 newImage를 맨 뒤쪽으로 차곡차곡 추가해준다(appendChild : 선택한 요소 안에 자식 요소 추가)
+    // ③. 차곡차곡 thumbBar에 newImage를 맨 뒤쪽으로 차곡차곡 추가해준다(appendChild : 선택한 요소 안에 자식 요소 추가)
     thumbBar.appendChild(newImage);
 }
 
 
 /* 4. onclick 핸들러를 각 섬네일 이미지에 추가하기*/
-// onlick도 클릭을 기다리는 비동기 함수라 
-// 즉시 실행 함수를 사용해주면서 각 i에 대한 환경을 만들어줌
+// onlick도 클릭을 기다리는 비동기 함수
+// ①. 새로 만들어준 thumbBar_img의 배열에 맞게 요소를 실행해주기 위해 for문 사용
 for (i = 0; i < thumbBar_img.length; i++) {
-    (function(i){
-    thumbBar_img[i].onclick = function () {
-        displayedImage.setAttribute('src',thumbBar_img[i].getAttribute('src'))
-    }
-})(i);
+    // ②. 즉시 실행 함수를 사용해주면서 각 i에 대한 환경을 만들어줌
+    (function (i) {
+        // ③. 전달 받은 i의 값에 따라 onclick 설정
+        thumbBar_img[i].onclick = function () {
+            // ④. displayedImage의 'src' 속성을 전달 받은 i의 thumbBar_img의 'src'로 교체
+            displayedImage.setAttribute('src', thumbBar_img[i].getAttribute('src'))
+        }
+    })(i);
 }
 
 
 /* 5. Wiring up the Darken/Lighten button 어둡게/밝게 버튼 연결 */
 console.log('버튼 class 네임 확인 : ' + btn.getAttribute('class'));
 
-// 버튼에 대한 클릭 이벤트 콜백 함수 설정
-btn.addEventListener('click', function(){
-    // 조건에 따라 setAttribute 사용하여 속성 변경 & textContent 변경 & style 변경
-    if(btn.getAttribute('class')=='dark'){
+// ①. 버튼에 대한 클릭 이벤트 콜백 함수 설정
+btn.addEventListener('click', function () {
+    // ②. 조건에 따라 setAttribute 사용하여 속성 변경 & textContent 변경 & style 변경
+    if (btn.getAttribute('class') == 'dark') {
         btn.setAttribute('class', 'light');
         btn.textContent = 'Lighten';
         overlay.style.backgroundColor = 'rgba(0,0,0,0.5)';
         // console.log(btn.getAttribute('class'))
-    }else{
+    } else {
         btn.setAttribute('class', 'dark');
         btn.textContent = 'Darken';
         overlay.style.backgroundColor = 'rgba(0,0,0,0)';
