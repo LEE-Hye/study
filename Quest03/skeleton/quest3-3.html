@@ -1,45 +1,146 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
 
-    <title>구구단 게임</title>
+<head>
+  <meta charset="utf-8">
 
-    <style>
-      body {
-        width: 50%;
-        max-width: 800px;
-        min-width: 480px;
-        margin: 0 auto;
-      }
+  <title>구구단 게임</title>
 
-    </style>
-  </head>
+  <style>
+    body {
+      width: 50%;
+      max-width: 800px;
+      min-width: 480px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
 
-  <body>
-    <h1>구구단 게임</h1>
+<body>
+  <h1>구구단 게임</h1>
 
-    <li style="margin-bottom:5px;">랜덤값으로 지정할 수 있는 최대 자릿수는 3입니다.</li>
-    <li style="margin-bottom:5px;">자릿수를 등록하면 해당 자릿수 크기의 숫자 2개가 랜덤으로 표시 됩니다.</li>
-    <li style="margin-bottom:5px;">랜덤으로 표시되는 2개 숫자의 곱셈값을 기록하세요.</li>
-    <div class="setDigitForm">
-      <label for="setDigitNum">자릿수를 설정해주세요: </label>
-      <input type="text" id="setDigitNum" class="setDigitNum">
-      <input type="submit" value="등록" class="setDigitSubmit">
-    </div>
-	
-    <div class="form" style="margin-top:40px;">
-      <sapn id="randA">랜덤값A</sapn> X <sapn id="randB">랜덤값B</sapn> =  <input type="text" id="guessField" class="guessField">
-      <input type="submit" value="정답확인" class="guessSubmit">
-    </div>
+  <li style="margin-bottom:5px;">랜덤값으로 지정할 수 있는 최대 자릿수는 3입니다.</li>
+  <li style="margin-bottom:5px;">자릿수를 등록하면 해당 자릿수 크기의 숫자 2개가 랜덤으로 표시 됩니다.</li>
+  <li style="margin-bottom:5px;">랜덤으로 표시되는 2개 숫자의 곱셈값을 기록하세요.</li>
+  <div class="setDigitForm">
+    <label for="setDigitNum">자릿수를 설정해주세요: </label>
+    <input type="text" id="setDigitNum" class="setDigitNum">
+    <input type="submit" value="등록" class="setDigitSubmit">
+  </div>
 
-    <div class="resultArea" style="margin-top:40px;">
-      <span>정답여부는 여기에!!</span>
-    </div>
+  <div class="form" style="margin-top:40px;">
+    <sapn id="randA">랜덤값A</sapn> X <sapn id="randB">랜덤값B</sapn> = <input type="text" id="guessField" class="guessField">
+    <input type="submit" value="정답확인" class="guessSubmit">
+  </div>
 
-    <script>
-      /** TODO: 여기에 게임이 작동될 수 있도록 스크립트를 짜보세요  */
+  <div class="resultArea" style="margin-top:40px;">
+    <span>정답여부는 여기에!!</span>
+  </div>
 
-    </script>
-  </body>
+  <script>
+    /** TODO: 여기에 게임이 작동될 수 있도록 스크립트를 짜보세요 */
+
+
+    // 1. 자릿수에 따른 랜덤값 설정해주는 함수
+    //    1-1. 입력한 자릿수에 따라 조건문 지정해주기(조건줬으면 예외처리 해주기)
+    //    1-2. 자릿수에 맞는 랜덤값 설정
+    //    1-3. 설정한 랜덤 값 화면에 출력
+    // 2. 정답 여부 체크 해주는 함수
+    //    2-1. 랜덤값에 따른 조건문 주기
+
+    var setDN;  // 자릿수 적는 곳
+    var setDS; // 자릿수 값 보내주기
+    var ranA; // 랜덤값A 설정
+    var ranB; // 랜덤값B 설정
+    var setRanA; // 계산할 랜덤값A 받아와서 화면 출력
+    var setRanB; // 계산할 랜덤값B 받아와서 화면 출력
+    var guessF; // 계산한 값 적는 곳
+    var guessS; // 계산한 값 보내주기
+    var setResultA; // 정답 여부 화면 출력하는 곳의 부모
+    var setResult; // 정답 여부 화면에 출력
+
+    setDS = document.getElementsByClassName('setDigitSubmit')[0];
+    guessS = document.getElementsByClassName('guessSubmit')[0];
+    setResultA = document.getElementsByClassName('resultArea')[0];
+    setResult = setResultA.getElementsByTagName('span')[0];
+
+    // 자릿수에 따른 랜덤값 설정해주는 함수
+    function Digit() {
+      setDS.addEventListener('click', function () {
+        setDN = Number(document.getElementById('setDigitNum').value);
+        // console.log('클릭되나');
+        switch (setDN) {
+          case 1:
+            // console.log('1의 자리');
+            ranA = Math.floor(Math.random() * 10);
+            ranB = Math.floor(Math.random() * 10);
+            console.log('1의 자리 ranA값 잘 들어오나' + ranA);
+            console.log('1의 자리 ranB값 잘 들어오나' + ranB);
+
+            a();
+
+            break;
+          case 2:
+            // console.log('2의 자리');
+            ranA = Math.floor(Math.random() * (100 - 10)) + 10; // min <= number < max
+            ranB = Math.floor(Math.random() * (100 - 10)) + 10; 
+            console.log('1의 자리 ranA값 잘 들어오나' + ranA);
+            console.log('1의 자리 ranB값 잘 들어오나' + ranB);
+
+            a();
+            
+
+            break;
+          case 3:
+            // console.log('3의 자리');
+            ranA = Math.floor(Math.random() * (1000 - 100)) + 100;
+            ranB = Math.floor(Math.random() * (1000 - 100)) + 100;
+            console.log('1의 자리 ranA값 잘 들어오나' + ranA);
+            console.log('1의 자리 ranB값 잘 들어오나' + ranB);
+
+            a();
+
+
+            break;
+          default:
+            console.log('1에서 3의 숫자만 넣어주세요');
+            break;
+        }
+      });
+    }
+
+    // 정답 여부 체크 하는 함수
+    function molo(){
+      guessS.addEventListener('click', function(){
+              guessF = Number(document.getElementById('guessField').value);
+              console.log(ranA);
+              console.log(ranB);
+              console.log(guessF);
+              if((ranA * ranB) == guessF){
+                setResult.innerHTML = '정답입니다.';
+                console.log('정답입니다.');
+              }else{
+                console.log('틀림');
+              }
+            });
+    };
+
+
+    // 랜덤 함수 화면에 출력
+    function a(){
+      setRanA = document.getElementById('randA');
+            setRanA.innerHTML = ranA;
+            setRanB = document.getElementById('randB');
+            setRanB.innerHTML = ranB;
+    }
+
+    Digit(); // 자릿수 설정 & 자릿수에 맞는 랜덤값 설정 함수
+    molo(); // 정답 여부 체크 하는 함수
+
+
+
+
+  </script>
+</body>
+
 </html>
