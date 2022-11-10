@@ -14,8 +14,8 @@ var i;
 // ①. src 네임 담아줄 빈 배열 생성
 srcImg = [];
 // ②. for문을 활용해 src 네임 배열에 추가해주기
-for (i = 1; i <= 5; i++) {
-    srcImg.push('images/pic' + [i] + '.jpg');
+for (i = 0; i < 5; i++) {
+    srcImg.push('images/pic' + [i+1] + '.jpg');
 }
 console.log('이미지 파일 이름 추가됐는지 확인: ' + srcImg);
 
