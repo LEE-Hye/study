@@ -53,73 +53,75 @@
 		*/
 
 
-		// 1. 전체의 square를 배열에 담기
+		// 1. 전체의 square 요소를 변수로 받기
 		var rowSquares = document.getElementsByClassName('square');
 		console.log(rowSquares) // 현재 rowSquares는 HTMLCollection객체 형태
 
-		var Square = [];
-		for (var i = 0; i < rowSquares.length; i++) {
-			Square.push(rowSquares[i]);
-		}
-		console.log(Square); // 배열에 담아주었기 때문에 Array 형태
-
 		// 1-2. row1의 square 배열
-		var row1_square = Square.slice(0, 4);
-		console.log(row1_square);
+		var row1Square = [];
+		for (var i = 0; i < 4; i++) {
+			row1Square.push(rowSquares[i]);
+		}
+		console.log(row1Square); // 배열에 담아주었기 때문에 Array 형태
 
 		// 2-2. row2의 square 배열
-		var row2_square = Square.slice(4, 8);
-		console.log(row2_square);
+		var row2Square = [];
+		for (var i = 4; i < 8; i++) {
+			row2Square.push(rowSquares[i]);
+		}
+
 
 
 		// 문제 1번. 첫째 줄 박스 선택했을 때, 클릭한 박스 색이 노란색<->하얀색으로 토글
 
 		// ①. foreach
 		// 1-3. 각 배열 요소를 실행해주기 위해 forEach로 배열 순회하며 콜백 함수에 전달
-		// row1_square.forEach(function (change_background) { 
+		// row1Square.forEach(function (change_background) { 
 		// 	// 1-4. 전달받은 요소에 대해 클릭 이벤트 설정
 		// 	change_background.addEventListener('click', function () { 
 		// 		console.log('클릭 잘 되나 확인');
 		// 		// 1-5. 조건에 따른 style 변경
-		// 		if (change_background.style.backgroundColor == 'yellow') { 
+		// 		if (change_background.style.backgroundColor === 'yellow') { 
 		// 			change_background.style.backgroundColor = 'white';
 		// 		} else {
 		// 			change_background.style.backgroundColor = 'yellow';
 		// 		}
 
-		// 	})
-		// })
+		// 	});
+		// });
 
 		// ②. for
-		// <원래 하던데로 만들면 문제점>
-		// js엔진에서 for문이 돌고 비동기 작업 후 콜백 함수 실행
-		// var는 함수 스코프이며 호스팅되기 때문에 for문이 다 돈 i = 4값이 전역에 설정되어 있다.
-		// 전역에 설정되어 있기 때문에 콜백 함수 내에서 i = 4값으로만 접근이 가능해진다. (안쪽 스코프에서 바깥쪽 스코프엔 접근 가능하고 반대는 불가능)
-		// <해결 방안>
-		// 그 방법이 IIFE로 즉시 실행 함수를 사용하면 된다.
-		// for문이 돌 때 각각의 환경을 만들어 주면 되는데
-		// for문이 돌 때 마다 즉시 실행 함수 i값이 파라미터로 전달 되어 j에 저장한다.
-		// 함수의 각 환경이 달라 각자의 값을 기억할 수 있다.
+		/** <원래 하던데로 만들면 문제점>
+		 js엔진에서 for문이 돌고 비동기 작업 후 콜백 함수 실행
+		 var는 함수 스코프이며 호스팅되기 때문에 for문이 다 돈 i = 4값이 전역에 설정되어 있다.
+		 전역에 설정되어 있기 때문에 콜백 함수 내에서 i = 4값으로만 접근이 가능해진다. (안쪽 스코프에서 바깥쪽 스코프엔 접근 가능하고 반대는 불가능)*/
+		/** <해결 방안>
+		그 방법이 IIFE로 즉시 실행 함수를 사용하면 된다.
+		for문이 돌 때 각각의 환경을 만들어 주면 되는데
+		for문이 돌 때 마다 즉시 실행 함수 i값이 파라미터로 전달 되어 j에 저장한다.
+		함수의 각 환경이 달라 각자의 값을 기억할 수 있다.
+		*/
 		//-----------------------------------------------------------
-		// 자바스크립트는 기본적으로 함수 스코프를 따름
-		// js는 동기식 처리(한줄 한줄)인데 예외로 시간이 오래 걸리는 code는 stack에서 제외 시켜 web API라는 곳에서 저장 시키고 나중에 code를 실행 ex) ajax, setTimeout, eventLister 등
-		// 이런게 비동기 라고 하는데 실행이 오래 걸리는 코드들은 잠시 대기실에 제쳐두고 바로 실행이 가능한 코드부터 처리
-		// (비동기 작업 : 실행중인 작업이 종료되지 않아도 대기 없이 다음 작업 실행)
-		// (콜백 함수 : 어떤 이벤트에 의해 호출되어지는 함수/함수내에 함수)
-		// 비동기 함수가 호출되면 Web API에 해당 함수가 등록 되고 Call Stack에서 제거 되고 비동기 이벤트가 동작하면 콜백 함수가 콜백큐에 푸쉬
-		// (또는 es6중 let을 사용하면 for루프 마다 새로운 스코프를 만들기 때문에 i가 0인, 2인 스코프 등으로 만들어 내서 루프마다 만들어진 새로운 스코프 참조)
-		// 클로저? 내부에 선언된 함수가 외부 함수의 지역 변수를 사용했을 때 클로저라고 함.
-		// 위에서 즉시 실행 함수로 클로저를 만들면서 외부 함수의 렉시컬 환경을 참조 하고 있음
-		for (var i = 0; i < row1_square.length; i++) {
-		(function (j) {
-				row1_square[j].addEventListener('click', function () {
+		/** 자바스크립트는 기본적으로 함수 스코프를 따름
+		js는 동기식 처리(한줄 한줄)인데 예외로 시간이 오래 걸리는 code는 stack에서 제외 시켜 web API라는 곳에서 저장 시키고 나중에 code를 실행 ex) ajax, setTimeout, eventLister 등
+		이런게 비동기 라고 하는데 실행이 오래 걸리는 코드들은 잠시 대기실에 제쳐두고 바로 실행이 가능한 코드부터 처리
+		(비동기 작업 : 실행중인 작업이 종료되지 않아도 대기 없이 다음 작업 실행)
+		(콜백 함수 : 어떤 이벤트에 의해 호출되어지는 함수/함수내에 함수)
+		비동기 함수가 호출되면 Web API에 해당 함수가 등록 되고 Call Stack에서 제거 되고 비동기 이벤트가 동작하면 콜백 함수가 콜백큐에 푸쉬
+		(또는 es6중 let을 사용하면 for루프 마다 새로운 스코프를 만들기 때문에 i가 0인, 2인 스코프 등으로 만들어 내서 루프마다 만들어진 새로운 스코프 참조)
+		클로저? 내부에 선언된 함수가 외부 함수의 지역 변수를 사용했을 때 클로저라고 함.
+		위에서 즉시 실행 함수로 클로저를 만들면서 외부 함수의 렉시컬 환경을 참조 하고 있음
+		*/
+		for (var i = 0; i < row1Square.length; i++) {
+		(function (_i) {
+			row1Square[_i].addEventListener('click', function () {
 					console.log('클릭 잘 되는지');
-					console.log('원하는 i값이 잘 들어와지는지 : ' + i);
-					console.log(row1_square[j]);
-					if (row1_square[j].style.backgroundColor == 'yellow') {
-						row1_square[j].style.backgroundColor = 'white';
+					console.log('원하는 _i 잘 들어와지는지 : ' + _i);
+					console.log(row1Square[_i]);
+					if (row1Square[_i].style.backgroundColor === 'yellow') {
+						row1Square[_i].style.backgroundColor = 'white';
 					} else {
-						row1_square[j].style.backgroundColor = 'yellow';
+						row1Square[_i].style.backgroundColor = 'yellow';
 					}
 				});
 			})(i);
@@ -134,24 +136,33 @@
 
 		// [2]. 두번 째 줄 박스를 클릭했을 때, 'enabled'라는 Class네임이 추가 되거나 제거되기
 		// 1-3. 각 배열 요소를 실행해주기 위해 forEach로 배열 순회하며 콜백 함수에 전달
-		row2_square.forEach(function (change_class) {
+		row2Square.forEach(function (change_class) {
 			// 1-4. 전달받은 요소에 대해 클릭 이벤트 설정
 			change_class.addEventListener('click', function () {
 				// 1-5. 조건에 따른 class 네임 변경
 				console.log('클릭 잘 되는지');
-				if (change_class.className == 'square') {
+				switch(change_class.className){
+				case 'square' :
 					change_class.classList.add('enabled');
-					// change_class.className += ' enabled';
-					console.log('추가했을 때 현재 클래스 네임 : ' + change_class.className);
-				} else {
+					break;
+				default : 
 					change_class.classList.remove('enabled');
-					// change_class.className = 'square'; 모든 클래스가 square로 바뀜
-					// change_class.classList.replace('enabled','square'); ClassList가 스스로 중복 제거
-					console.log('제거 했을 때 현재 클래스 네임 : ' + change_class.className);
+					break;
 				}
+				
+				// if (change_class.className === 'square') {
+				// 	change_class.classList.add('enabled');
+				// 	// change_class.className += ' enabled';
+				// 	console.log('추가했을 때 현재 클래스 네임 : ' + change_class.className);
+				// } else {
+				// 	change_class.classList.remove('enabled');
+				// 	// change_class.className = 'square'; 모든 클래스가 square로 바뀜
+				// 	// change_class.classList.replace('enabled','square'); ClassList가 스스로 중복 제거
+				// 	console.log('제거 했을 때 현재 클래스 네임 : ' + change_class.className);
+				// }
 				// change_class.classList.toggle('enabled'); 클래스가 존재하면 제거, 없으면 추가
-			})
-		})
+			});
+		});
 	</script>
 </body>
 
