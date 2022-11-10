@@ -86,7 +86,7 @@ btn.onclick = function () {
 //         btn.setAttribute('class', 'dark');
 //         btn.textContent = 'Darken';
 //         overlay.style.backgroundColor = 'rgba(0,0,0,0)';
-//         // console.log(btn.getAttribute('class'));코드 리뷰로 네이밍구조, 주석설정,
+//         // console.log(btn.getAttribute('class'));
 //     }
 // });
 
