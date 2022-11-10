@@ -113,8 +113,8 @@
 		위에서 즉시 실행 함수로 클로저를 만들면서 외부 함수의 렉시컬 환경을 참조 하고 있음
 		*/
 		for (var i = 0; i < row1Square.length; i++) {
-		(function (_i) {
-			row1Square[_i].addEventListener('click', function () {
+			(function (_i) {
+				row1Square[_i].addEventListener('click', function () {
 					console.log('클릭 잘 되는지');
 					console.log('원하는 _i 잘 들어와지는지 : ' + _i);
 					console.log(row1Square[_i]);
@@ -141,15 +141,15 @@
 			change_class.addEventListener('click', function () {
 				// 1-5. 조건에 따른 class 네임 변경
 				console.log('클릭 잘 되는지');
-				switch(change_class.className){
-				case 'square' :
-					change_class.classList.add('enabled');
-					break;
-				default : 
-					change_class.classList.remove('enabled');
-					break;
+				switch (change_class.className) {
+					case 'square':
+						change_class.classList.add('enabled');
+						break;
+					default:
+						change_class.classList.remove('enabled');
+						break;
 				}
-				
+
 				// if (change_class.className === 'square') {
 				// 	change_class.classList.add('enabled');
 				// 	// change_class.className += ' enabled';
