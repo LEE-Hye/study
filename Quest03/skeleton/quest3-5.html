@@ -1,44 +1,128 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
 
     <title>가위바위보 게임</title>
 
     <style>
-      body {
-        width: 50%;
-        max-width: 800px;
-        min-width: 480px;
-        margin: 0 auto;
-      }
-
+        body {
+            width: 50%;
+            max-width: 800px;
+            min-width: 480px;
+            margin: 0 auto;
+        }
     </style>
-  </head>
+</head>
 
-  <body>
+<body>
     <h1>가위바위보 게임</h1>
 
     <li style="margin-bottom:5px;">게임시작을 누르면 랜덤값으로 가위,바위,보중 하나가 지정됩니다.</li>
     <li style="margin-bottom:15px;">유저도 가위,바위,보중에 하나를 선택하고 결과를 확인합니다.</li>
     <div class="setDigitForm">
-      <input type="button" value="게임시작" class="setPrsSubmit" style="width:310px;">
+        <input type="button" value="게임시작" class="setPrsSubmit" style="width:310px;">
     </div>
-	
+
     <div class="form" style="margin-top:40px;">
-      <input type="button" id="btnScissors" value="가위" class="btnScissors" style="width:100px;">
-      <input type="button" id="btnRock" value="바위" class="btnRock" style="width:100px;">
-      <input type="button" id="btnPaper" value="보" class="btnPaper" style="width:100px;">
+        <input type="button" id="btnScissors" value="가위" class="btnScissors" style="width:100px;">
+        <input type="button" id="btnRock" value="바위" class="btnRock" style="width:100px;">
+        <input type="button" id="btnPaper" value="보" class="btnPaper" style="width:100px;">
     </div>
 
     <div class="resultArea" style="margin-top:40px;">
-      <span>승패여부는 여기에!!</span>
+        <span>승패여부는 여기에!!</span>
     </div>
 
     <script>
-      /** TODO: 여기에 게임이 작동될 수 있도록 스크립트를 짜보세요  */
-      
+        /** TODO: 여기에 게임이 작동될 수 있도록 스크립트를 짜보세요  */
+        /**
+         * 1. 게임 시작 누르는 함수
+         *      1-1. 게임 시작을 누르기
+         *      1-2. 가위, 바위, 보 배열에 넣기
+         *      1-3. 가위, 바위, 보 중 랜덤으로 한 변수에 저장하기
+         * 2. 유저가 누른 값과 비교하는 함수
+         *      2-1. 
+        */
+
+
+        /** 1. 게임 시작 누르는 함수 */
+        var srpStart;
+        var srpArr;
+        var srpArrRandom;
+
+        srpStart = document.getElementsByClassName('setPrsSubmit')[0]; // 게임 시작 버튼
+        srpArr = ['가위', '바위', '보']; // 배열에 가위,바위,보 삽입
+
+        /** 2. 유저가 누른 값과 비교하는 함수 */
+        var userScissors;
+        var userRock;
+        var userPaper;
+        var userSelect;
+        var i;
+        var resultAreaParent;
+        var resultAreaChild;
+
+        userRock = document.getElementById('btnRock');
+        userScissors = document.getElementById('btnScissors');
+        userPaper = document.getElementById('btnPaper');
+        userSelect = [userScissors, userRock, userPaper];
+        resultAreaParent = document.getElementsByClassName('resultArea')[0];
+        resultAreaChild = resultAreaParent.getElementsByTagName('span')[0];
+
+
+        // 게임 시작 버튼 누르기 전 또는 게임 끝났을 때 가위, 바위, 보 버튼 비활성화 하기 위한 애
+        function btnDisabled() {
+            for (i = 0; i < userSelect.length; i++) {
+                userSelect[i].disabled = true;
+            }
+        }
+
+        // 게임 시작 버튼 누르고 가위, 바위, 보 버튼 활성화 하기 위한 애
+        function btnAbled() {
+            for (i = 0; i < userSelect.length; i++) {
+                userSelect[i].disabled = false;
+            }
+        }
+
+        btnDisabled();
+
+        srpStart.addEventListener('click', function () {
+
+            btnAbled();
+
+            srpArrRandom = Math.floor(Math.random() * srpArr.length);
+            console.log(srpArr[srpArrRandom]);
+
+            for (i = 0; i < userSelect.length; i++) {
+                (function (i) {
+                    userSelect[i].addEventListener('click', function () {
+                        console.log('사용자 선택 값 : ' + i);
+                        console.log('랜덤 값' + srpArrRandom);
+
+                        if (srpArrRandom === i) {
+                            resultAreaChild.innerHTML = '비겼습니다.';
+                        } else if ((srpArrRandom === 0 && i === 1) || (srpArrRandom === 1 && i === 2) || (srpArrRandom === 2 && i === 0)) {
+                            /** srpArrRandom < i
+                             *  0 < 1 : 가위 < 바위
+                             *  1 < 2 : 바위 < 보
+                             *  2 < 0 : 보 < 가위
+                             * */
+                            resultAreaChild.innerHTML = '이겼습니다.';
+                        } else {
+                            resultAreaChild.innerHTML = '졌습니다.';
+                        }
+                        btnDisabled()
+                    });
+                })(i);
+            }
+
+        });
+
+
 
     </script>
-  </body>
+</body>
+
 </html>
