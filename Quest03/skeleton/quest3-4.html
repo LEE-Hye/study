@@ -76,12 +76,20 @@
 		var guess1;			// 사용자의 추측 값 1의 자리
 		var guess10; 		// 사용자의 추측 값 10의 자리
 		var guess100; 		// 사용자의 추측 값 100의 자리
+		var guessBall; 		// 몇 볼인지 세어줌
+		var guessStrike;	// 몇 스트라이크인지 세어줌
+		var guessOut;		// 몇 아웃인지 세어줌
+		var guessCount;		// 몇 회 입력했는지 세어줌
+		var resultAreaP;	// 정답 영역 부모
+		var resultAreaSB;	// 정답 스트라이크인지 볼인지 보여줌
 
 		gameStart = document.getElementsByClassName('setDigitSubmit')[0]; 	// 1. 게임시작 버튼
 		guessBtn = document.getElementsByClassName('guessSubmit')[0]; 		// 3. 추측한 값 정답 확인 버튼
+		resultAreaP = document.getElementsByClassName('resultArea')[0];		// 3. 정답 영역 부모
+		resultAreaSB = resultAreaP.getElementsByTagName('span')[0];			// 3. 정답 스트라이크인지 볼인지 보여줌
+		guessBtn.disabled = true;											// 3. 게임 시작 전에 정답확인 버튼 못누르게
+		guessCount = 0;														// 3. 정답 확인 몇 번 누르는지
 
-
-		
 		/** 2. 중복 값 없는 랜덤 값 저장하는 함수 */
 		// 중복 제거하는 방법 또 찾아보기
 		function randomHamsu() {
@@ -93,9 +101,9 @@
 					i--;
 				}
 			}
-			
+
 			if (randomArr.length > 3) {
-				
+
 				randomArr.length = 3;
 			}
 			console.log(randomArr);
@@ -105,29 +113,88 @@
 
 		/** 1. 게임시작 버튼 클릭시 랜덤 값 저장하는 함수 불러오기 */
 		gameStart.addEventListener('click', function () {
-		
-				randomHamsu();
+
+			randomHamsu();
+			guessBtn.disabled = false;
+
 			
+
 		});
 
 
 
 		/** 3. 배열에 저장된 값과 사용자가 입력한 값 비교 함수 */
+
 		guessBtn.addEventListener('click', function () {
 			guessValue = Number(document.getElementById('guessField').value);
 			console.log('guess값 잘 들어와지는지 : ' + guessValue);
 
 			guess100 = parseInt(guessValue / 100);
-			console.log('100의 자리 : ' + guess100);
+			// console.log('100의 자리 : ' + guess100);
 			guess10 = parseInt((guessValue - guess100 * 100) / 10);
-			console.log('10의 자리 : ' + guess10);
-			guess1 = guessValue -  guess100 * 100 - guess10 * 10;
-			console.log('1의 자리 : ' + guess1);
+			// console.log('10의 자리 : ' + guess10);
+			guess1 = guessValue - guess100 * 100 - guess10 * 10;
+			// console.log('1의 자리 : ' + guess1);
 
-			console.log(randomHamsu());
+			randomHamsu();
+			// console.log(randomArr.indexOf(guess100));
+			// console.log(randomArr.indexOf(guess10));
+			// console.log(randomArr.indexOf(guess1));
+
+			guessCount++;
 
 
-		})
+			if (guessCount === 9) {
+				resultAreaSB.innerHTML = '게임 OVER';
+				guessBtn.disabled = true;
+			} else {
+				for (i = 0; i < randomArr.length; i++) {
+					guessBall = 0;
+					guessStrike = 0;
+					guessOut = 0;
+					if (randomArr.indexOf(guess100) > -1) {
+						if (randomArr.indexOf(guess100) === 0) {
+							guessStrike++;
+						} else {
+							guessBall++;
+						}
+					}else{
+						guessOut++;
+					}
+					if (randomArr.indexOf(guess10) > -1) {
+						if (randomArr.indexOf(guess10) === 1) {
+							guessStrike++;
+						} else {
+							guessBall++;
+						}
+					}else{
+						guessOut++;
+					}
+					if (randomArr.indexOf(guess1) > -1) {
+						if (randomArr.indexOf(guess1) === 2) {
+							guessStrike++;
+						} else {
+							guessBall++;
+						}
+					}else{
+						guessOut++;
+					}
+
+					resultAreaSB.innerHTML = guessBall + '볼 ' + guessStrike + '스트라이크 ' + guessOut + '아웃';
+
+					if(guessStrike === 3){
+						guessBtn.disabled = true;
+						resultAreaSB.innerHTML = '왕 다 맞췄습니다~!!🎉';
+					}
+					
+				}
+			}
+
+
+
+
+
+		});
 
 	</script>
 </body>
