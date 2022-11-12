@@ -87,7 +87,6 @@
 		resultAreaP = document.getElementsByClassName('resultArea')[0];		// 3. 정답 영역 부모
 		resultAreaSB = resultAreaP.getElementsByTagName('span')[0];			// 3. 정답 스트라이크인지 볼인지 보여줌
 		guessBtn.disabled = true;											// 3. 게임 시작 전에 정답확인 버튼 못누르게
-		guessCount = 0;														// 3. 정답 확인 몇 번 누르는지
 
 		/** 2. 중복 값 없는 랜덤 값 저장하는 함수 */
 		// 중복 제거하는 방법 또 찾아보기
@@ -115,6 +114,8 @@
 
 			randomHamsu();
 			guessBtn.disabled = false;
+			guessCount = 0;	
+			document.getElementById('guessField').value = ''
 
 
 		});
