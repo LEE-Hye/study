@@ -113,9 +113,10 @@
 		gameStart.addEventListener('click', function () {
 
 			randomHamsu();
-			guessBtn.disabled = false;
-			guessCount = 0;	
-			document.getElementById('guessField').value = ''
+			guessBtn.disabled = false;	// 정답확인 버튼 활성화
+			guessCount = 0;	// 횟수 초기화
+			document.getElementById('guessField').value = '';	// input value값 초기화
+			resultAreaSB.innerHTML = '정답여부는 여기에!!';		// 필드 초기화
 
 
 		});
@@ -190,7 +191,7 @@
 		 * 4. 일단 코드 자체가 if안에 if안에 if가 있어 지저분함 고쳐야 함
 		 * ✔ 5. 입력한 값과 몇 볼 몇 스트라이크 등이였는지 그 전 값들도 다 화면에 출력해주기 ==> 했음
 		 * 6. 다 다를 시 아웃도 입력해줘야 할 거 같음
-		 * 7. 💥💥문제 발생!! 게임 시작 눌렀을 때 카운트들이 초기화 되어야 하는데 안되고 있음!!!💥💥
+		 * ✔ 7. 💥💥문제 발생!! 게임 시작 눌렀을 때 카운트들이 초기화 되어야 하는데 안되고 있음!!!💥💥 ==> 초기화는 했는데 이런식으로 하는 게 맞는지
 		 * 
 		 * 
 		 
