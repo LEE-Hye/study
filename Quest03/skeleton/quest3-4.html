@@ -122,6 +122,19 @@
 		});
 
 
+		// 4. 화면에 출력할 것들 함수에 담기
+		function output() {
+			if (randomArr.indexOf(guess1) == -1 && randomArr.indexOf(guess10) == -1 && randomArr.indexOf(guess100) == -1) {
+				resultAreaSB.innerHTML += '<h3> <' + guessCount + '회> OUT';
+			} else {
+				resultAreaSB.innerHTML += '<h3> <' + guessCount + '회>' + guessValue + ' : ' + guessBall + 'B ' + guessStrike + 'S';
+			}
+			if (guessStrike === 3) {
+				guessBtn.disabled = true;
+				resultAreaSB.innerHTML += '<h3>🎊' + guessCount + '번 만에 맞췄습니다~!! 추카포카🎊</h3>';
+			}
+		};
+
 
 		/** 3. 배열에 저장된 값과 사용자가 입력한 값 비교 함수 */
 
@@ -174,18 +187,8 @@
 					}
 
 				}
-				if (randomArr.indexOf(guess1) == -1 && randomArr.indexOf(guess10) == -1 && randomArr.indexOf(guess100) == -1) {
-					resultAreaSB.innerHTML += '<h3> <' + guessCount + '회> OUT';
-				} else {
-					resultAreaSB.innerHTML += '<h3> <' + guessCount + '회>' + guessValue + ' : ' + guessBall + 'B ' + guessStrike + 'S';
-				}
-				if (guessStrike === 3) {
-					guessBtn.disabled = true;
-					resultAreaSB.innerHTML += '<h3>🎊' + guessCount + '번 만에 맞췄습니다~!! 추카포카🎊</h3>';
-				}
-
+				output();
 			}
-
 		});
 
 
