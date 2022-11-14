@@ -91,7 +91,7 @@
             setRanA.innerHTML = ranA;
             setRanB.innerHTML = ranB;
             guessFieldSubmit.disabled = false;
-        }
+        };
 
         /** 1. 자릿수에 따른 랜덤값 설정해주는 함수 */
         setDigitSub.addEventListener('click', function () {
@@ -100,17 +100,14 @@
 
             switch (setDigitNumberValue) {
                 case 1:
-                    // console.log('1의 자리');
                     random(10, 1);
                     resultOutput.innerHTML = '<h3>✔한자리 숫자를 선택하셨습니다.</h3>';
                     break;
                 case 2:
-                    // console.log('2의 자리');
                     random(100, 10);
                     resultOutput.innerHTML = '<h3>✔두자리 숫자를 선택하셨습니다.</h3>';
                     break;
                 case 3:
-                    // console.log('3의 자리');
                     random(1000, 100);
                     resultOutput.innerHTML = '<h3>✔세자리 숫자를 선택하셨습니다.</h3>';
                     break;
