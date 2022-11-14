@@ -53,13 +53,14 @@
 
 		/**
 		 * 1. 게임 시작 함수
-		 *  1-1. 2함수 불러오기
+		 * 1-1. 2. 랜덤값 함수 불러오기
 		 * 2. 중복값 없는 랜덤값 저장 함수
 		 * 3. 배열에 저장된 값과 사용자가 입력한 값 비교하는 함수
 		 *  3-1. 유저의 세자리 입력값 받아오기
 		 *  3-2. 비교 후 결과 확인
-		 *  3-3. 결과 여부 화면에 출력
+		 *  3-3. 4. 결과 여부 화면에 출력
 		 *  3-4. 9회 안에 성공하지 못했을 때 게임 종료
+		 * 4. 조건에 따라 화면에 출력하는 함수
 		 */
 
 		/** 1. 게임 시작 함수 */
@@ -71,6 +72,7 @@
 		var i; 				// for문 변수
 
 		/** 3. 사용자가 입력한 값 추출 비교 함수 */
+		var guessInput;		// input값 입력 공간
 		var guessValue; 	// 사용자의 추측 값
 		var guessBtn; 		// 추측한 값 정답 확인 버튼
 		var guess1;			// 사용자의 추측 값 1의 자리
@@ -79,129 +81,116 @@
 		var guessBall; 		// 몇 볼인지 세어줌
 		var guessStrike;	// 몇 스트라이크인지 세어줌
 		var guessCount;		// 몇 회 입력했는지 세어줌
-		var resultAreaP;	// 정답 영역 부모
-		var resultAreaSB;	// 정답 스트라이크인지 볼인지 보여줌
+		var resultAreaP;	// 정답 영역 출력하기 위한 부모
+		var resultAreaC;	// 정답 영역 출력하는 곳
 
 		gameStart = document.getElementsByClassName('setDigitSubmit')[0]; 	// 1. 게임시작 버튼
 		guessBtn = document.getElementsByClassName('guessSubmit')[0]; 		// 3. 추측한 값 정답 확인 버튼
-		resultAreaP = document.getElementsByClassName('resultArea')[0];		// 3. 정답 영역 부모
-		resultAreaSB = resultAreaP.getElementsByTagName('span')[0];			// 3. 정답 스트라이크인지 볼인지 보여줌
+		guessInput = document.getElementById('guessField');					// 3. 정답 영역 
+		resultAreaP = document.getElementsByClassName('resultArea')[0];		// 3. 정답 영역 출력하기 위한 부모
+		resultAreaC = resultAreaP.getElementsByTagName('span')[0];			// 3. 정답 영역 출력하는 곳
 		guessBtn.disabled = true;											// 3. 게임 시작 전에 정답확인 버튼 못누르게
+
+
 
 		/** 2. 중복 값 없는 랜덤 값 저장하는 함수 */
 		// 중복 제거하는 방법 또 찾아보기
 		function randomHamsu() {
 			for (i = 0; i < 3; i++) {
-				randomNum = Math.floor(Math.random() * 9) + 1;
+				randomNum = Math.floor(Math.random() * (10 - 1)) + 1;
 				if (randomArr.indexOf(randomNum) === -1) { // indexof : 배열에서 지정된 요소를 찾을 수 있는 첫 번째 인덱스 반환. 배열에 존재하지 않으면 -1을 반환
 					randomArr.push(randomNum);
 				} else {
 					i--;
 				}
 			}
-
 			if (randomArr.length > 3) {
-
 				randomArr.splice(0, 3);
 			}
 			console.log(randomArr);
 			return randomArr;
-
 		};
 
 		/** 1. 게임시작 버튼 클릭시 랜덤 값 저장하는 함수 불러오기 */
 		gameStart.addEventListener('click', function () {
-
 			randomHamsu();
 			guessBtn.disabled = false;	// 정답확인 버튼 활성화
 			guessCount = 0;	// 횟수 초기화
-			document.getElementById('guessField').value = '';	// input value값 초기화
-			resultAreaSB.innerHTML = '정답여부는 여기에!!';		// 필드 초기화
-
-
+			guessInput.value = '';	// input value값 초기화
+			resultAreaC.innerHTML = '정답여부는 여기에!!';		// 필드 초기화
 		});
 
-
-		// 4. 화면에 출력할 것들 함수에 담기
+		/** 4. 조건에 따라 화면에 출력하는 함수 */
 		function output() {
-			if (randomArr.indexOf(guess1) == -1 && randomArr.indexOf(guess10) == -1 && randomArr.indexOf(guess100) == -1) {
-				resultAreaSB.innerHTML += '<h3> <' + guessCount + '회> OUT';
+			if (randomArr.indexOf(guess1) === -1 && randomArr.indexOf(guess10) === -1 && randomArr.indexOf(guess100) === -1) {
+				resultAreaC.innerHTML += '<h3> <' + guessCount + '회> OUT';
 			} else {
-				resultAreaSB.innerHTML += '<h3> <' + guessCount + '회>' + guessValue + ' : ' + guessBall + 'B ' + guessStrike + 'S';
+				resultAreaC.innerHTML += '<h3> <' + guessCount + '회> ' + guessValue + ' : ' + guessBall + 'B ' + guessStrike + 'S';
 			}
 			if (guessStrike === 3) {
 				guessBtn.disabled = true;
-				resultAreaSB.innerHTML += '<h3>🎊' + guessCount + '번 만에 맞췄습니다~!! 추카포카🎊</h3>';
+				resultAreaC.innerHTML += '<h3>🎊' + guessCount + '번 만에 맞췄습니다~!! 추카포카🎊</h3>';
+			}
+			if (guessCount === 9) {
+				guessBtn.disabled = true;
+				resultAreaC.innerHTML += '9회안에 맞추지 못하셨습니다... 게임 OVER';
 			}
 		};
 
-
 		/** 3. 배열에 저장된 값과 사용자가 입력한 값 비교 함수 */
-
 		guessBtn.addEventListener('click', function () {
-			guessValue = Number(document.getElementById('guessField').value);
-			console.log('guess값 잘 들어와지는지 : ' + guessValue);
+			guessValue = guessInput.value;
 
 			guess100 = parseInt(guessValue / 100);
-			// console.log('100의 자리 : ' + guess100);
 			guess10 = parseInt((guessValue - guess100 * 100) / 10);
-			// console.log('10의 자리 : ' + guess10);
-			guess1 = guessValue - guess100 * 100 - guess10 * 10;
-			// console.log('1의 자리 : ' + guess1);
-
-			console.log(randomArr);
-			// console.log(randomArr.indexOf(guess100));
-			// console.log(randomArr.indexOf(guess10));
-			// console.log(randomArr.indexOf(guess1));
+			guess1 = parseInt(guessValue - guess100 * 100 - guess10 * 10);
 
 			guessCount++;
 
-
-			if (guessCount === 9) {
-				resultAreaSB.innerHTML += '9회안에 맞추지 못하셨습니다... 게임 OVER';
-				guessBtn.disabled = true;
-			} else {
-				for (i = 0; i < randomArr.length; i++) {
-					guessBall = 0;
-					guessStrike = 0;
-					if (randomArr.indexOf(guess100) > -1) {
-						if (randomArr.indexOf(guess100) === 0) {
-							guessStrike++;
-						} else {
-							guessBall++;
-						}
+			for (i = 0; i < randomArr.length; i++) {
+				guessBall = 0;
+				guessStrike = 0;
+				if (randomArr.indexOf(guess100) > -1) {
+					if (randomArr.indexOf(guess100) === 0) {
+						guessStrike++;
+					} else {
+						guessBall++;
 					}
-					if (randomArr.indexOf(guess10) > -1) {
-						if (randomArr.indexOf(guess10) === 1) {
-							guessStrike++;
-						} else {
-							guessBall++;
-						}
-					}
-					if (randomArr.indexOf(guess1) > -1) {
-						if (randomArr.indexOf(guess1) === 2) {
-							guessStrike++;
-						} else {
-							guessBall++;
-						}
-					}
-
 				}
-				output();
+				if (randomArr.indexOf(guess10) > -1) {
+					if (randomArr.indexOf(guess10) === 1) {
+						guessStrike++;
+					} else {
+						guessBall++;
+					}
+				}
+				if (randomArr.indexOf(guess1) > -1) {
+					if (randomArr.indexOf(guess1) === 2) {
+						guessStrike++;
+					} else {
+						guessBall++;
+					}
+				}
 			}
+			output();
+			guessInput.value = '';
 		});
 
 
+
+
+
 		/** 문제점 or 바꾸고 싶은 점
-		 * ✔ 1. 중복 숫자 입력하면 각각 count돼서 1b2s이 됨 ==> 근데 게임이 이렇게 되는 게 맞는 거 같아
-		 * ✔ 2. 랜덤값 봅은 함수에 있는 랜덤 배열이 다른데서 쓰려면 지역변수라 안 뽑아져 옴 ==> 분명히 콘솔로 찍어도 안 됐었는데 갑자기 됨..
-		 * ✔ 3. 게임 시작 누를 때 랜덤 값 초기화 돼서 나와야 하는데 변화가 없음(새로고침 해야함) ==> 해결 하긴 했어
-		 * 4. 일단 코드 자체가 if안에 if안에 if가 있어 지저분함 고쳐야 함
+		 * ✔ 1. 중복 숫자 입력하면 각각 count돼서 2b1s이 됨 ==> 근데 게임이 이렇게 되는 게 맞는 거 같아
+		 * ✔ 2. 랜덤값 뽑은 함수에 있는 랜덤 배열이 다른데서 쓰려면 지역변수라 안 뽑아져 옴 ==> 분명히 콘솔로 찍어도 안 됐었는데 갑자기 됨..
+		 * ✔ 3. 게임 시작 누를 때 랜덤 값 초기화 돼서 나와야 하는데 변화가 없음(새로고침 해야함) ==> 게임 시작 누를 때 마다 랜덤 3자리수가 계속 추가 되는데 누를 때 마다 앞 세자리 수가 잘라지게 해줬어
+		 * ✔ 4. 일단 코드 자체가 if안에 if안에 if가 있어 지저분함 고쳐야 함 ==> if문 몇개를 따로 함수로 빼줘서 그나마 나아 보임 그치만 보수 => 근데 질문하니까 상황에 따라서 나올 수 있으니 괜찮대
 		 * ✔ 5. 입력한 값과 몇 볼 몇 스트라이크 등이였는지 그 전 값들도 다 화면에 출력해주기 ==> 했음
 		 * ✔ 6. 다 다를 시 아웃도 입력해줘야 할 거 같음 ==> 해주긴 했는데 if가 더 생겨버렸어...
 		 * ✔ 7. 💥💥문제 발생!! 게임 시작 눌렀을 때 카운트들이 초기화 되어야 하는데 안되고 있음!!!💥💥 ==> 초기화는 했는데 이런식으로 하는 게 맞는지
-		 * 
-		 * 
+		 * 8. input 값에 3자리 초과와 한글 입력 시 예외처리 해줘야 할 거 같음
+		 * ✔ 9. OUT일 땐 9회 초과 입력해도 게임이 안 끝남 ==> 화면 출력에서 if문을 좀 바꿔줌
+		 * ✔ 10. 정답 확인 누를 때 마다 input 초기화 ==> 정답 확인 버튼 클릭 함수 내에 초기화 줌
 		 
 		 * 일단 실행은 되게끔 quest3-5까지 만들어 놓고 주말에 다시 고치기
 		*/
