@@ -57,21 +57,18 @@
         var userRock;           // 유저가 누른 바위 버튼
         var userPaper;          // 유저가 누른 보 버튼
         var userSelect;         // 유저가 누를 버튼들 배열로 담음
-        var i;                  // 반복문 사용할 때 변수
-        var resultAreaParent;   // 화면에 출력해줄 공간의 부모
-        var resultAreaChild;    // 화면에 출력해줄 공간
+        var resultOutput;       // 화면에 출력해줄 공간
 
         // 1.
-        srpStart = document.getElementsByClassName('setPrsSubmit')[0];       // 게임 시작 버튼
-        srpArr = ['가위', '바위', '보'];                                     // 배열에 가위,바위,보 삽입
+        srpStart = document.getElementsByClassName('setPrsSubmit')[0];      // 게임 시작 버튼
+        srpArr = ['가위', '바위', '보'];                                    // 배열에 가위,바위,보 삽입
 
         // 2.
-        userRock = document.getElementById('btnRock');                       // 바위 버튼 요소 저장
-        userScissors = document.getElementById('btnScissors');               // 가위 버튼 요소 저장
-        userPaper = document.getElementById('btnPaper');                     // 보 버튼 요소 저장
-        userSelect = [userScissors, userRock, userPaper];                    // 가위, 바위, 보 버튼 요소들 배열에 저장
-        resultAreaParent = document.getElementsByClassName('resultArea')[0]; // 화면에 출력해줄 공간 부모
-        resultAreaChild = resultAreaParent.getElementsByTagName('span')[0];  // 화면에 출력해줄 공간
+        userRock = document.getElementById('btnRock');                      // 바위 버튼 요소 저장
+        userScissors = document.getElementById('btnScissors');              // 가위 버튼 요소 저장
+        userPaper = document.getElementById('btnPaper');                    // 보 버튼 요소 저장
+        userSelect = [userScissors, userRock, userPaper];                   // 가위, 바위, 보 버튼 요소들 배열에 저장
+        resultOutput = document.getElementsByClassName('resultArea')[0];    // 화면에 출력해줄 공간
 
 
         /** 게임 시작 버튼 누르기 전 또는 게임 끝났을 때 가위, 바위, 보 버튼 비활성화 하기 위한 애 */
@@ -79,20 +76,19 @@
             for (i = 0; i < userSelect.length; i++) {
                 userSelect[i].disabled = true;
             }
-        }
+        };
 
         /** 게임 시작 버튼 누르고 가위, 바위, 보 버튼 활성화 하기 위한 애 */
         function btnAbled() {
             for (i = 0; i < userSelect.length; i++) {
                 userSelect[i].disabled = false;
             }
-        }
+        };
 
         btnDisabled(); // 게임 시작 누르 기전에 가위, 바위, 보 버튼 비활성화 해놓기
 
         /** 게임 시작 버튼 누르기 */
         srpStart.addEventListener('click', function () {
-
             btnAbled(); // 게임 시작 누르면 가위, 바위, 보 버튼 활성화 해놓기
 
             srpArrRandom = Math.floor(Math.random() * srpArr.length);
@@ -102,11 +98,8 @@
             for (i = 0; i < userSelect.length; i++) {
                 (function (i) {
                     userSelect[i].addEventListener('click', function () {
-                        // console.log('사용자 선택 값 : ' + i);
-                        // console.log('랜덤 값' + srpArrRandom);
-
                         if (srpArrRandom === i) {
-                            resultAreaChild.innerHTML = '비겼습니다.';
+                            resultOutput.innerHTML = '비겼습니다.=_=';
                         } else if ((srpArrRandom === 0 && i === 1) || (srpArrRandom === 1 && i === 2) || (srpArrRandom === 2 && i === 0)) {
                             /** 이기는 상황
                              *  srpArrRandom < i
@@ -114,11 +107,11 @@
                              *  1 < 2 : 바위 < 보
                              *  2 < 0 : 보 < 가위
                              * */
-                            resultAreaChild.innerHTML = '이겼습니다.';
+                             resultOutput.innerHTML = '이겼습니다.(´▽`ʃ♡ƪ)';
                         } else {
-                            resultAreaChild.innerHTML = '졌습니다.';
+                            resultOutput.innerHTML = '졌습니다..·´¯`(>▂<)´¯`·. ';
                         }
-                        btnDisabled()
+                        btnDisabled();
                     });
                 })(i);
             }
