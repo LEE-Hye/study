@@ -69,7 +69,6 @@
 		/** 2. 중복값 없는 랜덤값 저장 함수 */
 		var randomNum;  	// 랜덤값 뽑기
 		var randomArr = []; // 뽑은 랜덤값 배열에 담기
-		var i; 				// for문 변수
 
 		/** 3. 사용자가 입력한 값 추출 비교 함수 */
 		var guessInput;		// input값 입력 공간
@@ -81,22 +80,18 @@
 		var guessBall; 		// 몇 볼인지 세어줌
 		var guessStrike;	// 몇 스트라이크인지 세어줌
 		var guessCount;		// 몇 회 입력했는지 세어줌
-		var resultAreaP;	// 정답 영역 출력하기 위한 부모
-		var resultAreaC;	// 정답 영역 출력하는 곳
+		var resultOutput;	// 정답 영역 출력하는 곳
 
 		gameStart = document.getElementsByClassName('setDigitSubmit')[0]; 	// 1. 게임시작 버튼
 		guessBtn = document.getElementsByClassName('guessSubmit')[0]; 		// 3. 추측한 값 정답 확인 버튼
 		guessInput = document.getElementById('guessField');					// 3. 정답 영역 
-		resultAreaP = document.getElementsByClassName('resultArea')[0];		// 3. 정답 영역 출력하기 위한 부모
-		resultAreaC = resultAreaP.getElementsByTagName('span')[0];			// 3. 정답 영역 출력하는 곳
+		resultOutput = document.getElementsByClassName('resultArea')[0];	// 3. 정답 영역 출력하는 곳
 		guessBtn.disabled = true;											// 3. 게임 시작 전에 정답확인 버튼 못누르게
-
-
 
 		/** 2. 중복 값 없는 랜덤 값 저장하는 함수 */
 		// 중복 제거하는 방법 또 찾아보기
 		function randomHamsu() {
-			for (i = 0; i < 3; i++) {
+			for (var i = 0; i < 3; i++) {
 				randomNum = Math.floor(Math.random() * (10 - 1)) + 1;
 				if (randomArr.indexOf(randomNum) === -1) { // indexof : 배열에서 지정된 요소를 찾을 수 있는 첫 번째 인덱스 반환. 배열에 존재하지 않으면 -1을 반환
 					randomArr.push(randomNum);
@@ -115,62 +110,52 @@
 		gameStart.addEventListener('click', function () {
 			randomHamsu();
 			guessBtn.disabled = false;	// 정답확인 버튼 활성화
-			guessCount = 0;	// 횟수 초기화
-			guessInput.value = '';	// input value값 초기화
-			resultAreaC.innerHTML = '정답여부는 여기에!!';		// 필드 초기화
+			guessCount = 0;				// 횟수 초기화
+			guessInput.value = '';		// input value값 초기화
+			resultOutput.innerHTML = '정답여부는 여기에!!';		// 필드 초기화
 		});
 
 		/** 4. 조건에 따라 화면에 출력하는 함수 */
 		function output() {
 			if (randomArr.indexOf(guess1) === -1 && randomArr.indexOf(guess10) === -1 && randomArr.indexOf(guess100) === -1) {
-				resultAreaC.innerHTML += '<h3> <' + guessCount + '회> OUT';
+				resultOutput.innerHTML += '<h3> <' + guessCount + '회> OUT';
 			} else {
-				resultAreaC.innerHTML += '<h3> <' + guessCount + '회> ' + guessValue + ' : ' + guessBall + 'B ' + guessStrike + 'S';
+				resultOutput.innerHTML += '<h3> <' + guessCount + '회> ' + guessValue + ' : ' + guessBall + 'B ' + guessStrike + 'S';
 			}
 			if (guessStrike === 3) {
 				guessBtn.disabled = true;
-				resultAreaC.innerHTML += '<h3>🎊' + guessCount + '번 만에 맞췄습니다~!! 추카포카🎊</h3>';
+				resultOutput.innerHTML += '<h3>🎊' + guessCount + '번 만에 맞췄습니다~!! 추카포카🎊</h3>';
 			}
 			if (guessCount === 9) {
 				guessBtn.disabled = true;
-				resultAreaC.innerHTML += '9회안에 맞추지 못하셨습니다... 게임 OVER';
+				resultOutput.innerHTML += '9회안에 맞추지 못하셨습니다... 게임 OVER🔪🩸';
 			}
 		};
 
 		/** 3. 배열에 저장된 값과 사용자가 입력한 값 비교 함수 */
 		guessBtn.addEventListener('click', function () {
 			guessValue = guessInput.value;
-
 			guess100 = parseInt(guessValue / 100);
 			guess10 = parseInt((guessValue - guess100 * 100) / 10);
 			guess1 = parseInt(guessValue - guess100 * 100 - guess10 * 10);
 
 			guessCount++;
-
-			for (i = 0; i < randomArr.length; i++) {
+			
+			function check(Num,idx){
+				if (randomArr.indexOf(Num) > -1) {
+					if (randomArr.indexOf(Num) === idx) {
+						guessStrike++;
+					} else {
+						guessBall++;
+					}
+				}
+			};
+			for (var i = 0; i < randomArr.length; i++) {
 				guessBall = 0;
 				guessStrike = 0;
-				if (randomArr.indexOf(guess100) > -1) {
-					if (randomArr.indexOf(guess100) === 0) {
-						guessStrike++;
-					} else {
-						guessBall++;
-					}
-				}
-				if (randomArr.indexOf(guess10) > -1) {
-					if (randomArr.indexOf(guess10) === 1) {
-						guessStrike++;
-					} else {
-						guessBall++;
-					}
-				}
-				if (randomArr.indexOf(guess1) > -1) {
-					if (randomArr.indexOf(guess1) === 2) {
-						guessStrike++;
-					} else {
-						guessBall++;
-					}
-				}
+				check(guess100,0);
+				check(guess10,1);
+				check(guess1,2);
 			}
 			output();
 			guessInput.value = '';
