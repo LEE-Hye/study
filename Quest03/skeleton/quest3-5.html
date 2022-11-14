@@ -95,7 +95,7 @@
             console.log(srpArr[srpArrRandom]);
 
             /** 저장된 값과 사용자가 누른 값 비교하기 */
-            for (i = 0; i < userSelect.length; i++) {
+            for (var i = 0; i < userSelect.length; i++) {
                 (function (i) {
                     userSelect[i].addEventListener('click', function () {
                         if (srpArrRandom === i) {
