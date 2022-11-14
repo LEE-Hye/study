@@ -54,6 +54,7 @@
 
         /** 1. 자릿수에 따른 랜덤 값 설정해주는 함수 */
         var setDigitNumber;     // 자릿수 적는 곳
+        var setDigitNumberValue;// 자릿수 적는 곳 value 값
         var setDigitSub;        // 자릿수 값 보내주기
         var ranA;               // 랜덤값A 설정
         var ranB;               // 랜덤값B 설정
@@ -64,101 +65,93 @@
 
         /** 2. 정답 여부 체크 해주는 함수 */
         var guessFieldAnswer;   // 계산한 값 적는 곳
+        var guessFieldAnswerValue; // 계산한 값 적는 곳 value 값
         var guessFieldSubmit;   // 계산한 값 보내주기
         var resultAreaParent;   // 정답 여부 화면 출력하는 곳의 부모
         var resultAreaChild;    // 정답 여부 화면에 출력
         var count;              // 몇 번만에 정답 맞추는지
 
         // 1.
+        setDigitNumber = document.getElementById('setDigitNum');                // 자릿수 input 입력 공간
         setDigitSub = document.getElementsByClassName('setDigitSubmit')[0];     // 자릿수 값 보내주기
 
         // 2.
+        guessFieldAnswer = document.getElementById('guessField');               // 계산한 값 input 입력 공간
         guessFieldSubmit = document.getElementsByClassName('guessSubmit')[0];   // 계산한 값 보내주기
         resultAreaParent = document.getElementsByClassName('resultArea')[0];    // 정답 여부 화면에 출력해주는 곳의 부모
         resultAreaChild = resultAreaParent.getElementsByTagName('span')[0];     // 정답 여부 화면에 출력해주는 곳
-
-
+        
+        
         guessFieldSubmit.disabled = true;   // 자릿수를 등록하지 않으면 정답 확인 버튼 비활성화
-
-        /** 자릿수에 따른 랜덤값 설정해주는 함수 */
-        function digit() {
-            setDigitSub.addEventListener('click', function () {
-                
-                setDigitNumber = Number(document.getElementById('setDigitNum').value);
-                count = 0;
-                
-                switch (setDigitNumber) {
-                    case 1:
-                        // console.log('1의 자리');
-                        ranA = Math.floor(Math.random() * (10-1))+1;  // min <= number < max
-                        ranB = Math.floor(Math.random() * (10-1))+1;
-                        // console.log('1의 자리 ranA값 잘 들어오나' + ranA);
-                        // console.log('1의 자리 ranB값 잘 들어오나' + ranB);
-                        ranWindow();
-                        guessFieldSubmit.disabled = false;
-                        resultAreaChild.innerHTML = '<h3>✔한자리 숫자를 선택하셨습니다.</h3>';
-                        break;
-                    case 2:
-                        // console.log('2의 자리');
-                        ranA = Math.floor(Math.random() * (100 - 10)) + 10; 
-                        ranB = Math.floor(Math.random() * (100 - 10)) + 10;
-                        // console.log('1의 자리 ranA값 잘 들어오나' + ranA);
-                        // console.log('1의 자리 ranB값 잘 들어오나' + ranB);
-                        ranWindow();
-                        guessFieldSubmit.disabled = false;
-                        resultAreaChild.innerHTML = '<h3>✔두자리 숫자를 선택하셨습니다.</h3>';
-                        break;
-                    case 3:
-                        // console.log('3의 자리');
-                        ranA = Math.floor(Math.random() * (1000 - 100)) + 100;
-                        ranB = Math.floor(Math.random() * (1000 - 100)) + 100;
-                        // console.log('1의 자리 ranA값 잘 들어오나' + ranA);
-                        // console.log('1의 자리 ranB값 잘 들어오나' + ranB);
-                        ranWindow();
-                        guessFieldSubmit.disabled = false;
-                        resultAreaChild.innerHTML = '<h3>✔세자리 숫자를 선택하셨습니다.</h3>';
-                        break;
-                    default:
-                        resultAreaChild.innerHTML = '<h3>1~3의 숫자만 넣으십쇼!!!</h3>';
-                }
-            });
-        }
-
-        /** 정답 여부 체크 하는 함수 */
-        function answer() {
-            guessFieldSubmit.addEventListener('click', function () {
-                count++;
-                console.log(count);
-                guessFieldAnswer = Number(document.getElementById('guessField').value);
-                // console.log(ranA);
-                // console.log(ranB);
-                // console.log(guessFieldAnswer);
-                if ((ranA * ranB) === guessFieldAnswer) {
-                    resultAreaChild.innerHTML += '<h3>🎉' + count + ' 번 만에 맞추셨어요~!🎉</h3>';
-                    resultAreaChild.innerHTML += '<h3>🎉' + guessFieldAnswer + ' 가(이) 정답이였습니다!! 축하합니다.🎉</h3>';
-                    guessFieldSubmit.disabled = true;
-                } else {
-                    resultAreaChild.innerHTML += '<h3>❌' + guessFieldAnswer + '은 오답입니다.❌</h3>';
-                }
-            });
-        };
-
+        
         /** 랜덤 값 화면에 출력 */
-        function ranWindow() {
+        function ranOutput() {
             setRanA = document.getElementById('randA');
             setRanA.innerHTML = ranA;
             setRanB = document.getElementById('randB');
             setRanB.innerHTML = ranB;
-        }
+        };
 
-        digit(); // 자릿수 설정 & 자릿수에 맞는 랜덤값 설정 함수
-        answer(); // 정답 여부 체크 하는 함수
+        /** 자릿수에 따른 랜덤값 설정해주는 함수 */
+        setDigitSub.addEventListener('click', function () {
+            setDigitNumberValue = Number(setDigitNumber.value);
+            count = 0;
+
+            switch (setDigitNumberValue) {
+                case 1:
+                    // console.log('1의 자리');
+                    ranA = Math.floor(Math.random() * (10 - 1)) + 1;  // min <= number < max
+                    ranB = Math.floor(Math.random() * (10 - 1)) + 1;
+                    ranOutput();
+                    guessFieldSubmit.disabled = false;
+                    resultAreaChild.innerHTML = '<h3>✔한자리 숫자를 선택하셨습니다.</h3>';
+                    break;
+                case 2:
+                    // console.log('2의 자리');
+                    ranA = Math.floor(Math.random() * (100 - 10)) + 10;
+                    ranB = Math.floor(Math.random() * (100 - 10)) + 10;
+                    ranOutput();
+                    guessFieldSubmit.disabled = false;
+                    resultAreaChild.innerHTML = '<h3>✔두자리 숫자를 선택하셨습니다.</h3>';
+                    break;
+                case 3:
+                    // console.log('3의 자리');
+                    ranA = Math.floor(Math.random() * (1000 - 100)) + 100;
+                    ranB = Math.floor(Math.random() * (1000 - 100)) + 100;
+                    ranOutput();
+                    guessFieldSubmit.disabled = false;
+                    resultAreaChild.innerHTML = '<h3>✔세자리 숫자를 선택하셨습니다.</h3>';
+                    break;
+                default:
+                    resultAreaChild.innerHTML = '<h3>1~3의 숫자만 넣으십쇼!!!</h3>';
+            }
+        });
+
+        /** 정답 여부 체크 하는 함수 */
+        guessFieldSubmit.addEventListener('click', function () {
+            count++;
+            guessFieldAnswerValue = Number(guessFieldAnswer.value);
+            if ((ranA * ranB) === guessFieldAnswerValue) {
+                resultAreaChild.innerHTML += '<h3>🎉' + count + ' 번 만에 맞추셨어요~!🎉</h3>';
+                resultAreaChild.innerHTML += '<h3>🎉' + guessFieldAnswerValue + ' 가(이) 정답이였습니다!! 축하합니다.🎉</h3>';
+                setDigitNumber.value = '';
+                guessFieldSubmit.disabled = true;
+            } else {
+                resultAreaChild.innerHTML += '<h3>❌' + count + '번 째 시도 : ' + guessFieldAnswerValue + '은(는) 오답입니다.❌</h3>';
+            }
+            guessFieldAnswer.value = '';
+        });
 
 
-        /** 문제점이나 궁금한 점? 
+
+
+
+        /** 문제점이나 궁금한 점?
          * 1. guessFieldSubmit.disabled이나 resultAreaChild.innerHTML가 많이 중복되면서 나오는데 어떻게 해야 깔끔하게 보일지
          * 2. ranA, ranB 저렇게 케이스마다 비슷하게 적어 줘야 하나? 최댓값, 최솟값만 다른데 뭔가 안 깔끔하달까
          * ==> 함수로 빼낼 수 있는 건 함수로 빼놓는 게 좋을까?
+         * 3. ✔ count도 화면에 출력해주자
+         * 4. ✔ input값 초기화
         */
     </script>
 </body>
