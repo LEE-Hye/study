@@ -114,7 +114,7 @@
 		/** 1. 게임시작 버튼 클릭시 랜덤 값 저장하는 함수 불러오기 */
 		gameStart.addEventListener('click', function () {
 			randomHamsu();
-			guessBtn.disabled = false;	// 정답확인 버튼 활성화
+
 			guessCount = 0;				// 횟수 초기화
 			guessInput.value = '';		// input value값 초기화
 			resultOutput.innerHTML = '정답여부는 여기에!!';		// 필드 초기화
@@ -139,11 +139,16 @@
 
 		/** 5. input에 숫자 세자리만 넣게 제약조건 주는 함수 */
 		guessInput.addEventListener('keyup', function () {		// 누르고 떼는 순간 발생 -> 4글자 입력하려 할 때 안됨. (keypress는 4글자 입력후에 5번째 입력하려 할 때 안됨(키보드를 눌러 어떤 텍스트가 작성되는 순간 발생))
-			this.value = this.value.replace(/[^-1-9]/g, '');	// 정규표현식: 문자열에서 특정 문자 조합을 찾기 위한 패턴. (/ : 정규표현식은 슬래시로 감싸 작성, ^ : 시작 문자 지정, -숫자 : 숫자만 들어와야 함, g : 전체 판별)
-			if (this.value.length < 4) {
-				this.value = this.value.substr(0, 3);
+			this.value = this.value.replace(/[^-1-9]/g);	// 정규표현식: 문자열에서 특정 문자 조합을 찾기 위한 패턴. (/ : 정규표현식은 슬래시로 감싸 작성, ^ : 시작 문자 지정, -숫자 : 숫자만 들어와야 함, g : 전체 판별)
+			if ((this.value.length < 4) && (this.value !== '')) {
+				if (this.value.length === 3) {
+					guessBtn.disabled = false;	// 정답확인 버튼 활성화
+				}else{
+					guessBtn.disabled = true;
+				}
 			} else {
-				alert('3자리 수만 넣어주세요!!!!!');
+				alert('3자리 숫자를 꼭 넣어주세요! 빈 값도 안됩니다!!!');
+				guessBtn.disabled = true;	// 정답확인 버튼 비활성화
 				guessInput.value = '';
 			}
 		});
