@@ -58,7 +58,69 @@
 
 ## 🧡1. 자바스크립트의 클래스는 어떻게 정의할까요?
 <br>
-sdfsfgsd
+
+클래스란❓      
+: 객체를 생성하기 위한 템플릿
+
+1. class 선언
+
+    <기본 문법>
+    ```javascript
+    class ClassName {
+        // 여러 메서드 정의
+        constructor() {} // new에 의해 자동으로 호출
+        method1() {}
+        method2() {}
+    }
+    ```
+
+    <예시>
+    ```javascript
+    class Person{
+        constructor(name,age){
+            this.name = name;
+            this.age = age;
+        }
+        tell(){
+            alert('안녕 나는' + this.name +'이고, 나이는 ' + this.age + '살이야');
+        }
+    }
+    ```
+    ```javascript
+        var person = new Person('선언', 10);
+        person.tell();
+    ```
+    > class선언.png
+
+<br>
+
+2. class 표현식
+
+    <기본 문법>
+    ```javascript
+    var varName = class ClassName { // 클래스 이름 붙여도 안 붙여도 됨
+        constructor() {}            // 이름은 클래스 내부에서만 사용 가능
+        method1() {}
+        method2() {}
+    }
+    ```
+
+    <예시>
+    ```javascript
+    var people = class Person{
+        constructor(name,age){
+            this.name = name;
+            this.age = age;
+        }
+        tell(){
+            alert('안녕 나는' + this.name +'이고, 나이는 ' + this.age + '살이야');
+        }
+    }
+    ```
+    ```javascript
+        new people('표현식',7).tell();
+    ```
+    > class표현식.png
 
 
 <br>
