@@ -60,8 +60,9 @@
 		 *  3-2. 비교 후 결과 확인
 		 *  3-3. 4. 결과 여부 화면에 출력
 		 *  3-4. 9회 안에 성공하지 못했을 때 게임 종료
-		 * 4. 조건에 따라 화면에 출력하는 함수
-		 * 5. input에 숫자 세자리만 넣게 제약조건 주는 함수
+		 * 4. 사용자 입력 값과 랜덤값 비교해서 스트라이크, 볼 횟수 증가시켜주는 함수
+		 * 5. 조건에 따라 화면에 출력하는 함수
+		 * 6. input에 숫자 세자리만 넣게 제약조건 주는 함수
 		 */
 
 		/** 1. 게임 시작 함수 */
@@ -87,18 +88,16 @@
 		guessBtn = document.getElementsByClassName('guessSubmit')[0]; 		// 3. 추측한 값 정답 확인 버튼
 		guessInput = document.getElementById('guessField');					// 3. 정답 영역 
 		resultOutput = document.getElementsByClassName('resultArea')[0];	// 3. 정답 영역 출력하는 곳
-		guessBtn.disabled = true;											// 3. 게임 시작 전에 정답확인 버튼 못누르게
 
 
+		guessBtn.disabled = true;											// 게임 시작 전에 정답 확인 버튼 못누르게 정답 확인 비활성화
 
-
-
-		/** 2. 중복 값 없는 랜덤 값 저장하는 함수 */
+		/** 1-1. 중복 값 없는 랜덤 값 저장하는 함수 */
 		// 중복 제거하는 방법 또 찾아보기
 		function randomHamsu() {
 			for (var i = 0; i < 3; i++) {
-				randomNum = Math.floor(Math.random() * (10 - 1)) + 1;
-				if (randomArr.indexOf(randomNum) === -1) { // indexof : 배열에서 지정된 요소를 찾을 수 있는 첫 번째 인덱스 반환. 배열에 존재하지 않으면 -1을 반환
+				randomNum = Math.floor(Math.random() * (10 - 1)) + 1;	// min <= number < max
+				if (randomArr.indexOf(randomNum) === -1) { 				// indexof : 배열에서 지정된 요소를 찾을 수 있는 첫 번째 인덱스 반환. 배열에 존재하지 않으면 -1을 반환
 					randomArr.push(randomNum);
 				} else {
 					i--;
@@ -115,12 +114,12 @@
 		gameStart.addEventListener('click', function () {
 			randomHamsu();
 
-			guessCount = 0;				// 횟수 초기화
-			guessInput.value = '';		// input value값 초기화
+			guessCount = 0;										// 횟수 초기화
+			guessInput.value = '';								// input value값 초기화
 			resultOutput.innerHTML = '정답여부는 여기에!!';		// 필드 초기화
 		});
 
-		/** 4. 조건에 따라 화면에 출력하는 함수 */
+		/** 5. 조건에 따라 화면에 출력하는 함수 */
 		function output() {
 			if (randomArr.indexOf(guess1) === -1 && randomArr.indexOf(guess10) === -1 && randomArr.indexOf(guess100) === -1) {
 				resultOutput.innerHTML += '<h3> <' + guessCount + '회> ' + guessValue + ' : OUT';
@@ -137,43 +136,25 @@
 			}
 		};
 
-		/** 5. input에 숫자 세자리만 넣게 제약조건 주는 함수 */
-		guessInput.addEventListener('keyup', function () {		// 누르고 떼는 순간 발생 -> 4글자 입력하려 할 때 안됨. (keypress는 4글자 입력후에 5번째 입력하려 할 때 안됨(키보드를 눌러 어떤 텍스트가 작성되는 순간 발생))
-			this.value = this.value.replace(/[^1-9]/g, '');	// 정규표현식: 문자열에서 특정 문자 조합을 찾기 위한 패턴. (/ : 정규표현식은 슬래시로 감싸 작성, ^ : 시작 문자 지정, -숫자 : 숫자만 들어와야 함, g : 전체 판별)
-			if ((this.value.length < 4) && (this.value !== '')) {
-				console.log(this.value);
-				if (this.value.length === 3) {
-					guessBtn.disabled = false;	// 정답확인 버튼 활성화
-				}else{
-					guessBtn.disabled = true;
+		/** 4. 사용자 입력 값과 랜덤값 비교해서 스트라이크, 볼 횟수 증가시켜주는 함수 */
+		function check(Num, idx) {
+			if (randomArr.indexOf(Num) > -1) {
+				if (randomArr.indexOf(Num) === idx) {
+					guessStrike++;
+				} else {
+					guessBall++;
 				}
-			} else {
-				alert('1~9까지의 3개의 숫자를 넣어주세요!!!!!!!!!!!💢💢');
-				guessBtn.disabled = true;	// 정답확인 버튼 비활성화
-				guessInput.value = '';
 			}
-			
-		});
+		};
 
 		/** 3. 배열에 저장된 값과 사용자가 입력한 값 비교 함수 */
 		guessBtn.addEventListener('click', function () {
+			guessCount++;
 			guessValue = guessInput.value;
 			guess100 = parseInt(guessValue / 100);
 			guess10 = parseInt((guessValue - guess100 * 100) / 10);
 			guess1 = parseInt(guessValue - guess100 * 100 - guess10 * 10);
 
-
-			guessCount++;
-
-			function check(Num, idx) {
-				if (randomArr.indexOf(Num) > -1) {
-					if (randomArr.indexOf(Num) === idx) {
-						guessStrike++;
-					} else {
-						guessBall++;
-					}
-				}
-			};
 			for (var i = 0; i < randomArr.length; i++) {
 				guessBall = 0;
 				guessStrike = 0;
@@ -184,12 +165,24 @@
 			output();
 			guessBtn.disabled = true;
 			guessInput.value = '';
-
-
 		});
 
-
-
+		/** 6. input에 숫자 세자리만 넣게 제약조건 주는 함수 */
+		guessInput.addEventListener('keyup', function () {		// 누르고 떼는 순간 발생 -> 4글자 입력하려 할 때 안됨. (keypress는 4글자 입력후에 5번째 입력하려 할 때 안됨(키보드를 눌러 어떤 텍스트가 작성되는 순간 발생))
+			this.value = this.value.replace(/[^1-9]/g, '');		// 정규표현식(ES3): 문자열에서 특정 문자 조합을 찾기 위한 패턴. (/ : 정규표현식은 슬래시로 감싸 작성, ^ : 시작 문자 지정 / [^]안에 있을 땐 not의 의미, -숫자 : 숫자만 들어와야 함, g : 전체 판별)
+			if ((this.value.length < 4) && (this.value !== '')) {
+				// console.log(this.value);
+				if (this.value.length === 3) {
+					guessBtn.disabled = false;	// 정답확인 버튼 활성화
+				} else {
+					guessBtn.disabled = true;
+				}
+			} else {
+				alert('1~9까지의 3개의 숫자를 넣어주세요!!!!!!!!!!!💢💢');
+				guessBtn.disabled = true;	// 정답확인 버튼 비활성화
+				guessInput.value = '';
+			}
+		});
 
 
 
