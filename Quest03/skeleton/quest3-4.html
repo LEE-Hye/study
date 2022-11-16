@@ -53,26 +53,26 @@
 
 		/**
 		 * 1. 게임 시작 함수
-		 * 1-1. 2. 랜덤값 함수 불러오기
-		 * 2. 중복값 없는 랜덤값 저장 함수
-		 * 3. 배열에 저장된 값과 사용자가 입력한 값 비교하는 함수
-		 *  3-1. 유저의 세자리 입력값 받아오기
-		 *  3-2. 비교 후 결과 확인
-		 *  3-3. 4. 결과 여부 화면에 출력
-		 *  3-4. 9회 안에 성공하지 못했을 때 게임 종료
-		 * 4. 사용자 입력 값과 랜덤값 비교해서 스트라이크, 볼 횟수 증가시켜주는 함수
-		 * 5. 조건에 따라 화면에 출력하는 함수
-		 * 6. input에 숫자 세자리만 넣게 제약조건 주는 함수
+		 * 		①. 랜덤값 함수 불러오기
+		 * 1-1. 중복값 없는 랜덤값 저장 함수
+		 * 2. 배열에 저장된 값과 사용자가 입력한 값 비교하는 함수
+		 *  	①. 유저의 세자리 입력값 받아오기
+		 *  	②. 비교 후 결과 확인
+		 *  	③. 결과 여부 화면에 출력
+		 *  	④. 9회 안에 성공하지 못했을 때 게임 종료
+		 * 2-1. 사용자 입력 값과 랜덤값 비교해서 스트라이크, 볼 횟수 증가시켜주는 함수
+		 * 2-2. 조건에 따라 화면에 출력하는 함수
+		 * 3. input에 숫자 세자리만 넣게 제약조건 주는 함수
 		 */
 
 		/** 1. 게임 시작 함수 */
 		var gameStart; 		// 게임시작 버튼
 
-		/** 2. 중복값 없는 랜덤값 저장 함수 */
+		/** 1-1. 중복값 없는 랜덤값 저장 함수 */
 		var randomNum;  	// 랜덤값 뽑기
 		var randomArr = []; // 뽑은 랜덤값 배열에 담기
 
-		/** 3. 사용자가 입력한 값 추출 비교 함수 */
+		/** 2. 사용자가 입력한 값 추출 비교 함수 */
 		var guessInput;		// input값 입력 공간
 		var guessValue; 	// 사용자의 추측 값
 		var guessBtn; 		// 추측한 값 정답 확인 버튼
@@ -85,15 +85,13 @@
 		var resultOutput;	// 정답 영역 출력하는 곳
 
 		gameStart = document.getElementsByClassName('setDigitSubmit')[0]; 	// 1. 게임시작 버튼
-		guessBtn = document.getElementsByClassName('guessSubmit')[0]; 		// 3. 추측한 값 정답 확인 버튼
-		guessInput = document.getElementById('guessField');					// 3. 정답 영역 
-		resultOutput = document.getElementsByClassName('resultArea')[0];	// 3. 정답 영역 출력하는 곳
-
+		guessBtn = document.getElementsByClassName('guessSubmit')[0]; 		// 2. 추측한 값 정답 확인 버튼
+		guessInput = document.getElementById('guessField');					// 2. 정답 영역 
+		resultOutput = document.getElementsByClassName('resultArea')[0];	// 2. 정답 영역 출력하는 곳
 
 		guessBtn.disabled = true;											// 게임 시작 전에 정답 확인 버튼 못누르게 정답 확인 비활성화
 
 		/** 1-1. 중복 값 없는 랜덤 값 저장하는 함수 */
-		// 중복 제거하는 방법 또 찾아보기
 		function randomHamsu() {
 			for (var i = 0; i < 3; i++) {
 				randomNum = Math.floor(Math.random() * (10 - 1)) + 1;	// min <= number < max
@@ -110,16 +108,18 @@
 			return randomArr;
 		};
 
-		/** 1. 게임시작 버튼 클릭시 랜덤 값 저장하는 함수 불러오기 */
-		gameStart.addEventListener('click', function () {
-			randomHamsu();
+		/** 2-1. 사용자 입력 값과 랜덤값 비교해서 스트라이크, 볼 횟수 증가시켜주는 함수 */
+		function check(Num, idx) {
+			if (randomArr.indexOf(Num) > -1) {
+				if (randomArr.indexOf(Num) === idx) {
+					guessStrike++;
+				} else {
+					guessBall++;
+				}
+			}
+		};
 
-			guessCount = 0;										// 횟수 초기화
-			guessInput.value = '';								// input value값 초기화
-			resultOutput.innerHTML = '정답여부는 여기에!!';		// 필드 초기화
-		});
-
-		/** 5. 조건에 따라 화면에 출력하는 함수 */
+		/** 2-2. 조건에 따라 화면에 출력하는 함수 */
 		function output() {
 			if (randomArr.indexOf(guess1) === -1 && randomArr.indexOf(guess10) === -1 && randomArr.indexOf(guess100) === -1) {
 				resultOutput.innerHTML += '<h3> <' + guessCount + '회> ' + guessValue + ' : OUT';
@@ -136,18 +136,32 @@
 			}
 		};
 
-		/** 4. 사용자 입력 값과 랜덤값 비교해서 스트라이크, 볼 횟수 증가시켜주는 함수 */
-		function check(Num, idx) {
-			if (randomArr.indexOf(Num) > -1) {
-				if (randomArr.indexOf(Num) === idx) {
-					guessStrike++;
-				} else {
-					guessBall++;
+		/** 3. input에 숫자 세자리만 넣게 제약조건 주는 함수 */
+		guessInput.addEventListener('keyup', function () {			// 누르고 떼는 순간 발생 -> 4글자 입력하려 할 때 안됨. (keypress는 4글자 입력후에 5번째 입력하려 할 때 안됨(키보드를 눌러 어떤 텍스트가 작성되는 순간 발생))
+			this.value = this.value.replace(/[^1-9]/g, '');			// 정규표현식(ES3): 문자열에서 특정 문자 조합을 찾기 위한 패턴. (/ : 정규표현식은 슬래시로 감싸 작성, ^ : 시작 문자 지정 / [^]안에 있을 땐 not의 의미, -숫자 : 숫자만 들어와야 함, g : 전체 판별)
+			if ((this.value.length < 4) && (this.value !== '')) {
+				// console.log(this.value);
+				if (this.value.length === 3) {
+					guessBtn.disabled = false;	// 정답확인 버튼 활성화
+					return;
 				}
+				guessBtn.disabled = true;
+				return;
 			}
-		};
+			alert('1~9까지의 3개의 숫자를 넣어주세요!!!!!!!!!!!💢💢');
+			guessBtn.disabled = true;	// 정답확인 버튼 비활성화
+			guessInput.value = '';
+		});
 
-		/** 3. 배열에 저장된 값과 사용자가 입력한 값 비교 함수 */
+		/** 1. 게임시작 버튼 클릭시 랜덤 값 저장하는 함수 불러오기 */
+		gameStart.addEventListener('click', function () {
+			randomHamsu();
+			guessCount = 0;										// 횟수 초기화
+			guessInput.value = '';								// input value값 초기화
+			resultOutput.innerHTML = '정답여부는 여기에!!';		// 필드 초기화
+		});
+
+		/** 2. 배열에 저장된 값과 사용자가 입력한 값 비교 함수 */
 		guessBtn.addEventListener('click', function () {
 			guessCount++;
 			guessValue = guessInput.value;
@@ -167,22 +181,7 @@
 			guessInput.value = '';
 		});
 
-		/** 6. input에 숫자 세자리만 넣게 제약조건 주는 함수 */
-		guessInput.addEventListener('keyup', function () {		// 누르고 떼는 순간 발생 -> 4글자 입력하려 할 때 안됨. (keypress는 4글자 입력후에 5번째 입력하려 할 때 안됨(키보드를 눌러 어떤 텍스트가 작성되는 순간 발생))
-			this.value = this.value.replace(/[^1-9]/g, '');		// 정규표현식(ES3): 문자열에서 특정 문자 조합을 찾기 위한 패턴. (/ : 정규표현식은 슬래시로 감싸 작성, ^ : 시작 문자 지정 / [^]안에 있을 땐 not의 의미, -숫자 : 숫자만 들어와야 함, g : 전체 판별)
-			if ((this.value.length < 4) && (this.value !== '')) {
-				// console.log(this.value);
-				if (this.value.length === 3) {
-					guessBtn.disabled = false;	// 정답확인 버튼 활성화
-				} else {
-					guessBtn.disabled = true;
-				}
-			} else {
-				alert('1~9까지의 3개의 숫자를 넣어주세요!!!!!!!!!!!💢💢');
-				guessBtn.disabled = true;	// 정답확인 버튼 비활성화
-				guessInput.value = '';
-			}
-		});
+
 
 
 
