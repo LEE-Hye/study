@@ -10,139 +10,166 @@
 </head>
 
 <body>
-    <section id="section6">
-        <h1>마우스 이벤트 객체 : 마우스 좌표로 이동</h1>
+    <section id="section9">
         <style>
             .container {
                 width: 800px;
                 height: 400px;
                 border: 1px solid gray;
+                position: relative;
+                overflow: hidden;
             }
-
+    
             .box {
                 width: 100px;
                 height: 100px;
                 background-color: blue;
                 position: absolute;
+                top: 10px;
+                cursor: grab;
+            }
+            .box:active{
+                cursor: grabbing;
             }
         </style>
+        <h1>마우스 이벤트 객체 : 박스의 옵셋 영역 좌표 이용하기</h1>
         <div class="container">
             <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
         </div>
+        <div class="status"></div>
     </section>
-    <!-- 
-    <script>
-        var section = document.querySelector('#section6');
-        var container = section.querySelector('.container');
-        var box = section.querySelector('.box');
-
-        container.onclick = function(e){
-            // console.log(e)
-            console.log('(x,y) : ' + e.x + ',' + e.y)
-            console.log('client (x,y) : ' + e.clientX + ',' + e.clientY)
-            console.log('page (x,y) : ' + e.pageX + ',' + e.pageY)
-            console.log('offset (x,y) : ' + e.offsetX + ',' + e.offsetY)
-            box.style.position = 'absolute';
-            box.style.left = e.x + 'px';
-            box.style.top = e.y + 'px';
-        }
-    </script> -->
-
-    <section id="section7">
-        <h1>마우스 이벤트 객체 : 드래그 방식으로 박스 옮기기</h1>
+<!-- ************************************************************************************************************************************ -->
+    <div class="mover">drag
         <style>
-            .container {
-                width: 800px;
-                height: 400px;
-                border: 1px solid gray;
+           
+
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: Pretendard;
             }
 
-            .box {
+            body {
+                width: 100vw;
+                height: 100vh;
+            }
+
+            .mover {
                 width: 100px;
-                height: 100px;
-                background-color: blue;
+                height: 125px;
+                background: #febf00;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 1.3rem;
+                font-weight: bold;
+
+                position: absolute;
+                left: 50px;
+                top: 50px;
+
+                user-select: none;
+
+                /*  drag cursor   */
+                cursor: grab;
+            }
+
+            .mover:active {
+                cursor: grabbing;
             }
         </style>
-        <div class="container">
-            <div class="box"></div>
-        </div>
-    </section>
-
-    <!-- <script>
-        var section = document.querySelector('#section7');
-        var container = section.querySelector('.container');
-        var box = section.querySelector('.box');
-        var dragging = false;
-        var offset = { x: 0, y: 0 };
-
-        container.onmousedown = function (e) {
-            if (e.target === box)
-                dragging = true;
-        }
-        container.onmouseup = function (e) {
-            dragging = false;
-        }
-        container.onmousemove = function (e) {
-            if (!dragging) return;
-            box.style.left = e.pageX - offset.x + 'px';
-            box.style.top = e.pageY - offset.y + 'px';
-        }
-
-        box.onmousedown = function (e) {
-            offset.x = e.offsetX;
-            offset.y = e.offsetY;
-        }
-    </script> -->
-
-    <section id="section8">
-        <h1>마우스 이벤트 객체 : 여러개 박스 드래그 방식으로 옮기기</h1>
-        <style>
-            .container {
-                width: 800px;
-                height: 400px;
-                border: 1px solid gray;
-            }
-
-            .box {
-                width: 100px;
-                height: 100px;
-                background-color: blue;
-            }
-        </style>
-        <div class="container">
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-        </div>
-    </section>
+    </div>
 
     <script>
-        var section = document.querySelector('#section7');
-        var container = section.querySelector('.container');
-        var box = section.querySelector('.box');
-        var dragging = false;
-        var offset = { x: 0, y: 0 };
-        var current = null;
+        window.addEventListener('load', function () {
+            var section = document.querySelector('#section9');
+            var container = section.querySelector('.container');
+            var status = section.querySelector('.status');
+            var dragging = false;
+            var offset = { x: 0, y: 0 };
+            var current = null;
+            var left = container.offsetLeft;
+            var top = container.offsetTop;
 
-        container.onmousedown = function (e) {
-            if (e.target.classList.contains('.box')){
-                dragging = true;
-                current = e.target;
+            console.log(left);
+            console.log(top);
+
+            document.onmousedown = function (e) {
+                if (e.target.classList.contains('box')) {
+                    dragging = true;
+                    current = e.target;
+                    offset.x = e.offsetX;
+                    offset.y = e.offsetY;
+                }
+            }
+
+            document.onmousemove = function (e) {
+                console.log(dragging)
+                if (!dragging) return;
+
+                var x = e.pageX - offset.x - left;
+                var y = e.pageY - offset.y - top;
+
+                current.style.left = x + 'px';
+                current.style.top = y + 'px';
+
+                status.innerText = '(x, y) : (' + x + ',' + y + ')';
+            }
+
+            document.onmouseup = function (e) {
+                dragging = false;
+            }
+
+        })
+
+
+
+        const draggable = (atarget) => {
+            let isPress = false,
+                prevPosX = 0,
+                prevPosY = 0;
+
+            atarget.onmousedown = start;
+            atarget.onmouseup = end;
+
+            // 상위 영역
+            window.onmousemove = move;
+
+            function start(e) {
+                prevPosX = e.clientX;
+                prevPosY = e.clientY;
+
+                isPress = true;
+            }
+
+            function move(e) {
+                if (!isPress) return;
+
+                const posX = prevPosX - e.clientX;
+                const posY = prevPosY - e.clientY;
+
+                prevPosX = e.clientX;
+                prevPosY = e.clientY;
+
+                atarget.style.left = (atarget.offsetLeft - posX) + "px";
+                atarget.style.top = (atarget.offsetTop - posY) + "px";
+            }
+
+            function end() {
+                isPress = false;
             }
         }
-        container.onmouseup = function (e) {
-            dragging = false;
-        }
-        container.onmousemove = function (e) {
-            if (!dragging) return;
-            box.style.left = e.pageX - offset.x + 'px';
-            box.style.top = e.pageY - offset.y + 'px';
+
+        window.onload = () => {
+            const atarget = document.querySelector(".mover");
+
+            draggable(atarget);
         }
 
-        box.onmousedown = function (e) {
-            offset.x = e.offsetX;
-            offset.y = e.offsetY;
-        }
+        // https://gurtn.tistory.com/171
     </script>
 </body>
 

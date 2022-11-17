@@ -14,47 +14,7 @@ class Window {
 	/* TODO: Window 클래스는 어떤 멤버함수와 멤버변수를 가져야 할까요? */
 };
 
-const draggable = ($target) => {
-	let isPress = false,
-		prevPosX = 0,
-		prevPosY = 0;
-	
-	$target.onmousedown = start;
-	$target.onmouseup = end;
-	  
-	// 상위 영역
-	window.onmousemove = move;
-   
-	function start(e) {
-	  prevPosX = e.clientX;
-	  prevPosY = e.clientY;
-  
-	  isPress = true;
-	}
-  
-	function move(e) {
-	  if (!isPress) return;
-  
-	  const posX = prevPosX - e.clientX; 
-	  const posY = prevPosY - e.clientY; 
-	  
-	  prevPosX = e.clientX; 
-	  prevPosY = e.clientY;
-	  
-	  $target.style.left = ($target.offsetLeft - posX) + "px";
-	  $target.style.top = ($target.offsetTop - posY) + "px";
-	}
-  
-	function end() {
-	  isPress = false;
-	}
-  }
-  
-  window.onload = () => {
-	const $target = document.querySelector(".mover");
-	
-	draggable($target);
-  }
+
 /**
 웹 상에서 동작하는 간단한 바탕화면 시스템을 만들 예정입니다.
 요구사항은 다음과 같습니다.
