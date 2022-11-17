@@ -68,6 +68,8 @@
         var resultOutput;           // 정답 여부 화면에 출력
         var count;                  // 몇 번만에 정답 맞추는지
 
+
+
         // 1.
         setDigitNumber = document.getElementById('setDigitNum');                // 자릿수 input 입력 공간
         setDigitSub = document.getElementsByClassName('setDigitSubmit')[0];     // 자릿수 값 보내주기
@@ -116,11 +118,12 @@
             }
         });
 
+
         /** 2. 정답 여부 체크 하는 함수 */
         guessFieldSubmit.addEventListener('click', function () {
             count++;
             guessFieldAnswerValue = Number(guessFieldAnswer.value);
-            console.log(ranA*ranB);
+            console.log(ranA * ranB);
             if ((ranA * ranB) !== guessFieldAnswerValue) {
                 resultOutput.innerHTML += '<h3>❌' + count + '번 째 시도 : ' + guessFieldAnswerValue + '은(는) 오답입니다.❌</h3>';
                 guessFieldAnswer.value = '';
@@ -137,7 +140,7 @@
 
 
 
-        
+
 
         /** 문제점이나 궁금한 점?
          * ✔ 1. guessFieldSubmit.disabled이나 resultOutput.innerHTML가 많이 중복되면서 나오는데 어떻게 해야 깔끔하게 보일지 ==> 어쩔 수 없다.

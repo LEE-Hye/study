@@ -82,7 +82,7 @@
         /** 게임 시작 버튼 누르기 */
         srpStart.addEventListener('click', function () {
             btnAtive('on'); // 게임 시작 누르면 가위, 바위, 보 버튼 활성화 해놓기
-            resultOutput.innerHTML = '승패여부는 여기에!!' 
+            resultOutput = '승패여부는 여기에!!'
             srpArrRandom = Math.floor(Math.random() * srpArr.length);
             console.log(srpArr[srpArrRandom]);
 
@@ -101,11 +101,12 @@
                              *  1 < 2 : 바위 < 보
                              *  2 < 0 : 보 < 가위
                              * */
-                            resultOutput.innerHTML = '이겼습니다ヽ(✿ﾟ▽ﾟ)ノ';
+                            output = '이겼습니다ヽ(✿ﾟ▽ﾟ)ノ';
                         } else {
-                            resultOutput.innerHTML = '졌습니다(╯‵□′)╯︵┻━┻';
+                            output = '졌습니다(╯‵□′)╯︵┻━┻';
                         }
                         btnAtive('off');
+                        resultOutput.innerHTML = output;
                     });
                 })(i);
             }
