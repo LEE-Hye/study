@@ -91,17 +91,19 @@
                 (function (i) {
                     userSelect[i].addEventListener('click', function () {
                         if (srpArrRandom === i) {
-                            resultOutput.innerHTML = '비겼습니다.=_=';
-                        } else if ((srpArrRandom === 0 && i === 1) || (srpArrRandom === 1 && i === 2) || (srpArrRandom === 2 && i === 0)) {
+                            resultOutput.innerHTML = '비겼습니다＼（〇_ｏ）／';
+                            return;
+                        }
+                        if ((srpArrRandom === 0 && i === 1) || (srpArrRandom === 1 && i === 2) || (srpArrRandom === 2 && i === 0)) {
                             /** 이기는 상황
                              *  srpArrRandom < i
                              *  0 < 1 : 가위 < 바위
                              *  1 < 2 : 바위 < 보
                              *  2 < 0 : 보 < 가위
                              * */
-                            resultOutput.innerHTML = '이겼습니다.(´▽`ʃ♡ƪ)';
+                            resultOutput.innerHTML = '이겼습니다ヽ(✿ﾟ▽ﾟ)ノ';
                         } else {
-                            resultOutput.innerHTML = '졌습니다..·´¯`(>▂<)´¯`·. ';
+                            resultOutput.innerHTML = '졌습니다(╯‵□′)╯︵┻━┻';
                         }
                         btnAtive('off');
                     });

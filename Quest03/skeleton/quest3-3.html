@@ -51,15 +51,15 @@
          */
 
         /** 1. 자릿수에 따른 랜덤 값 설정해주는 함수 */
-        var setDigitNumber;     // 자릿수 적는 곳
-        var setDigitNumberValue;// 자릿수 적는 곳 value 값
-        var setDigitSub;        // 자릿수 값 보내주기
+        var setDigitNumber;         // 자릿수 적는 곳
+        var setDigitNumberValue;    // 자릿수 적는 곳 value 값
+        var setDigitSub;            // 자릿수 값 보내주기
 
         /** 1-1. 랜덤 값 입/출력 함수 */
-        var ranA;               // 랜덤값A 설정
-        var ranB;               // 랜덤값B 설정
-        var setRanA;            // 계산할 랜덤값A 받아와서 화면 출력
-        var setRanB;            // 계산할 랜덤값B 받아와서 화면 출력
+        var ranA;                   // 랜덤값A 설정
+        var ranB;                   // 랜덤값B 설정
+        var setRanA;                // 계산할 랜덤값A 받아와서 화면 출력
+        var setRanB;                // 계산할 랜덤값B 받아와서 화면 출력
 
         /** 2. 정답 여부 체크 해주는 함수 */
         var guessFieldAnswer;       // 계산한 값 적는 곳
@@ -81,7 +81,6 @@
         guessFieldSubmit = document.getElementsByClassName('guessSubmit')[0];   // 계산한 값 보내주기
         resultOutput = document.getElementsByClassName('resultArea')[0];        // 정답 여부 화면에 출력
 
-
         guessFieldSubmit.disabled = true;   // 자릿수를 등록하지 않으면 정답 확인 버튼 비활성화
 
         /** 1-1. 랜덤 값 입력 함수 */
@@ -90,14 +89,13 @@
             ranB = Math.floor(Math.random() * (max - min)) + min;
             setRanA.innerHTML = ranA;
             setRanB.innerHTML = ranB;
-            guessFieldSubmit.disabled = false;
         };
 
         /** 1. 자릿수에 따른 랜덤값 설정해주는 함수 */
         setDigitSub.addEventListener('click', function () {
             setDigitNumberValue = Number(setDigitNumber.value);
+            guessFieldSubmit.disabled = false;
             count = 0;
-
             switch (setDigitNumberValue) {
                 case 1:
                     random(10, 1);
@@ -113,6 +111,7 @@
                     break;
                 default:
                     resultOutput.innerHTML = '<h3>1~3의 숫자만 넣으십쇼!!!</h3>';
+                    break;
             }
         });
 
@@ -120,6 +119,7 @@
         guessFieldSubmit.addEventListener('click', function () {
             count++;
             guessFieldAnswerValue = Number(guessFieldAnswer.value);
+            console.log(ranA*ranB);
             if ((ranA * ranB) !== guessFieldAnswerValue) {
                 resultOutput.innerHTML += '<h3>❌' + count + '번 째 시도 : ' + guessFieldAnswerValue + '은(는) 오답입니다.❌</h3>';
                 return;
@@ -131,6 +131,11 @@
         });
 
 
+
+
+
+
+        
 
         /** 문제점이나 궁금한 점?
          * ✔ 1. guessFieldSubmit.disabled이나 resultOutput.innerHTML가 많이 중복되면서 나오는데 어떻게 해야 깔끔하게 보일지 ==> 어쩔 수 없다.

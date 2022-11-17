@@ -113,22 +113,23 @@
 			if (randomArr.indexOf(Num) > -1) {
 				if (randomArr.indexOf(Num) === idx) {
 					guessStrike++;
-				} else {
-					guessBall++;
+					return;
 				}
+				guessBall++;
 			}
 		};
 
 		/** 2-2. 조건에 따라 화면에 출력하는 함수 */
 		function output() {
 			if (randomArr.indexOf(guess1) === -1 && randomArr.indexOf(guess10) === -1 && randomArr.indexOf(guess100) === -1) {
-				resultOutput.innerHTML += '<h3> <' + guessCount + '회> ' + guessValue + ' : OUT';
+				resultOutput.innerHTML += '<h3> <' + guessCount + '회> ' + guessValue + ' : OUT 🥎';
 			} else {
-				resultOutput.innerHTML += '<h3> <' + guessCount + '회> ' + guessValue + ' : ' + guessBall + 'B ' + guessStrike + 'S';
+				resultOutput.innerHTML += '<h3> <' + guessCount + '회> ' + guessValue + ' : ' + guessBall + 'B ' + guessStrike + 'S ⚾';
 			}
 			if (guessStrike === 3) {
 				guessBtn.disabled = true;
 				resultOutput.innerHTML += '<h3>🎊' + guessCount + '번 만에 맞췄습니다~!! 추카포카🎊</h3>';
+				return;
 			}
 			if (guessCount === 9) {
 				guessBtn.disabled = true;
@@ -184,6 +185,10 @@
 
 
 
+
+
+
+		
 
 		/** 문제점 or 바꾸고 싶은 점
 		 * ✔ 1. 중복 숫자 입력하면 각각 count돼서 2b1s이 됨 ==> 근데 게임이 이렇게 되는 게 맞는 거 같아
