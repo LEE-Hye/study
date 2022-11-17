@@ -12,6 +12,19 @@
 			let myDesktop = new Desktop(
 				/* TODO: myDesktop 인스턴스의 생성자의 변수로 무엇이 들어가야 할까요? */
 			);
+
+			var desktop1 = document.querySelector('.desktop');
+
+			// ============================폴더 아이콘 버튼 생성
+			var newIconBtn = document.createElement('button');
+			newIconBtn.innerText = '폴더 생성'
+			desktop1.appendChild(newIconBtn);
+
+			var newFolderBtn = document.createElement('button');
+			newFolderBtn.innerText = '아이콘 생성'
+			desktop1.appendChild(newFolderBtn);
+			// ============================폴더 아이콘 버튼 생성
+
 		</script>
 	</body>
 </html>
