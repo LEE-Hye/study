@@ -99,18 +99,19 @@
             switch (setDigitNumberValue) {
                 case 1:
                     random(10, 1);
-                    resultOutput.innerHTML = '<h3>✔한자리 숫자를 선택하셨습니다.</h3>';
+                    resultOutput.innerHTML = '<h3>✔ 한자리 숫자를 선택하셨습니다.</h3>';
                     break;
                 case 2:
                     random(100, 10);
-                    resultOutput.innerHTML = '<h3>✔두자리 숫자를 선택하셨습니다.</h3>';
+                    resultOutput.innerHTML = '<h3>✔ 두자리 숫자를 선택하셨습니다.</h3>';
                     break;
                 case 3:
                     random(1000, 100);
-                    resultOutput.innerHTML = '<h3>✔세자리 숫자를 선택하셨습니다.</h3>';
+                    resultOutput.innerHTML = '<h3>✔ 세자리 숫자를 선택하셨습니다.</h3>';
                     break;
                 default:
                     resultOutput.innerHTML = '<h3>1~3의 숫자만 넣으십쇼!!!</h3>';
+                    guessFieldSubmit.disabled = true;
                     break;
             }
         });
@@ -122,6 +123,7 @@
             console.log(ranA*ranB);
             if ((ranA * ranB) !== guessFieldAnswerValue) {
                 resultOutput.innerHTML += '<h3>❌' + count + '번 째 시도 : ' + guessFieldAnswerValue + '은(는) 오답입니다.❌</h3>';
+                guessFieldAnswer.value = '';
                 return;
             }
             resultOutput.innerHTML += '<h3>🎉' + count + ' 번 만에 맞추셨어요~!! "' + guessFieldAnswerValue + '" 가(이) 정답이였습니다!! 축하합니다.🎉</h3>';

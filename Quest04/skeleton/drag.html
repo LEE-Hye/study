@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <section id="section6">
+        <h1>마우스 이벤트 객체 : 마우스 좌표로 이동</h1>
+        <style>
+            .container {
+                width: 800px;
+                height: 400px;
+                border: 1px solid gray;
+            }
+
+            .box {
+                width: 100px;
+                height: 100px;
+                background-color: blue;
+                position: absolute;
+            }
+        </style>
+        <div class="container">
+            <div class="box"></div>
+        </div>
+    </section>
+    <!-- 
+    <script>
+        var section = document.querySelector('#section6');
+        var container = section.querySelector('.container');
+        var box = section.querySelector('.box');
+
+        container.onclick = function(e){
+            // console.log(e)
+            console.log('(x,y) : ' + e.x + ',' + e.y)
+            console.log('client (x,y) : ' + e.clientX + ',' + e.clientY)
+            console.log('page (x,y) : ' + e.pageX + ',' + e.pageY)
+            console.log('offset (x,y) : ' + e.offsetX + ',' + e.offsetY)
+            box.style.position = 'absolute';
+            box.style.left = e.x + 'px';
+            box.style.top = e.y + 'px';
+        }
+    </script> -->
+
+    <section id="section7">
+        <h1>마우스 이벤트 객체 : 드래그 방식으로 박스 옮기기</h1>
+        <style>
+            .container {
+                width: 800px;
+                height: 400px;
+                border: 1px solid gray;
+            }
+
+            .box {
+                width: 100px;
+                height: 100px;
+                background-color: blue;
+            }
+        </style>
+        <div class="container">
+            <div class="box"></div>
+        </div>
+    </section>
+
+    <!-- <script>
+        var section = document.querySelector('#section7');
+        var container = section.querySelector('.container');
+        var box = section.querySelector('.box');
+        var dragging = false;
+        var offset = { x: 0, y: 0 };
+
+        container.onmousedown = function (e) {
+            if (e.target === box)
+                dragging = true;
+        }
+        container.onmouseup = function (e) {
+            dragging = false;
+        }
+        container.onmousemove = function (e) {
+            if (!dragging) return;
+            box.style.left = e.pageX - offset.x + 'px';
+            box.style.top = e.pageY - offset.y + 'px';
+        }
+
+        box.onmousedown = function (e) {
+            offset.x = e.offsetX;
+            offset.y = e.offsetY;
+        }
+    </script> -->
+
+    <section id="section8">
+        <h1>마우스 이벤트 객체 : 여러개 박스 드래그 방식으로 옮기기</h1>
+        <style>
+            .container {
+                width: 800px;
+                height: 400px;
+                border: 1px solid gray;
+            }
+
+            .box {
+                width: 100px;
+                height: 100px;
+                background-color: blue;
+            }
+        </style>
+        <div class="container">
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+        </div>
+    </section>
+
+    <script>
+        var section = document.querySelector('#section7');
+        var container = section.querySelector('.container');
+        var box = section.querySelector('.box');
+        var dragging = false;
+        var offset = { x: 0, y: 0 };
+        var current = null;
+
+        container.onmousedown = function (e) {
+            if (e.target.classList.contains('.box')){
+                dragging = true;
+                current = e.target;
+            }
+        }
+        container.onmouseup = function (e) {
+            dragging = false;
+        }
+        container.onmousemove = function (e) {
+            if (!dragging) return;
+            box.style.left = e.pageX - offset.x + 'px';
+            box.style.top = e.pageY - offset.y + 'px';
+        }
+
+        box.onmousedown = function (e) {
+            offset.x = e.offsetX;
+            offset.y = e.offsetY;
+        }
+    </script>
+</body>
+
+</html>

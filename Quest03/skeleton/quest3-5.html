@@ -82,7 +82,7 @@
         /** 게임 시작 버튼 누르기 */
         srpStart.addEventListener('click', function () {
             btnAtive('on'); // 게임 시작 누르면 가위, 바위, 보 버튼 활성화 해놓기
-
+            resultOutput.innerHTML = '승패여부는 여기에!!' 
             srpArrRandom = Math.floor(Math.random() * srpArr.length);
             console.log(srpArr[srpArrRandom]);
 
