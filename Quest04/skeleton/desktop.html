@@ -15,7 +15,7 @@
 			background-image: url('img/background2.png');
 		}
 
-		/* .container {
+		.container {
 			width: 100%;
 			height: 915px;
 			left: 0px;
@@ -27,33 +27,7 @@
 		.foldIcon {
 			position: relative;
 			cursor: grab;
-		} */
-		.container {
-			width: 100%;
-			height: 900px;
-			left: 0px;
-			top: 0px;
-			overflow: hidden;
-			position: relative;
 		}
-
-		.foldIcon {
-			position: absolute;
-			cursor: grab;
-		}
-/* 
-		.container>img:nth-child(2) {
-			right: 0;
-		}
-
-		.container>img:nth-child(3) {
-			bottom: 0;
-		}
-
-		.container>img:nth-child(4) {
-			right: 0;
-			bottom: 0;
-		} */
 
 		.foldIcon:active {
 			cursor: grabbing;
@@ -98,6 +72,8 @@
 			width: 0px;
 			margin-left: 380px;
 		}
+		/* ---------------------------------- */
+
 	</style>
 </head>
 
@@ -112,33 +88,16 @@
 
 		var desktop1 = document.querySelector('.desktop');
 
-
-		// ********************모달창 html S
-		var modalDiv = document.createElement('div');
-		modalDiv.setAttribute('id', 'modal');
-		desktop1.appendChild(modalDiv);
-
-		var modalLay = document.createElement('div');
-		modalLay.setAttribute('class', 'modalOverlay');
-		modalDiv.appendChild(modalLay);
-
-		var closeAre = document.createElement('div');
-		closeAre.setAttribute('class', 'closeArea');
-		closeAre.innerText = 'X';
-		modalLay.appendChild(closeAre);
-
-		// ********************모달창 html E
-
-		// ********************컨테이너 생성
+		// ********************컨테이너 생성 ********************
 		var contain = document.createElement('div');
 		contain.setAttribute('class', 'container');
 		desktop1.appendChild(contain)
-		// ********************컨테이너 생성
+		// ********************컨테이너 생성 ********************
 
-		// ********************폴더 아이콘 버튼 생성
+		// ********************폴더 아이콘 버튼 생성 ********************
 		var btn = document.createElement('div');
 		btn.setAttribute('class', 'btn');
-		desktop1.appendChild(btn)
+		desktop1.appendChild(btn);
 
 		var newFoldBtn = document.createElement('button');
 		newFoldBtn.setAttribute('class', 'folderBtn');
@@ -149,25 +108,40 @@
 		newIconBtn.setAttribute('class', 'iconBtn');
 		newIconBtn.innerText = '아이콘 생성';
 		btn.appendChild(newIconBtn);
-		// ********************폴더 아이콘 버튼 생성
+		// ********************폴더 아이콘 버튼 생성 ********************
+
+		// ********************모달창 html S ********************
+		var modalDiv = document.createElement('div');
+		modalDiv.setAttribute('id', 'modal');
+		contain.appendChild(modalDiv);
 
 
+		var modalLay = document.createElement('div');
+		modalLay.setAttribute('class', 'modalOverlay');
+		modalDiv.appendChild(modalLay);
 
+		var closeAre = document.createElement('div');
+		closeAre.setAttribute('class', 'closeArea');
+		closeAre.innerText = 'X';
+		modalLay.appendChild(closeAre);
 
-		// ********************개수 질문 S
+		// ********************모달창 html E ********************
+
+		// ********************개수 질문 S ********************
 		/** 폴더 만들기 */
 		document.querySelector('.folderBtn').addEventListener('click', function () {
-			let folderNum = Number(prompt('몇 개를 만드시겠습니까?'));
-			for (let i = 0; i < folderNum; i++) {
-				let newFolder = document.createElement('img');
-				newFolder.setAttribute('src', 'img/folder.png');
-				newFolder.setAttribute('class', 'foldIcon');
-				newFolder.classList.add('fold');
-				contain.appendChild(newFolder);
-			}
+			var newFolder = document.createElement('img');
+			newFolder.setAttribute('src', 'img/folder.png');
+			newFolder.setAttribute('class', 'foldIcon');
+			newFolder.classList.add('fold');
+			contain.appendChild(newFolder);
+			newFolder.onload = function () {
+				newFolder.dataset.left = newFolder.offsetLeft;
+				newFolder.dataset.top = newFolder.offsetTop;
+			};
 
 			// 모달
-			let modalOverlay = document.querySelector('.modalOverlay');
+			var modalOverlay = document.querySelector('.modalOverlay');
 			function modalOn() {
 				modalOverlay.style.display = 'flex';
 			};
@@ -180,46 +154,32 @@
 					modalOn();
 				});
 			});
-			const closeBtn = modal.querySelector(".closeArea")
+			const closeBtn = modal.querySelector(".closeArea");
 			closeBtn.addEventListener("click", function () {
 				modalOff();
 			});
-
 		});
-
 
 		/** 아이콘 만들기 */
 		document.querySelector('.iconBtn').addEventListener('click', function () {
-			let folderNum = Number(prompt('몇 개를 만드시겠습니까?'));
-			// let iconImages = ['icon1.png', 'icon2.png', 'icon3.png', 'icon4.png', 'icon5.png', 'icon6.png'];
+			// var iconImages = ['icon1.png', 'icon2.png', 'icon3.png', 'icon4.png', 'icon5.png', 'icon6.png'];
 			// 여러개 아이콘은 나중에 하자
-			for (let i = 0; i < folderNum; i++) {
-				let newIcon = document.createElement('img');
-				newIcon.setAttribute('src', 'img/icon1.png');
-				newIcon.setAttribute('class', 'foldIcon');
-				contain.appendChild(newIcon);
-
-			}
+			var newIcon = document.createElement('img');
+			newIcon.setAttribute('src', 'img/icon1.png');
+			newIcon.setAttribute('class', 'foldIcon');
+			contain.appendChild(newIcon);
+			newIcon.onload = function () {
+				newIcon.dataset.left = newIcon.offsetLeft;
+				newIcon.dataset.top = newIcon.offsetTop;
+			};
 		});
-		// ********************개수 질문 E
+		// ********************개수 질문 E ********************
 
-
-
-
-
-		// // ********************움직이기 S
+		// // ********************움직이기 S ********************
 		window.addEventListener('load', function () {
-			var section = document.querySelector('.desktop');
-			var container = section.querySelector('.container');
 			var dragging = false;
 			var offset = { x: 0, y: 0 };
 			var current = null;
-
-			var left = container.offsetLeft;
-			var top = container.offsetTop;
-
-			console.log(left)
-			console.log(top)
 
 			document.onmousedown = function (e) {   // 마우스를 눌렀을 때
 				if (e.target.classList.contains('foldIcon')) {
@@ -229,19 +189,19 @@
 					offset.x = e.offsetX;
 					offset.y = e.offsetY;
 				}
-			}
+			};
 			document.onmousemove = function (e) {   // 움직이는 동안
 				// console.log(dragging)
 				if (!dragging) return;
-				current.style.left = e.pageX - offset.x - left + 'px'
-				current.style.top = e.pageY - offset.y - top + 'px'
+				current.style.left = e.pageX - offset.x - current.dataset.left + 'px';
+				current.style.top = e.pageY - offset.y - current.dataset.top + 'px';
 			};
 			document.onmouseup = function (e) {     // 마우스를 땠을 때
 				dragging = false;
-			}
+			};
 		});
 
-		// ********************움직이기 E
+		// ********************움직이기 E ********************
 
 	</script>
 </body>

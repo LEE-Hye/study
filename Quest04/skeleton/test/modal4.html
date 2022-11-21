@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /** 모달창 */
+
+        #modal {
+            display: flex;
+            justify-content: center;
+        }
+
+        .modalOverlay {
+            width: 400px;
+            height: 500px;
+            position: absolute;
+            margin-top: 50px;
+            display: none;
+            background: rgba(69, 139, 197, 0.70);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            backdrop-filter: blur(1.5px);
+            -webkit-backdrop-filter: blur(1.5px);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        .closeArea {
+            cursor: pointer;
+            color: white;
+            height: 0px;
+            width: 0px;
+            margin-left: 380px;
+        }
+
+        /* ---------------------------------- */
+    </style>
+</head>
+
+<body>
+    <section class="desktop">
+        <div class="container">
+            <img src="/Quest04/skeleton/img/folder.png" alt="" class="fold">
+            <img src="/Quest04/skeleton/img/folder.png" alt="" class="fold">
+            <div id="modal">
+                <div class="modalOverlay">
+                    <div class="closeArea">X</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        var modalOverlay = document.querySelector('.modalOverlay');
+        function modalOn() {
+            modalOverlay.style.display = 'flex';
+        };
+        function modalOff() {
+            modalOverlay.style.display = 'none';
+        };
+        // 클릭했을 때 창 열리게 하는 부분
+        document.querySelectorAll('.fold').forEach(function (a) {
+            a.addEventListener('dblclick', function () {
+                modalOn();
+            });
+        });
+        const closeBtn = modal.querySelector(".closeArea");
+        closeBtn.addEventListener("click", function () {
+            modalOff();
+        });
+
+        window.addEventListener('load', function () {
+            var section = document.querySelector('#section9');
+            var container = section.querySelector('.container');
+            var dragging = false;
+            var offset = { x: 0, y: 0 };
+            var current = null;
+            var left = container.offsetLeft;
+            var top = container.offsetTop;
+
+            document.onmousedown = function (e) {
+                if (e.target.classList.contains('box')) {
+                    dragging = true;
+                    current = e.target;
+                    offset.x = e.offsetX;
+                    offset.y = e.offsetY;
+                }
+            }
+
+            document.onmousemove = function (e) {
+                console.log(dragging)
+                if (!dragging) return;
+
+                var x = e.pageX - offset.x - left;
+                var y = e.pageY - offset.y - top;
+
+                current.style.left = x + 'px';
+                current.style.top = y + 'px';
+
+                status.innerText = '(x, y) : (' + x + ',' + y + ')';
+            }
+
+            document.onmouseup = function (e) {
+                dragging = false;
+            }
+
+        })
+    </script>
+</body>
+
+</html>

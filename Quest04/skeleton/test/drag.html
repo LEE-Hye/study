@@ -38,49 +38,7 @@
             <div class="box"></div>
             <div class="box"></div>
         </div>
-        <div class="status"></div>
     </section>
-<!-- ************************************************************************************************************************************ -->
-    <div class="mover">drag
-        <style>
-           
-
-            * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-                font-family: Pretendard;
-            }
-
-            body {
-                width: 100vw;
-                height: 100vh;
-            }
-
-            .mover {
-                width: 100px;
-                height: 125px;
-                background: #febf00;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                font-size: 1.3rem;
-                font-weight: bold;
-
-                position: absolute;
-                left: 50px;
-                top: 50px;
-
-                user-select: none;
-
-                /*  drag cursor   */
-                cursor: grab;
-            }
-
-            .mover:active {
-                cursor: grabbing;
-            }
-        </style>
     </div>
 
     <script>
@@ -124,52 +82,6 @@
             }
 
         })
-
-
-
-        const draggable = (atarget) => {
-            let isPress = false,
-                prevPosX = 0,
-                prevPosY = 0;
-
-            atarget.onmousedown = start;
-            atarget.onmouseup = end;
-
-            // 상위 영역
-            window.onmousemove = move;
-
-            function start(e) {
-                prevPosX = e.clientX;
-                prevPosY = e.clientY;
-
-                isPress = true;
-            }
-
-            function move(e) {
-                if (!isPress) return;
-
-                const posX = prevPosX - e.clientX;
-                const posY = prevPosY - e.clientY;
-
-                prevPosX = e.clientX;
-                prevPosY = e.clientY;
-
-                atarget.style.left = (atarget.offsetLeft - posX) + "px";
-                atarget.style.top = (atarget.offsetTop - posY) + "px";
-            }
-
-            function end() {
-                isPress = false;
-            }
-        }
-
-        window.onload = () => {
-            const atarget = document.querySelector(".mover");
-
-            draggable(atarget);
-        }
-
-        // https://gurtn.tistory.com/171
     </script>
 </body>
 
