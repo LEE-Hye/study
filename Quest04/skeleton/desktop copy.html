@@ -157,28 +157,84 @@
 
 			// ********************모달창 html E ********************
 
-			// 모달
-			document.querySelectorAll('.modal').forEach(function (a) {
-				function modalOn() {
-					a.style.display = 'flex';
-				};
-				function modalOff() {
-					a.style.display = 'none';
-				};
-				// 클릭했을 때 창 열리게 하는 부분
-				document.querySelectorAll('.fold').forEach(function (a) {
-					a.addEventListener('dblclick', function () {
-						console.log('더블클릭 잘 되나?')
-						modalOn();
+			// // 모달
+			// document.querySelectorAll('.modal').forEach(function (a) {
+
+			// 	// 클릭했을 때 창 열리게 하는 부분
+			// 	document.querySelectorAll('.fold').forEach(function (a) {
+			// 		a.addEventListener('dblclick', function () {
+			// 			modalOn();
+			// 		});
+			// 	});
+			// 	function modalOn() {
+			// 		a.style.display = 'flex';
+			// 	};
+			// 	function modalOff() {
+			// 		a.style.display = 'none';
+			// 	};
+			// 	var closeBtn = a.querySelector(".modalclose");
+			// 	closeBtn.addEventListener("click", function () {
+			// 		modalOff();
+			// 	});
+			// });
+
+
+			document.querySelectorAll('.fold').forEach(function (folderdb) {
+				document.querySelectorAll('.modal').forEach(function (mod) {
+
+					function modalOn() {
+						mod.style.display = 'flex';
+					};
+					function modalOff() {
+						mod.style.display = 'none';
+					};
+					folderdb.addEventListener('dblclick', function () {
+						var aa = mod.querySelector('.modalheader').innerText
+
+						console.log(this.getAttribute('alt'))
+						if (aa.substring(0, aa.length - 1) == this.getAttribute('alt')) { 
+							modalOn();
+							console.log('뭘까요');
+							// console.log(mod)
+							// console.log(this);
+						}
+					})
+
+					var closeBtn = mod.querySelector(".modalclose");
+					closeBtn.addEventListener("click", function () {
+						modalOff();
 					});
-				});
-				var closeBtn = a.querySelector(".modalclose");
-				closeBtn.addEventListener("click", function () {
-					modalOff();
-				});
+				})
 			})
 
+
 		});
+
+		// document.querySelectorAll('.modal').forEach(function (a) {
+		// 		console.log('대빵')
+		// 		console.log(a)
+
+		// 		// 클릭했을 때 창 열리게 하는 부분
+		// 		document.querySelectorAll('.fold').forEach(function (a) {
+		// 			a.addEventListener('dblclick', function (e) {
+		// 				console.log('중간')
+		// 				console.log(a)
+		// 				modalOn();
+		// 			});
+		// 		});
+		// 		function modalOn() {
+		// 			console.log('this')
+		// 			console.log(a)
+		// 			a.style.display = 'flex';
+		// 		};
+		// 		function modalOff() {
+		// 			a.style.display = 'none';
+		// 		};
+		// 		var closeBtn = a.querySelector(".modalclose");
+		// 		closeBtn.addEventListener("click", function () {
+		// 			modalOff();
+		// 		});
+		// 	});
 
 
 		/** 아이콘 만들기 */
@@ -216,8 +272,8 @@
 					offset.x = e.offsetX;
 					offset.y = e.offsetY;
 				}
-				console.log(e.target);
-				console.log(dragging)
+				// console.log(e.target);
+				// console.log(dragging);
 			};
 			document.onmousemove = function (e) {   // 움직이는 동안
 				// console.log(dragging)
@@ -229,7 +285,7 @@
 					current.style.left = e.pageX - offset.x - left + 'px';
 					current.style.top = e.pageY - offset.y - top + 'px';
 				}
-				console.log(dragging);
+				// console.log(dragging);
 			};
 			document.onmouseup = function (e) {     // 마우스를 땠을 때
 				dragging = false;
