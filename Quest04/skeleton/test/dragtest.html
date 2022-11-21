@@ -1,78 +1,119 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <title>Document</title>
     <style>
-    .container {
-        width: 100%;
-        height: 900px;
-        left: 0px;
-        top: 0px;
-        overflow: hidden;
-        background-color: blue;
-        position: relative;
-    }
-    .foldIcon {
-        position: relative;
-        cursor: grab;
-    }
+        #modal {
+            position: absolute;
+            z-index: 9;
+            width: 320px;
+            height: 300px;
+            background: rgba(69, 139, 197, 0.70);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            backdrop-filter: blur(1.5px);
+            -webkit-backdrop-filter: blur(1.5px);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            text-align: right;
+        }
 
-    img{
-      width: 150px;
-      height: 150px;
-    }
+        #modalheader {
+            width: 300px;
+            padding: 10px;
+            cursor: move;
+            z-index: 10;
+            background-color: #2196F3;
+            color: #fff;
+        }
     </style>
 </head>
-<body> 
-    <section class="desktop">
-        <div class="container"><img src="/Quest04/skeleton/img/folder.png" alt=""></div>
-        
-        <!-- <div class="btn">
-            <button type="button" class="folderBtn">Add</button>
-        </div> -->
-        <div class="modal">
-          <div class="modalTop foldIcon">
-              <div class="modalTitle">가나다라</div>
-              <span>X</span>
-          </div>
-          <div class="modalContent">가나다라마바사아자차카타파하</div>
-      </div>
-    </section>
 
+<body>
+    <!-- <div id="modal">
+        Include a header DIV with the same name as the draggable DIV, followed by "header"
+        <div id="modalheader"><span class="closeArea">X</span></div>
+        <div class="modalContent"></div>
+    </div> -->
+
+    <div class="contain"></div>
     <script>
-        window.addEventListener('load', function () {
-        var section = document.querySelector('.desktop');
-        var container = section.querySelector('.container');        
-        var dragging = false;
-        var offset = { x: 0, y: 0 };
-        var current = null;        
 
-        document.onmousedown = function (e) {   // 마우스를 눌렀을 때
-            if (e.target.classList.contains('foldIcon')) {
+        var contain = document.querySelector('.contain');
+
+        var modal = document.createElement('div');
+        modal.setAttribute('id', 'modal');
+        contain.appendChild(modal);
+
+        var modalheader = document.createElement('div');
+        modalheader.setAttribute('id', 'modalheader');
+        modal.appendChild(modalheader);
+
+        var modalclose = document.createElement('span');
+        modalclose.setAttribute('class', 'modalclose');
+        modalclose.innerText = 'X';
+        modalheader.appendChild(modalclose);
+
+        var modalContent = document.createElement('div');
+        modalclose.setAttribute('class', 'modalclose');
+        modalheader.appendChild(modalclose);
+
+
+        dragElement(document.getElementById("modal"));
+
+        function dragElement(elmnt) {
+            var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+            if (document.getElementById(elmnt.id + "header")) {
+                // if present, the header is where you move the DIV from:// 있는 경우 헤더는 DIV를 이동하는 위치입니다.
+                document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+            } else {
+                // otherwise, move the DIV from anywhere inside the DIV:// 그렇지 않으면 DIV 내부의 아무 곳에서나 DIV를 이동합니다.
+                elmnt.onmousedown = dragMouseDown;
+            }
+
+            function dragMouseDown(e) {
+                e = e || window.event;
                 e.preventDefault();
-                dragging = true;
-                current = e.target; // 마우스 다운 해서 현재 클릭된 녀석
-                offset.x = e.offsetX;
-                offset.y = e.offsetY;
+                // get the mouse cursor position at startup:// 시작할 때 마우스 커서 위치를 가져옵니다.
+                pos3 = e.clientX;
+                pos4 = e.clientY;
+                document.onmouseup = closeDragElement;
+                // call a function whenever the cursor moves: // 커서가 움직일 때마다 함수 호출:
+                document.onmousemove = elementDrag;
+            }
+
+            function elementDrag(e) {
+                e = e || window.event;
+                e.preventDefault();
+                // calculate the new cursor position: // 새 커서 위치를 계산합니다.
+                pos1 = pos3 - e.clientX;
+                pos2 = pos4 - e.clientY;
+                pos3 = e.clientX;
+                pos4 = e.clientY;
+                // set the element's new position:// 요소의 새 위치를 설정합니다.
+                elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+                elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+            }
+
+            function closeDragElement() {
+                // stop moving when mouse button is released:// 마우스 버튼을 놓으면 이동을 멈춥니다.
+                document.onmouseup = null;
+                document.onmousemove = null;
             }
         }
-        document.onmousemove = function (e) {   // 움직이는 동안
-            // console.log(dragging)
-            if (dragging){
-                current.style.left = e.pageX - offset.x - current.dataset.left +'px'
-                current.style.top = e.pageY - offset.y - current.dataset.top +'px'
-            }
-        }
-        document.onmouseup = function (e) {     // 마우스를 땠을 때
-            dragging = false;
-        }
 
-        document.getElementsByTagName('img').addEventListener('dbclick', function(){
 
-        })
-        
-    });    
+        function modalOff() {
+            modal.style.display = 'none';
+        };
+
+        var modal = document.querySelector('#modal');
+        const closeBtn = modal.querySelector(".modalclose");
+        closeBtn.addEventListener("click", function () {
+            modalOff();
+        });
     </script>
 </body>
+
 </html>
