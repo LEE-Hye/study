@@ -28,9 +28,6 @@
 			top: 0px;
 			overflow: hidden;
 			position: relative;
-			display: flex;
-		    flex-wrap: wrap;
-			align-content: flex-start;
 		}
 
 		.foldIcon {
@@ -50,21 +47,6 @@
 		img {
 			width: 100px;
 			height: 100px;
-		}
-
-		/* 폴더 아이콘 */
-		.parent{
-			display: flex;
-    		align-items: center;
-		    flex-direction: column;
-			width: 150px;
-			height: 150px;
-			
-		}
-		
-		
-		.foldName, .iconName{
-			color: white;
 		}
 
 		/** 모달창 */
@@ -151,29 +133,17 @@
 		/** 폴더 만들기 */
 		var i = 0;
 		document.querySelector('.folderBtn').addEventListener('click', function () {
-
-
-			var newParent = document.createElement('span');
-			newParent.setAttribute('class', 'parent');
-			contain.appendChild(newParent);
-
-
 			var newFolder = document.createElement('img');
 			i++;
 			newFolder.setAttribute('src', 'img/folder.png');
 			newFolder.setAttribute('class', 'foldIcon');
 			newFolder.classList.add('fold');
 			newFolder.setAttribute('alt', 'folder' + i);
-			newParent.appendChild(newFolder);
+			contain.appendChild(newFolder);
 			newFolder.onload = function () {
 				newFolder.dataset.left = newFolder.offsetLeft;
 				newFolder.dataset.top = newFolder.offsetTop;
 			};
-
-			var newFolderName = document.createElement('span');
-			newFolderName.setAttribute('class', 'foldName');
-			newParent.appendChild(newFolderName)
-			newFolderName.innerText = newFolder.getAttribute('alt');
 
 			// ********************모달창 html S ********************
 
@@ -228,36 +198,21 @@
 		});
 
 
-		var j = 0;
 		/** 아이콘 만들기 */
 		document.querySelector('.iconBtn').addEventListener('click', function () {
 			// 랜덤 아이콘
 			var iconImages = ['icon1.png', 'icon2.png', 'icon3.png', 'icon4.png', 'icon5.png', 'icon6.png'];
 			iconRandom = Math.floor(Math.random() * iconImages.length);
 
-			j++;
-
-			var newParent = document.createElement('span');
-			newParent.setAttribute('class', 'parent');
-			contain.appendChild(newParent);
-
 
 			var newIcon = document.createElement('img');
 			newIcon.setAttribute('src', 'img/' + iconImages[iconRandom]);
 			newIcon.setAttribute('class', 'foldIcon');
-			newIcon.setAttribute('alt', 'icon' + j);
-			newParent.appendChild(newIcon);
+			contain.appendChild(newIcon);
 			newIcon.onload = function () {
 				newIcon.dataset.left = newIcon.offsetLeft;
 				newIcon.dataset.top = newIcon.offsetTop;
 			};
-
-
-			var newIconName = document.createElement('span');
-			newIconName.setAttribute('class', 'iconName');
-			newParent.appendChild(newIconName)
-			newIconName.innerText = newIcon.getAttribute('alt');
-
 		});
 		// ********************개수 질문 E ********************
 

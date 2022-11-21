@@ -271,7 +271,7 @@
 			var top = container.offsetTop;
 
 			document.onmousedown = function (e) {   // 마우스를 눌렀을 때
-				if (e.target.classList.contains('foldIcon') || e.target.classList.contains('modal')) {
+				if (e.target.classList.contains('parent') || e.target.classList.contains('modal')) {
 					e.preventDefault();
 					dragging = true;
 					current = e.target; // 마우스 다운 해서 현재 클릭된 녀석
@@ -284,7 +284,7 @@
 			document.onmousemove = function (e) {   // 움직이는 동안
 				// console.log(dragging)
 				if (!dragging) return;
-				if (e.target.classList.contains('foldIcon')) {
+				if (e.target.classList.contains('parent')) {
 					current.style.left = e.pageX - offset.x - current.dataset.left + 'px';
 					current.style.top = e.pageY - offset.y - current.dataset.top - 50 + 'px';
 				} else {
