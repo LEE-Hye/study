@@ -45,9 +45,9 @@
 
 		/** 모달창 */
 
-		#modal {
+		.modal {
 			position: absolute;
-			z-index: 1;
+			z-index: 10;
 			width: 320px;
 			height: 300px;
 			display: none;
@@ -58,20 +58,22 @@
 			border-radius: 10px;
 			border: 1px solid rgba(255, 255, 255, 0.18);
 		}
-		/* #modalheader {
-            width: 300px;
+
+		.modalheader {
+			width: 300px;
 			height: 20px;
-            padding: 10px;
-            z-index: 2;
-            background-color: #2196F3;
-            color: #fff;
-        } */
+			padding: 10px;
+			z-index: 0;
+			background-color: #2196F3;
+			color: #fff;
+		}
+
 		.modalclose {
 			cursor: pointer;
 			color: white;
 			height: 0px;
 			width: 0px;
-			margin-left: 300px;
+			margin-left: 230px;
 		}
 
 		/* ---------------------------------- */
@@ -115,11 +117,14 @@
 
 		// ********************개수 질문 S ********************
 		/** 폴더 만들기 */
+		var i = 0;
 		document.querySelector('.folderBtn').addEventListener('click', function () {
 			var newFolder = document.createElement('img');
+			i++;
 			newFolder.setAttribute('src', 'img/folder.png');
 			newFolder.setAttribute('class', 'foldIcon');
 			newFolder.classList.add('fold');
+			newFolder.setAttribute('alt', 'folder' + i);
 			contain.appendChild(newFolder);
 			newFolder.onload = function () {
 				newFolder.dataset.left = newFolder.offsetLeft;
@@ -129,18 +134,19 @@
 			// ********************모달창 html S ********************
 
 			var modal = document.createElement('div');
-			// modal.setAttribute('class', 'foldIcon');
-			modal.setAttribute('id', 'modal');
+			modal.setAttribute('class', 'foldIcon');
+			modal.setAttribute('class', 'modal');
 			contain.appendChild(modal);
 
-			// var modalheader = document.createElement('div');
-			// modalheader.setAttribute('id', 'modalheader');
-			// modal.appendChild(modalheader);
+			var modalheader = document.createElement('div');
+			modalheader.setAttribute('class', 'modalheader');
+			modal.appendChild(modalheader);
+			modalheader.innerText = newFolder.getAttribute('alt');
 
 			var modalclose = document.createElement('span');
 			modalclose.setAttribute('class', 'modalclose');
 			modalclose.innerText = 'X';
-			modal.appendChild(modalclose);
+			modalheader.appendChild(modalclose);
 
 
 			modal.onload = function () {
@@ -152,32 +158,38 @@
 			// ********************모달창 html E ********************
 
 			// 모달
-			var modal = document.querySelector('#modal');
-			function modalOn() {
-				modal.style.display = 'flex';
-			};
-			function modalOff() {
-				modal.style.display = 'none';
-			};
-			// 클릭했을 때 창 열리게 하는 부분
-			document.querySelectorAll('.fold').forEach(function (a) {
-				a.addEventListener('dblclick', function () {
-					modalOn();
+			document.querySelectorAll('.modal').forEach(function (a) {
+				function modalOn() {
+					a.style.display = 'flex';
+				};
+				function modalOff() {
+					a.style.display = 'none';
+				};
+				// 클릭했을 때 창 열리게 하는 부분
+				document.querySelectorAll('.fold').forEach(function (a) {
+					a.addEventListener('dblclick', function () {
+						console.log('더블클릭 잘 되나?')
+						modalOn();
+					});
 				});
-			});
+				var closeBtn = a.querySelector(".modalclose");
+				closeBtn.addEventListener("click", function () {
+					modalOff();
+				});
+			})
 
-			var closeBtn = modal.querySelector(".modalclose");
-			closeBtn.addEventListener("click", function () {
-				modalOff();
-			});
 		});
+
 
 		/** 아이콘 만들기 */
 		document.querySelector('.iconBtn').addEventListener('click', function () {
-			// var iconImages = ['icon1.png', 'icon2.png', 'icon3.png', 'icon4.png', 'icon5.png', 'icon6.png'];
-			// 여러개 아이콘은 나중에 하자
+			// 랜덤 아이콘
+			var iconImages = ['icon1.png', 'icon2.png', 'icon3.png', 'icon4.png', 'icon5.png', 'icon6.png'];
+			iconRandom = Math.floor(Math.random() * iconImages.length);
+
+
 			var newIcon = document.createElement('img');
-			newIcon.setAttribute('src', 'img/icon1.png');
+			newIcon.setAttribute('src', 'img/' + iconImages[iconRandom]);
 			newIcon.setAttribute('class', 'foldIcon');
 			contain.appendChild(newIcon);
 			newIcon.onload = function () {
@@ -194,10 +206,10 @@
 			var offset = { x: 0, y: 0 };
 			var current = null;
 			var left = container.offsetLeft;
-            var top = container.offsetTop;
+			var top = container.offsetTop;
 
 			document.onmousedown = function (e) {   // 마우스를 눌렀을 때
-				if (e.target.classList.contains('foldIcon')||e.target.id=='modal') {
+				if (e.target.classList.contains('foldIcon') || e.target.classList.contains('modal')) {
 					e.preventDefault();
 					dragging = true;
 					current = e.target; // 마우스 다운 해서 현재 클릭된 녀석
@@ -210,10 +222,10 @@
 			document.onmousemove = function (e) {   // 움직이는 동안
 				// console.log(dragging)
 				if (!dragging) return;
-				if(e.target.classList.contains('foldIcon')){
+				if (e.target.classList.contains('foldIcon')) {
 					current.style.left = e.pageX - offset.x - current.dataset.left + 'px';
 					current.style.top = e.pageY - offset.y - current.dataset.top + 'px';
-				}else{
+				} else {
 					current.style.left = e.pageX - offset.x - left + 'px';
 					current.style.top = e.pageY - offset.y - top + 'px';
 				}
@@ -232,3 +244,7 @@
 </body>
 
 </html>
+
+
+<!-- 문제가 있는데 모달창을 열었을 때 왜 얘는 드래그가 안 되는걸까?
+고친다고 고쳐봤는데 아이콘 폴더가 모달창 근처로 가면 offset값을 모달쪽걸 가져오나봐.. -->
