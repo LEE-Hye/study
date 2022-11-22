@@ -258,6 +258,12 @@ class NewWindow {
 
 			console.log(contain);
 
+			tab1.addEventListener('mouseover', function(){
+				this.style.color = 'red'
+			});
+			tab1.addEventListener('mouseout', function(){
+				this.style.color = 'black'
+			});
 		
 			// tab1.addEventListener('click', function(){
 			// 	if(this.getAttribute('id')==contain.getAttribute('id')){
