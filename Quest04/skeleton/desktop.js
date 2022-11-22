@@ -1,29 +1,54 @@
 var i = 0;
+var k = 0;
 var contain;
+var tabPlus;
+var tab;
+var tabClose;
+var desktop1;
 class Desktop {
 	/* TODO: Desktop 클래스는 어떤 멤버함수와 멤버변수를 가져야 할까요? */
 	constructor() {
-		this.create();
+		this.createTab();
+		this.createContainer(i);
+		this.createBtn();
 		new Icon();
 		new Folder();
 		this.drag();
 		this.clear();
+		new NewWindow();
 	}
-	create() {
-		var desktop1 = document.querySelector('.desktop');
+	
+	createTab(){
+		desktop1 = document.querySelector('.desktop');
+		// ********************탭 생성 S ********************
+		tab = document.createElement('div');
+		tab.setAttribute('class', 'tab');
+		desktop1.append(tab);
 
-		// ********************탭 생성 ********************
-		var tap = document.createElement('div');
-		tap.setAttribute('class', 'tab');
-		desktop1.append(tap);
-		// ********************탭 생성 ********************
+		var tab1 = document.createElement('button');
+		tab1.setAttribute('class', 'tabs');
+		tab1.innerText = '기본화면';
+		tab.appendChild(tab1);
 
+		tabPlus = document.createElement('button');
+		tabPlus.setAttribute('class', 'tabPlus');
+		tabPlus.innerText = '➕';
+		tab.appendChild(tabPlus);
+		// ********************탭 생성 E ********************
+	}
+	createContainer(i) {
+		i++;
+		desktop1 = document.querySelector('.desktop');
 		// ********************컨테이너 생성 ********************
 		contain = document.createElement('div');
 		contain.setAttribute('class', 'container');
+		contain.setAttribute('id', 'contain'+i);
 		desktop1.appendChild(contain)
 		// ********************컨테이너 생성 ********************
+	}
+	createBtn(){
 
+		desktop1 = document.querySelector('.desktop');
 		// ********************폴더 아이콘 초기화 버튼 생성 ********************
 		var btn = document.createElement('div');
 		btn.setAttribute('class', 'btn');
@@ -45,6 +70,7 @@ class Desktop {
 		btn.appendChild(newClearBtn);
 		// ********************폴더 아이콘 초기화 버튼 생성 ********************
 	}
+
 	drag() {
 		// // ********************움직이기 S ********************
 		window.addEventListener('load', function () {
@@ -71,7 +97,7 @@ class Desktop {
 				if (!dragging) return;
 				if (e.target.classList.contains('foldIcon')) {
 					current.style.left = e.pageX - offset.x - current.dataset.left + 'px';
-					current.style.top = e.pageY - offset.y - current.dataset.top - 50 + 'px';
+					current.style.top = e.pageY - offset.y - current.dataset.top - 35 + 'px';
 				} else {
 					current.style.left = e.pageX - offset.x - left - 700 + 'px';
 					current.style.top = e.pageY - offset.y - top + 'px';
@@ -205,7 +231,45 @@ class Window {
 	};
 };
 
+class NewWindow {
+	constructor() {
+		this.tab();
+	}
 
+	tab() {
+		// ********************탭 기능 S ********************
+		tabPlus.addEventListener('click', function () {
+			k++;
+			var tab1 = document.createElement('button');
+			tab1.setAttribute('class', 'tabs');
+			tab1.setAttribute('id', 'contain'+(k+1));
+			tab1.innerText = '탭입니당'+k;
+			tab.appendChild(tab1);
+			// myDesktop.createContainer(k);
+
+			tabClose = document.createElement('span');
+			tabClose.setAttribute('class', 'tabClose');
+			tabClose.innerText = 'x'
+			tab1.appendChild(tabClose);
+
+			tabClose.addEventListener('click', function () {
+				tab1.remove();
+			})
+
+			console.log(contain);
+
+		
+			// tab1.addEventListener('click', function(){
+			// 	if(this.getAttribute('id')==contain.getAttribute('id')){
+			// 		contain.style.display = 'flex';
+			// 	}else{
+			// 		contain.style.display = 'none';
+			// 	}
+			// })
+		})
+		// ********************탭 기능 E ********************
+	}
+}
 
 
 /**

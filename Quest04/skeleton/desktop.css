@@ -8,17 +8,20 @@ section {
     background-image: url('img/background.png');
     background-repeat: no-repeat;
     background-size: 100%;
+    width: 100%;
+    height: 100%;
 }
 
 .tab{
     width: 100%;
-    height: 50px;
-    background-color: whitesmoke;
+    height: 35px;
+    background-color: rgb(62, 49, 49);
+    display: flex;
 }
 
 .container {
     width: 100%;
-    height: 865px;
+    height: 880px;
     left: 0px;
     top: 0px;
     overflow: hidden;
@@ -76,4 +79,25 @@ img {
     height: 0px;
     width: 0px;
     margin-top: -18px;
+}
+
+/* 탭 */
+
+.tabs {
+    border: 1px solid black;
+    width: 100px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+.tabPlus {
+    border: 1px solid black;
+    width: 30px;
+    height: 35px;
+}
+.tabClose{
+    font-size: 20px;
 }
