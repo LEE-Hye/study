@@ -3,8 +3,6 @@
 
 <head>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" href="./desktop.css">
-	<script src="./desktop.js"></script>
 	<style>
 		* {
 			margin: 0;
@@ -12,7 +10,9 @@
 		}
 
 		section {
-			background-image: url('img/background2.png');
+			background-image: url('img/background.png');
+			background-repeat: no-repeat;
+			background-size: 100%;
 		}
 
 		.tab{
@@ -92,9 +92,7 @@
 	</section>
 
 	<script>
-		let myDesktop = new Desktop(
-			/* TODO: myDesktop 인스턴스의 생성자의 변수로 무엇이 들어가야 할까요? */
-		);
+
 
 		var desktop1 = document.querySelector('.desktop');
 
@@ -125,11 +123,17 @@
 		newIconBtn.setAttribute('class', 'iconBtn');
 		newIconBtn.innerText = '아이콘 생성';
 		btn.appendChild(newIconBtn);
+
+		var newClearBtn = document.createElement('button');
+		newClearBtn.setAttribute('class', 'clearBtn');
+		newClearBtn.innerText = '초기화';
+		btn.appendChild(newClearBtn);
 		// ********************폴더 아이콘 버튼 생성 ********************
 
 
 
-		// ********************개수 질문 S ********************
+
+		// ******************** 폴더 생성 구역 ********************
 		/** 폴더 만들기 */
 		var i = 0;
 		document.querySelector('.folderBtn').addEventListener('click', function () {
@@ -212,6 +216,12 @@
 			};
 		});
 		// ********************개수 질문 E ********************
+
+		// ******************** 초기화 S ********************
+		document.querySelector('.clearBtn').addEventListener('click', function () {
+			location.reload();
+		});
+		// ******************** 초기화 E ********************
 
 		// // ********************움직이기 S ********************
 		window.addEventListener('load', function () {

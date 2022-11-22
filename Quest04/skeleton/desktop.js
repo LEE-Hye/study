@@ -7,6 +7,7 @@ class Desktop {
 		new Icon();
 		new Folder();
 		this.drag();
+		this.clear();
 	}
 	create() {
 		var desktop1 = document.querySelector('.desktop');
@@ -23,7 +24,7 @@ class Desktop {
 		desktop1.appendChild(contain)
 		// ********************컨테이너 생성 ********************
 
-		// ********************폴더 아이콘 버튼 생성 ********************
+		// ********************폴더 아이콘 초기화 버튼 생성 ********************
 		var btn = document.createElement('div');
 		btn.setAttribute('class', 'btn');
 		desktop1.appendChild(btn);
@@ -37,7 +38,12 @@ class Desktop {
 		newIconBtn.setAttribute('class', 'iconBtn');
 		newIconBtn.innerText = '아이콘 생성';
 		btn.appendChild(newIconBtn);
-		// ********************폴더 아이콘 버튼 생성 ********************
+
+		var newClearBtn = document.createElement('button');
+		newClearBtn.setAttribute('class', 'clearBtn');
+		newClearBtn.innerText = '초기화';
+		btn.appendChild(newClearBtn);
+		// ********************폴더 아이콘 초기화 버튼 생성 ********************
 	}
 	drag() {
 		// // ********************움직이기 S ********************
@@ -79,11 +85,16 @@ class Desktop {
 
 		// ********************움직이기 E ********************
 	}
+	clear() {
+		// ******************** 초기화 S ********************
+		document.querySelector('.clearBtn').addEventListener('click', function () {
+			location.reload();
+		});
+		// ******************** 초기화 E ********************
+	}
 };
-// ********************개수 질문 S ********************
+
 /** 폴더 만들기 */
-
-
 class Folder {
 	/* TODO: Folder 클래스는 어떤 멤버함수와 멤버변수를 가져야 할까요? */
 	i = 0;
