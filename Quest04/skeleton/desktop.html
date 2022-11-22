@@ -80,7 +80,7 @@
 			color: white;
 			height: 0px;
 			width: 0px;
-			margin-left: 230px;
+			margin-top: -18px;
 		}
 
 		/* ---------------------------------- */
@@ -145,6 +145,8 @@
 				newFolder.dataset.top = newFolder.offsetTop;
 			};
 
+			
+
 			// ********************모달창 html S ********************
 
 			var modal = document.createElement('div');
@@ -152,22 +154,17 @@
 			modal.setAttribute('class', 'modal');
 			contain.appendChild(modal);
 
-			var modalheader = document.createElement('div');
+			var modalheader = document.createElement('input');
 			modalheader.setAttribute('class', 'modalheader');
 			modal.appendChild(modalheader);
 			modalheader.innerText = newFolder.getAttribute('alt');
+			modalheader.value = newFolder.getAttribute('alt');
 
 			var modalclose = document.createElement('span');
 			modalclose.setAttribute('class', 'modalclose');
 			modalclose.innerText = 'X';
-			modalheader.appendChild(modalclose);
-
-
-			modal.onload = function () {
-				modal.dataset.left = modal.offsetLeft;
-				modal.dataset.top = modal.offsetTop;
-			};
-
+			modal.appendChild(modalclose);
+			
 
 			// ********************모달창 html E ********************
 
@@ -184,7 +181,7 @@
 						var modalhead = modal.querySelector('.modalheader').innerText;
 
 						console.log(this.getAttribute('alt'))
-						if (modalhead.substring(0, modalhead.length - 1) == this.getAttribute('alt')) { 
+						if (modalhead === this.getAttribute('alt')) { 
 							modalOn();
 						}
 					});

@@ -154,9 +154,12 @@
 
 
 			var newParent = document.createElement('span');
-			newParent.setAttribute('class', 'parent');
+			newParent.setAttribute('class', 'foldIcon');
 			contain.appendChild(newParent);
-
+			newParent.onload = function () {
+				newParent.dataset.left = newParent.offsetLeft;
+				newParent.dataset.top = newParent.offsetTop;
+			};
 
 			var newFolder = document.createElement('img');
 			i++;
@@ -165,10 +168,7 @@
 			newFolder.classList.add('fold');
 			newFolder.setAttribute('alt', 'folder' + i);
 			newParent.appendChild(newFolder);
-			newFolder.onload = function () {
-				newFolder.dataset.left = newFolder.offsetLeft;
-				newFolder.dataset.top = newFolder.offsetTop;
-			};
+			
 
 			var newFolderName = document.createElement('span');
 			newFolderName.setAttribute('class', 'foldName');
@@ -238,8 +238,12 @@
 			j++;
 
 			var newParent = document.createElement('span');
-			newParent.setAttribute('class', 'parent');
+			newParent.setAttribute('class', 'foldIcon');
 			contain.appendChild(newParent);
+			newParent.onload = function () {
+				newParent.dataset.left = newParent.offsetLeft;
+				newParent.dataset.top = newParent.offsetTop;
+			};
 
 
 			var newIcon = document.createElement('img');
@@ -247,11 +251,7 @@
 			newIcon.setAttribute('class', 'foldIcon');
 			newIcon.setAttribute('alt', 'icon' + j);
 			newParent.appendChild(newIcon);
-			newIcon.onload = function () {
-				newIcon.dataset.left = newIcon.offsetLeft;
-				newIcon.dataset.top = newIcon.offsetTop;
-			};
-
+			
 
 			var newIconName = document.createElement('span');
 			newIconName.setAttribute('class', 'iconName');
@@ -271,32 +271,36 @@
 			var top = container.offsetTop;
 
 			document.onmousedown = function (e) {   // 마우스를 눌렀을 때
-				if (e.target.classList.contains('parent') || e.target.classList.contains('modal')) {
+				if (e.target.classList.contains('foldIcon') || e.target.classList.contains('modal')) {
 					e.preventDefault();
 					dragging = true;
 					current = e.target; // 마우스 다운 해서 현재 클릭된 녀석
 					offset.x = e.offsetX;
 					offset.y = e.offsetY;
 				}
-				// console.log(e.target);
-				// console.log(dragging);
+				console.log(e.target);
+				console.log(dragging);
 			};
 			document.onmousemove = function (e) {   // 움직이는 동안
 				// console.log(dragging)
+				e.preventDefault();
 				if (!dragging) return;
-				if (e.target.classList.contains('parent')) {
+				if (e.target.classList.contains('foldIcon')) {
 					current.style.left = e.pageX - offset.x - current.dataset.left + 'px';
 					current.style.top = e.pageY - offset.y - current.dataset.top - 50 + 'px';
 				} else {
-					current.style.left = e.pageX - offset.x - left -700 + 'px';
+					current.style.left = e.pageX - offset.x - left + 'px';
 					current.style.top = e.pageY - offset.y - top + 'px';
 				}
 				// console.log(dragging);
 			};
 			document.onmouseup = function (e) {     // 마우스를 땠을 때
+				e.preventDefault();
 				dragging = false;
 			};
 		});
+
+
 
 		// ********************움직이기 E ********************
 
