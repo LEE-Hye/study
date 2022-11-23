@@ -5,23 +5,21 @@
 }
 
 section {
-    background-image: url('img/background.png');
+    background-image: url('img/mapleback.png');
     background-repeat: no-repeat;
-    background-size: 100%;
-    width: 100%;
-    height: 100%;
+    background-size: cover;
 }
 
 .tab{
     width: 100%;
     height: 35px;
-    background-color: whitesmoke;
+    background-color: #ebb43d49;
     display: flex;
 }
 
 .container {
     width: 100%;
-    height: 880px;
+    height: 872px;
     left: 0px;
     top: 0px;
     overflow: hidden;
@@ -47,30 +45,34 @@ img {
     height: 100px;
 }
 
+button{
+    background-color: #ebb43d83;
+    border: 1px solid rgba(255, 255, 255, 0.668);
+    padding: 5px;
+}
+
 /** 모달창 */
 
 .modal {
     position: absolute;
-    z-index: 10;
     width: 320px;
     height: 300px;
     display: none;
-    background: rgba(69, 139, 197, 0.70);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-    backdrop-filter: blur(1.5px);
-    -webkit-backdrop-filter: blur(1.5px);
+    background: rgba(202, 218, 232, 0.7);
     border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
     margin-left: 700px;
+    z-index: 1;
 }
 
 .modalheader {
+    position: relative;
     width: 300px;
     height: 20px;
     padding: 10px;
-    z-index: 0;
-    background-color: #2196F3;
+    background-color: #ebb43d;
     color: #fff;
+    display: flex;
+    justify-content: space-between;
 }
 
 .modalclose {
@@ -78,13 +80,13 @@ img {
     color: white;
     height: 0px;
     width: 0px;
-    margin-top: -18px;
+    margin-right: 10px;
 }
 
 /* 탭 */
 
 .tabs {
-    border: 1px solid black;
+    border: 1px solid rgba(0, 0, 0, 0.146);
     width: 100px;
     height: 35px;
     display: flex;
@@ -94,10 +96,11 @@ img {
 }
 
 .tabPlus {
-    border: 1px solid black;
+    border: 1px solid rgba(0, 0, 0, 0.178);
     width: 30px;
     height: 35px;
 }
 .tabClose{
     font-size: 20px;
+    color: rgba(255, 255, 255, 0.565);
 }

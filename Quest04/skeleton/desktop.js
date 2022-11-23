@@ -5,22 +5,20 @@ var tabPlus;
 var tab;
 var tabClose;
 var desktop1;
+
 class Desktop {
 	/* TODO: Desktop 클래스는 어떤 멤버함수와 멤버변수를 가져야 할까요? */
 	constructor() {
 		this.createTab();
-		this.createContainer(i);
+		this.createContainer();
 		this.createBtn();
-		new Icon();
-		new Folder();
 		this.drag();
 		this.clear();
-		new NewWindow();
 	}
-	
-	createTab(){
+
+	/** 탭 생성 */
+	createTab() {
 		desktop1 = document.querySelector('.desktop');
-		// ********************탭 생성 S ********************
 		tab = document.createElement('div');
 		tab.setAttribute('class', 'tab');
 		desktop1.append(tab);
@@ -34,22 +32,23 @@ class Desktop {
 		tabPlus.setAttribute('class', 'tabPlus');
 		tabPlus.innerText = '➕';
 		tab.appendChild(tabPlus);
-		// ********************탭 생성 E ********************
-	}
-	createContainer(i) {
+	};
+
+	/** 컨테이너 생성 */
+	createContainer() {
 		i++;
 		desktop1 = document.querySelector('.desktop');
 		// ********************컨테이너 생성 ********************
 		contain = document.createElement('div');
 		contain.setAttribute('class', 'container');
-		contain.setAttribute('id', 'contain'+i);
-		desktop1.appendChild(contain)
+		contain.setAttribute('id', 'contain' + i);
+		desktop1.appendChild(contain);
 		// ********************컨테이너 생성 ********************
-	}
-	createBtn(){
+	};
 
+	/** 폴더 아이콘 초기화 버튼 생성 */
+	createBtn() {
 		desktop1 = document.querySelector('.desktop');
-		// ********************폴더 아이콘 초기화 버튼 생성 ********************
 		var btn = document.createElement('div');
 		btn.setAttribute('class', 'btn');
 		desktop1.appendChild(btn);
@@ -68,12 +67,11 @@ class Desktop {
 		newClearBtn.setAttribute('class', 'clearBtn');
 		newClearBtn.innerText = '초기화';
 		btn.appendChild(newClearBtn);
-		// ********************폴더 아이콘 초기화 버튼 생성 ********************
-	}
+	};
 
+	/** 드래그 */
 	drag() {
-		// // ********************움직이기 S ********************
-		window.addEventListener('load', function () {
+		window.addEventListener('load', function () {				// 모든 게 불러와졌을 때 발생
 			var container = document.querySelector('.container');
 			var dragging = false;
 			var offset = { x: 0, y: 0 };
@@ -81,18 +79,16 @@ class Desktop {
 			var left = container.offsetLeft;
 			var top = container.offsetTop;
 
-			document.onmousedown = function (e) {   // 마우스를 눌렀을 때
+			document.addEventListener('mousedown', function (e) {	// 마우스를 눌렀을 때  	
 				if (e.target.classList.contains('foldIcon') || e.target.classList.contains('modal')) {
 					e.preventDefault();
 					dragging = true;
-					current = e.target; // 마우스 다운 해서 현재 클릭된 녀석
+					current = e.target; 							// 마우스 다운 해서 현재 클릭된 녀석
 					offset.x = e.offsetX;
 					offset.y = e.offsetY;
 				}
-				// console.log(e.target);
-				// console.log(dragging);
-			};
-			document.onmousemove = function (e) {   // 움직이는 동안
+			});
+			document.addEventListener('mousemove', function (e) {	// 움직이는 동안
 				// console.log(dragging)
 				if (!dragging) return;
 				if (e.target.classList.contains('foldIcon')) {
@@ -102,40 +98,36 @@ class Desktop {
 					current.style.left = e.pageX - offset.x - left - 700 + 'px';
 					current.style.top = e.pageY - offset.y - top + 'px';
 				}
-				// console.log(dragging);
-			};
-			document.onmouseup = function (e) {     // 마우스를 땠을 때
+			});
+			document.addEventListener('mouseup', function (e) {     // 마우스를 땠을 때
 				dragging = false;
-			};
+			});
 		});
+	};
 
-		// ********************움직이기 E ********************
-	}
+	/** 초기화 */
 	clear() {
-		// ******************** 초기화 S ********************
+
 		document.querySelector('.clearBtn').addEventListener('click', function () {
 			location.reload();
 		});
-		// ******************** 초기화 E ********************
-	}
+
+	};
 };
 
-/** 폴더 만들기 */
 class Folder {
 	/* TODO: Folder 클래스는 어떤 멤버함수와 멤버변수를 가져야 할까요? */
-	i = 0;
 	constructor() {
 		this.folderMake();
-
 	}
-
+	/** 폴더 생성 */
 	folderMake() {
+		i = 0;
 		document.querySelector('.folderBtn').addEventListener('click', function () {
-
 			// ********************폴더 html S ********************
 			var newFolder = document.createElement('img');
 			i++;
-			newFolder.setAttribute('src', 'img/folder.png');
+			newFolder.setAttribute('src', 'img/maplefolder.png');
 			newFolder.setAttribute('class', 'foldIcon');
 			newFolder.classList.add('fold');
 			newFolder.setAttribute('alt', 'folder' + i);
@@ -144,27 +136,23 @@ class Folder {
 				newFolder.dataset.left = newFolder.offsetLeft;
 				newFolder.dataset.top = newFolder.offsetTop;
 			};
-			// ********************폴더 html E ********************
 
-
-			// ********************모달창 html S ********************
-
+			/** 폴더 만들면서 모달도 같이 생성 */
 			var modal = document.createElement('div');
 			modal.setAttribute('class', 'foldIcon');
 			modal.setAttribute('class', 'modal');
 			contain.appendChild(modal);
 
-			var modalheader = document.createElement('input');
+			var modalheader = document.createElement('div');
 			modalheader.setAttribute('class', 'modalheader');
 			modal.appendChild(modalheader);
 			modalheader.innerText = newFolder.getAttribute('alt');
-			modalheader.value = newFolder.getAttribute('alt');
 
 			var modalclose = document.createElement('span');
 			modalclose.setAttribute('class', 'modalclose');
 			modalclose.innerText = 'X';
-			modal.appendChild(modalclose);
-
+			modalheader.appendChild(modalclose);
+			/** 모달 기능 부르기 */
 			new Window();
 		});
 	};
@@ -175,15 +163,12 @@ class Icon {
 	constructor() {
 		this.icon();
 	}
-	/** 아이콘 만들기 */
+	/** 아이콘 생성 */
 	icon() {
-
 		document.querySelector('.iconBtn').addEventListener('click', function () {
 			// 랜덤 아이콘
-			var iconImages = ['icon1.png', 'icon2.png', 'icon3.png', 'icon4.png', 'icon5.png', 'icon6.png'];
+			var iconImages = ['maple1.png', 'maple1.png', 'maple2.png', 'maple3.png', 'maple4.png', 'maple5.png', 'maple6.png'];
 			var iconRandom = Math.floor(Math.random() * iconImages.length);
-
-
 			var newIcon = document.createElement('img');
 			newIcon.setAttribute('src', 'img/' + iconImages[iconRandom]);
 			newIcon.setAttribute('class', 'foldIcon');
@@ -193,7 +178,7 @@ class Icon {
 				newIcon.dataset.top = newIcon.offsetTop;
 			};
 		});
-	}
+	};
 };
 
 class Window {
@@ -201,70 +186,74 @@ class Window {
 	constructor() {
 		this.window();
 	}
+	/** 모달 기능 */
 	window() {
 		document.querySelectorAll('.fold').forEach(function (folderdb) {
 			document.querySelectorAll('.modal').forEach(function (modal) {
 
 				var closeBtn = modal.querySelector(".modalclose");
 
+				/** 모달 열기 */
 				function modalOn() {
 					modal.style.display = 'flex';
 				};
+				
+				/** 모달 닫기 */
 				function modalOff() {
 					modal.style.display = 'none';
 				};
+
+				/** 폴더 더블 클릭시 모달 열기 */
 				folderdb.addEventListener('dblclick', function () {
 					var modalhead = modal.querySelector('.modalheader').innerText;
-
-					console.log(this.getAttribute('alt'))
-					if (modalhead === this.getAttribute('alt')) {
+					console.log(this.getAttribute('alt'));
+					if (modalhead.slice(0, -1) === this.getAttribute('alt')) {
 						modalOn();
 					}
 				});
 
+				/** 모달 클릭시 닫기 */
 				closeBtn.addEventListener("click", function () {
 					modalOff();
 				});
 			});
 		});
-		// ********************모달창 기능 E ********************
 	};
 };
 
-class NewWindow {
+class Tab {
 	constructor() {
 		this.tab();
 	}
-
+	/** 탭 기능 */
 	tab() {
-		// ********************탭 기능 S ********************
 		tabPlus.addEventListener('click', function () {
 			k++;
 			var tab1 = document.createElement('button');
 			tab1.setAttribute('class', 'tabs');
-			tab1.setAttribute('id', 'contain'+(k+1));
-			tab1.innerText = '탭입니당'+k;
+			tab1.setAttribute('id', 'contain' + (k + 1));
+			tab1.innerText = '탭입니당' + k;
 			tab.appendChild(tab1);
 			// myDesktop.createContainer(k);
 
 			tabClose = document.createElement('span');
 			tabClose.setAttribute('class', 'tabClose');
-			tabClose.innerText = 'x'
+			tabClose.innerText = 'x';
 			tab1.appendChild(tabClose);
 
 			tabClose.addEventListener('click', function () {
 				tab1.remove();
-			})
+			});
 
 			console.log(contain);
 
-			tab1.addEventListener('mouseover', function(){
-				this.style.color = 'red'
+			tab1.addEventListener('mouseover', function () {
+				this.style.color = 'white';
 			});
-			tab1.addEventListener('mouseout', function(){
-				this.style.color = 'black'
+			tab1.addEventListener('mouseout', function () {
+				this.style.color = 'black';
 			});
-		
+
 			// tab1.addEventListener('click', function(){
 			// 	if(this.getAttribute('id')==contain.getAttribute('id')){
 			// 		contain.style.display = 'flex';
@@ -272,10 +261,9 @@ class NewWindow {
 			// 		contain.style.display = 'none';
 			// 	}
 			// })
-		})
-		// ********************탭 기능 E ********************
-	}
-}
+		});
+	};
+};
 
 
 /**
