@@ -4,11 +4,11 @@ var contain;
 var tabPlus;
 var tab;
 var tabClose;
-var desktop1;
+
 
 class Desktop {
 	/* TODO: Desktop 클래스는 어떤 멤버함수와 멤버변수를 가져야 할까요? */
-	constructor() {
+	constructor() {		// 객체를 만들 때 바로 실행해줄라고 사용하는 메서드 집어넣음
 		this.createTab();
 		this.createContainer();
 		this.createBtn();
@@ -18,7 +18,6 @@ class Desktop {
 
 	/** 탭 생성 */
 	createTab() {
-		desktop1 = document.querySelector('.desktop');
 		tab = document.createElement('div');
 		tab.setAttribute('class', 'tab');
 		desktop1.append(tab);
@@ -37,7 +36,6 @@ class Desktop {
 	/** 컨테이너 생성 */
 	createContainer() {
 		i++;
-		desktop1 = document.querySelector('.desktop');
 		// ********************컨테이너 생성 ********************
 		contain = document.createElement('div');
 		contain.setAttribute('class', 'container');
@@ -48,7 +46,6 @@ class Desktop {
 
 	/** 폴더 아이콘 초기화 버튼 생성 */
 	createBtn() {
-		desktop1 = document.querySelector('.desktop');
 		var btn = document.createElement('div');
 		btn.setAttribute('class', 'btn');
 		desktop1.appendChild(btn);
