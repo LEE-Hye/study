@@ -104,11 +104,9 @@ class Desktop {
 
 	/** 초기화 */
 	clear() {
-
 		document.querySelector('.clearBtn').addEventListener('click', function () {
 			location.reload();
 		});
-
 	};
 };
 
@@ -149,8 +147,9 @@ class Folder {
 			modalclose.setAttribute('class', 'modalclose');
 			modalclose.innerText = 'X';
 			modalheader.appendChild(modalclose);
+
 			/** 모달 기능 부르기 */
-			new Window();
+			new Modal();
 		});
 	};
 };
@@ -178,13 +177,13 @@ class Icon {
 	};
 };
 
-class Window {
-	/* TODO: Window 클래스는 어떤 멤버함수와 멤버변수를 가져야 할까요? */
+class Modal {
+	/* TODO: Modal 클래스는 어떤 멤버함수와 멤버변수를 가져야 할까요? */
 	constructor() {
-		this.window();
+		this.modal();
 	}
 	/** 모달 기능 */
-	window() {
+	modal() {
 		document.querySelectorAll('.fold').forEach(function (folderdb) {
 			document.querySelectorAll('.modal').forEach(function (modal) {
 
