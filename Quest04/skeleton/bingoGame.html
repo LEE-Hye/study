@@ -18,20 +18,13 @@
             margin: 10px;
         }
 
-        .startBtn {
-            margin: 30px 0px 30px 450px
-        }
-
-        .anwer {
-            width: 50px;
-            height: 20px;
-            margin-left: 25px;
-        }
-
-        .containerA {
+        .startContainer{
             display: flex;
-            align-items: center;
             justify-content: center;
+        }
+
+        .startBtn {
+            margin : 5px 0px 10px 0px;
         }
 
         .input {
@@ -42,28 +35,50 @@
             flex-direction: row;
             flex-wrap: wrap;
         }
+
+        .answerInput {
+            width: 50px;
+            height: 20px;
+        }
+
+        .answerContainer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .answerBtn{
+            margin-left: 10px;
+        }
+
+
     </style>
 </head>
 
 <body>
     <div class="container">
         <div class="input">
-            <input type="text" class="text">
-            <input type="text" class="text">
-            <input type="text" class="text">
-            <input type="text" class="text">
-            <input type="text" class="text">
-            <input type="text" class="text">
-            <input type="text" class="text">
-            <input type="text" class="text">
-            <input type="text" class="text">
+            
         </div>
     </div>
-    <button class="startBtn">START</button>
-    <div class="containerA">
-        <input type="text" class="anwer">
-        <button>정답 확인</button>
+    <div class="startContainer">
+        <button class="startBtn">START</button>
     </div>
+    <div class="answerContainer">
+        <input type="text" class="answerInput">
+        <button class="answerBtn">정답 확인</button>
+    </div>
+    <script>
+        var inputText = document.querySelector('.input');
+        console.log(inputText)
+
+        for(var i = 0; i < 25; i++){
+            var inputs = document.createElement('input');
+            inputs.setAttribute('type', 'text');
+            inputs.setAttribute('class', 'text');
+            inputText.parentNode.appendChild('inputs');
+        }
+    </script>
 </body>
 
 </html>
