@@ -103,3 +103,7 @@ button{
     font-size: 20px;
     color: rgba(255, 255, 255, 0.565);
 }
+
+#contain0{
+    display: flex;
+}

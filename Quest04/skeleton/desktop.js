@@ -227,11 +227,13 @@ class Tab {
 			tab1.appendChild(tabClose);
 
 
-			// 탭 생성시 컨테이너 공간도 같이 생성
+			/** 탭 생성시 컨테이너 공간도 같이 생성 */
 			new Desktop();
+
+			/** 생성된 컨테이너 기본 디스플레이 값 none 주기 */
 			contain.style.display = 'none';
 			
-
+			/** 탭 버튼 id값과 컨테이너 id값이 같다면 display 보여주기 다르다면 안 보여주기 */
 			document.querySelectorAll('.container').forEach(function(containSelect){
 				document.querySelectorAll('.tabs').forEach(function(tabsSelect){
 					tabsSelect.addEventListener('click', function(){
@@ -240,9 +242,9 @@ class Tab {
 						}else{
 							containSelect.style.display = 'none';
 						}
-					})
-				})
-			})
+					});
+				});
+			});
 
 			// 탭 닫기 버튼
 			tabClose.addEventListener('click', function () {
@@ -293,3 +295,6 @@ class Tab {
 Drag & Drop API를 사용하지 말고, 실제 마우스 이벤트(mouseover, mousedown, mouseout 등)를 사용하여 구현해 보세요!
 객체 리터럴?
  */
+
+
+// 왠지 그 뭐지 그... 음... 맞아 폴더랑 아이콘 생성할 때도 foreach로 컨테이너가 flex일 때 사용될 수 있도록 하면 될 거 같음
