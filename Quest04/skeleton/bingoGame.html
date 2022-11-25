@@ -28,7 +28,7 @@
         }
 
         .input {
-            width: 200px;
+            width: 290px;
             height: 100%;
             display: flex;
             align-items: center;
@@ -70,14 +70,48 @@
     </div>
     <script>
         var inputText = document.querySelector('.input');
-        console.log(inputText)
+        var inputArr = [];  // 사용자가 입력한 값 배열에 담기
+        var gameStart = document.querySelector('.startBtn');
+        var randomArr = [];
+        var answerBtn = document.querySelector('.answerBtn');
+        var answer;
 
         for(var i = 0; i < 25; i++){
             var inputs = document.createElement('input');
             inputs.setAttribute('type', 'text');
             inputs.setAttribute('class', 'text');
-            inputText.parentNode.appendChild('inputs');
+            inputText.append(inputs);
         }
+
+        for(var i = 0; i < 25; i++){
+            var randomNum = Math.floor(Math.random() * (100-1))+1;
+            if(randomArr.indexOf(randomNum) === -1){
+                randomArr.push(randomNum);
+            }else{
+                i--;
+            }
+        }
+        console.log(randomArr)
+
+        gameStart.addEventListener('click', function(){
+            console.log('스타트 버튼 클릭 잘 되니');
+            document.querySelectorAll('.text').forEach(function(put){
+                put.value;
+                inputArr.push(put.value);
+            });
+            console.log(inputArr)
+        });
+
+        answerBtn.addEventListener('click', function(){
+            answer = document.querySelector('.answerInput').value;
+        })
+        console.log(answer);
+
+        
+
+        
+
+
     </script>
 </body>
 
