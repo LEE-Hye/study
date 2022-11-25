@@ -4,6 +4,7 @@ var contain;
 var tabPlus;
 var tab;
 var tabClose;
+
 class Desktop {
 	/* TODO: Desktop 클래스는 어떤 멤버함수와 멤버변수를 가져야 할까요? */
 	constructor() {		// 객체를 만들 때 바로 실행해줄라고 사용하는 메서드 집어넣음
@@ -237,8 +238,8 @@ class Tab {
 			document.querySelectorAll('.container').forEach(function(containSelect){
 				document.querySelectorAll('.tabs').forEach(function(tabsSelect){
 					tabsSelect.addEventListener('click', function(){
-						if(this.getAttribute('id')==containSelect.getAttribute('id')){
-							containSelect.style.display = 'flex';
+						if(this.getAttribute('id')===containSelect.getAttribute('id')){
+							containSelect.style.display = 'inline';
 						}else{
 							containSelect.style.display = 'none';
 						}
