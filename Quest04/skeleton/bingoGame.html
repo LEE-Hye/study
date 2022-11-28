@@ -77,6 +77,8 @@
         var count = 0;
         var countRandom = [];
         var countInput = [];
+        var randomL;
+        var inputL;
 
         /** 사용자가 입력할 수 있는 창 */
         for (var i = 0; i < 25; i++) {
@@ -88,7 +90,7 @@
 
         /** 컴퓨터가 랜덤으로 뽑은 숫자 1~100 */
         for (var i = 0; i < 25; i++) {
-            randomNum = Math.floor(Math.random() * (100 - 1)) + 1;
+            randomNum = Math.floor(Math.random() * (26 - 1)) + 1;
             if (randomArr.indexOf(randomNum) === -1) {
                 randomArr.push(randomNum);
             } else {
@@ -109,30 +111,32 @@
         /** 정답 확인 버튼 누르면 정답 value값 가져오면서 정답값과 사용자, 컴퓨터에 있는 값 비교하기 */
         answerBtn.addEventListener('click', function () {
             answer = Number(document.querySelector('.answerInput').value);
+            console.log('클릭 안돼?')
 
             /** 컴퓨터 값 비교 */
-            bingo(randomArr, countRandom, randomL);
+            bingo(randomArr, countRandom);
 
             /** 사용자 값 비교 */
-            bingo(inputArr, countInput, inputL);
+            bingo(inputArr, countInput);
 
-            // console.log(randomArr, '카운트');
-            // console.log(countRandom);
+            /** 빙고 성공 */
+            var randomL = countRandom.filter((element, index) => {return countRandom.indexOf(element) === index});
+            var inputL = countInput.filter((element, index) => {return countInput.indexOf(element) === index});
 
-            // console.log(inputArr, '카운트');
-            // console.log(countInput);
-
-            if(randomL.length === 3){
-                console.log(randomL + '빙고 세줄 완성');
+            if(randomL.length === 3 & randomL.length > inputL.length){
+                console.log('컴퓨터 우승');
+            }else if(inputL.length === 3 & inputL.length > randomL.length){
+                console.log('사용자 우승');
+            }else if(randomL.length === 3 & randomL.length === 3){
+                console.log('공동 우승');
             }
 
-            console.log(randomL);
-
-            if(inputL.length === 3){
-                console.log(inputL + '빙고 세줄 완성');
-            }
-
-            console.log(inputL);
+            console.log('radomArr', randomArr);
+            console.log('inputArr', inputArr);
+            console.log('countRandom', countRandom);
+            console.log('countInput', countInput);
+            console.log('randomL', randomL);
+            console.log('inputL', inputL);
 
         })
 
@@ -144,12 +148,12 @@
 
         // 인덱스 값이
         // 0~4 / 5~9 / 10~14 / 15~19 / 20~24
-        // 0 5 10 15 20 / 1 6 11 16 21 / 2 7 12 17 22 / 3 8 13 18 23 (+5씩)
+        // 0 5 10 15 20 / 1 6 11 16 21 / 2 7 12 17 22 / 3 8 13 18 23 / 4 9 14 19 24 (+5씩)
         // 0 6 12 18 24 (+6씩)
         // 4 8 12 16 20 (+4씩)
         // 통일된 값으로 사용자나 컴퓨터 둘 중 먼저 총 3줄이 나온자가 승리
 
-        function bingo(arr, countm, line) {
+        function bingo(arr, count) {
 
             /** 정답이 배열 안에 없으면 리턴 */
             if (arr.indexOf(answer) == -1) return;
@@ -184,18 +188,13 @@
                 count.push(8);
             } if (arr[3] == 0 && arr[8] == 0 && arr[13] == 0 && arr[18] == 0 && arr[23] == 0) {
                 count.push(9);
+            } if (arr[4] == 0 && arr[9] == 0 && arr[14] == 0 && arr[19] == 0 && arr[25] == 0) {
+                count.push(9);
             } if (arr[0] == 0 && arr[6] == 0 && arr[12] == 0 && arr[18] == 0 && arr[24] == 0) {
                 count.push(10);
             } if (arr[4] == 0 && arr[8] == 0 && arr[12] == 0 && arr[16] == 0 && arr[20] == 0) {
                 count.push(11);
             }
-
-            /** 빙고 성공 */
-            var Line = count.filter((element, index) => {return count.indexOf(element) === index});
-            
-            
-
-
         }
 
 
