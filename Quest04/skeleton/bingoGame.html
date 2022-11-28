@@ -75,7 +75,8 @@
         var randomNum;
         var answer;
         var count = 0;
-        var countArr = [];
+        var countRandom = [];
+        var countInput = [];
 
         /** 사용자가 입력할 수 있는 창 */
         for (var i = 0; i < 25; i++) {
@@ -110,12 +111,29 @@
             answer = Number(document.querySelector('.answerInput').value);
 
             /** 컴퓨터 값 비교 */
-            // bingo(randomArr);
+            bingo(randomArr, countRandom, randomL);
 
             /** 사용자 값 비교 */
-            bingo(inputArr);
+            bingo(inputArr, countInput, inputL);
 
-            console.log('카운트', countArr);
+            // console.log(randomArr, '카운트');
+            // console.log(countRandom);
+
+            // console.log(inputArr, '카운트');
+            // console.log(countInput);
+
+            if(randomL.length === 3){
+                console.log(randomL + '빙고 세줄 완성');
+            }
+
+            console.log(randomL);
+
+            if(inputL.length === 3){
+                console.log(inputL + '빙고 세줄 완성');
+            }
+
+            console.log(inputL);
+
         })
 
         // 일단 노가다!
@@ -131,55 +149,54 @@
         // 4 8 12 16 20 (+4씩)
         // 통일된 값으로 사용자나 컴퓨터 둘 중 먼저 총 3줄이 나온자가 승리
 
-        function bingo(arr) {
+        function bingo(arr, countm, line) {
 
             /** 정답이 배열 안에 없으면 리턴 */
             if (arr.indexOf(answer) == -1) return;
             // console.log(answer);
 
-            /** 배열에 있는 정답을 0으로 교체 */
             arr[arr.indexOf(answer)] = 0;
-            console.log('0으로 바뀐 arr', arr);
+            // console.log('0으로 바뀐 arr', arr);
 
-            /** 빙고 성공 */
 
-            if(count == 3){
-                console.log('게임이 끝났습니다.');
-                return;
-            }
 
             // 이렇게 하니까 이 함수 들어올 때 마다 한 조건에 부합한 걸 계속 카운트 해주네 그럼 count++말구 다른 거 뭐 있을가
             // 2차원 배열은 나중에 생각할래
             // 그리고 사용자와 컴퓨터 각각 카운트를 해줘야 하는데 이것도 생각해봐야 해
             // => coutArr에 각각의 경우가 부합할 때 각자 다른 값을 집어 넣게 하려고 했는데 첫 번째로 들어온 값만 계속 추가 돼 이유가 뭐지
+            //          => 아... if else를 써서 위 조건과 부합하기 떄문에 밑에 것들은 안 넣어지는거였어...
 
             if (arr[0] == 0 && arr[1] == 0 && arr[2] == 0 && arr[3] == 0 && arr[4] == 0) {
-                countArr.push(1);
-            } else if (arr[5] == 0 && arr[6] == 0 && arr[7] == 0 && arr[8] == 0 && arr[9] == 0) {
-                countArr.push(2);
-            } else if (arr[10] == 0 && arr[11] == 0 && arr[12] == 0 && arr[13] == 0 && arr[14] == 0) {
-                countArr.push(3);
-            } else if (arr[15] == 0 && arr[16] == 0 && arr[17] == 0 && arr[18] == 0 && arr[19] == 0) {
-                countArr.push(4);
-            } else if (arr[20] == 0 && arr[21] == 0 && arr[22] == 0 && arr[23] == 0 && arr[24] == 0) {
-                countArr.push(5);
-            } else if (arr[0] == 0 && arr[5] == 0 && arr[10] == 0 && arr[15] == 0 && arr[20] == 0) {
-                countArr.push(6);
-            } else if (arr[1] == 0 && arr[6] == 0 && arr[11] == 0 && arr[16] == 0 && arr[21] == 0) {
-                countArr.push(7);
-            } else if (arr[2] == 0 && arr[7] == 0 && arr[12] == 0 && arr[17] == 0 && arr[22] == 0) {
-                countArr.push(8);
-            } else if (arr[3] == 0 && arr[8] == 0 && arr[13] == 0 && arr[18] == 0 && arr[23] == 0) {
-                countArr.push(9);
-            } else if (arr[0] == 0 && arr[6] == 0 && arr[12] == 0 && arr[18] == 0 && arr[24] == 0) {
-                countArr.push(10);
-            } else if (arr[4] == 0 && arr[8] == 0 && arr[12] == 0 && arr[16] == 0 && arr[20] == 0) {
-                countArr.push(11);
+                count.push(1);
+            } if (arr[5] == 0 && arr[6] == 0 && arr[7] == 0 && arr[8] == 0 && arr[9] == 0) {
+                count.push(2);
+            } if (arr[10] == 0 && arr[11] == 0 && arr[12] == 0 && arr[13] == 0 && arr[14] == 0) {
+                count.push(3);
+            } if (arr[15] == 0 && arr[16] == 0 && arr[17] == 0 && arr[18] == 0 && arr[19] == 0) {
+                count.push(4);
+            } if (arr[20] == 0 && arr[21] == 0 && arr[22] == 0 && arr[23] == 0 && arr[24] == 0) {
+                count.push(5);
+            } if (arr[0] == 0 && arr[5] == 0 && arr[10] == 0 && arr[15] == 0 && arr[20] == 0) {
+                count.push(6);
+            } if (arr[1] == 0 && arr[6] == 0 && arr[11] == 0 && arr[16] == 0 && arr[21] == 0) {
+                count.push(7);
+            } if (arr[2] == 0 && arr[7] == 0 && arr[12] == 0 && arr[17] == 0 && arr[22] == 0) {
+                count.push(8);
+            } if (arr[3] == 0 && arr[8] == 0 && arr[13] == 0 && arr[18] == 0 && arr[23] == 0) {
+                count.push(9);
+            } if (arr[0] == 0 && arr[6] == 0 && arr[12] == 0 && arr[18] == 0 && arr[24] == 0) {
+                count.push(10);
+            } if (arr[4] == 0 && arr[8] == 0 && arr[12] == 0 && arr[16] == 0 && arr[20] == 0) {
+                count.push(11);
             }
+
+            /** 빙고 성공 */
+            var Line = count.filter((element, index) => {return count.indexOf(element) === index});
+            
+            
+
+
         }
-
-
-
 
 
     </script>
